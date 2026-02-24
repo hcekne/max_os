@@ -22,3 +22,8 @@
 ## Interaction Index
 - One note per interaction in `06_Interactions`.
 - Use date-first naming for easy sorting.
+
+## TODO Index
+- Store actionable backlog and active tasks in `08_Todos`.
+- Keep one task per note for larger initiatives.
+- Start from template: `99_Templates/TPL - Todo.md`.
