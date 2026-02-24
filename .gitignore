@@ -2,12 +2,16 @@
 .DS_Store
 Thumbs.db
 
+# Editor / IDE
+.vscode/
+
 # Obsidian local state (machine-specific)
 .obsidian/workspace*.json
 .obsidian/cache/
-.obsidian/workspace.json
+.obsidian/.trash/
+.obsidian/graph.json
 
-# Optional local/plugin temp state
+# Misc local temp files
 .trash/
 *.tmp
 *.swp
