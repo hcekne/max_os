@@ -34,6 +34,9 @@
 ## Quick Navigation
 - [[00_System/Interaction Workflow]]
 - [[00_System/Copilot Update Prompt]]
+- [[00_System/Session Start Protocol]]
+- [[00_System/System State]]
+- [[00_System/AI Assistant Guide]]
 - [[00_System/Planning Cadence]]
 - [[00_System/Planning Memory]]
 - [[00_System/Indexes]]

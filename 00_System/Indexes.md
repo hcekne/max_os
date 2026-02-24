@@ -32,3 +32,13 @@
 - Store horizon plans and reviews in `09_Planning`.
 - Keep one active note per horizon (weekly, quarterly, two-year).
 - Use weekly reviews to update `00_System/Planning Memory`.
+
+## System Control Files
+- Session startup and due-review logic: `00_System/Session Start Protocol.md`.
+- Last checkpoint tracker: `00_System/System State.md`.
+- AI operating instructions: `00_System/AI Assistant Guide.md`.
+
+## Planning Templates
+- Weekly review: `99_Templates/TPL - Review Weekly.md`
+- Monthly review: `99_Templates/TPL - Review Monthly.md`
+- Yearly review: `99_Templates/TPL - Review Yearly.md`

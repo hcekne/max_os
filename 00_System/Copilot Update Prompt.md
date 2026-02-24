@@ -2,6 +2,8 @@
 
 Use this after you finish an interaction note.
 
+For session startup and planning cadence checks, use [[00_System/Session Start Protocol]].
+
 ---
 
 I just added/updated this interaction note: [[PASTE INTERACTION NOTE LINK]].
@@ -23,3 +25,7 @@ Please do the following in my vault:
 ## Optional Add-on
 Also ask:
 - "Create follow-up tasks in my latest daily note and link back to the interaction."
+
+## Planning Add-on
+Also ask:
+- "Check `00_System/System State.md` and tell me which reviews are due (weekly/monthly/quarterly/yearly), then propose the review order."
