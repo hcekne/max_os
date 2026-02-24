@@ -8,6 +8,7 @@
 - Content: [[05_Content/]]
 - Interactions: [[06_Interactions/]]
 - Daily: [[07_Daily/]]
+- Planning: [[09_Planning/]]
 - Templates: [[99_Templates/]]
 
 ## Create New Notes (Use Templates)
@@ -18,6 +19,10 @@
 - New Interaction -> `TPL - Interaction`
 - New Content -> `TPL - Content`
 - New Daily -> `TPL - Daily`
+- New Weekly Plan -> `TPL - Plan Weekly`
+- New Quarterly Plan -> `TPL - Plan Quarterly`
+- New Two-Year Plan -> `TPL - Plan Two-Year`
+- New Weekly Review -> `TPL - Review Weekly`
 
 ## Operating Rules
 1. Every meaningful conversation gets an interaction note in `06_Interactions`.
@@ -29,4 +34,6 @@
 ## Quick Navigation
 - [[00_System/Interaction Workflow]]
 - [[00_System/Copilot Update Prompt]]
+- [[00_System/Planning Cadence]]
+- [[00_System/Planning Memory]]
 - [[00_System/Indexes]]

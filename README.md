@@ -14,6 +14,7 @@ A personal thinking hub for planning, decisions, actions, projects, and daily ex
 - `06_Interactions/` — interaction logs
 - `07_Daily/` — daily notes
 - `08_Todos/` — backlog and actionable task notes
+- `09_Planning/` — weekly, quarterly, and two-year plans + reviews
 - `99_Templates/` — note templates
 
 ## Git Notes

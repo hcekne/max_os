@@ -27,3 +27,8 @@
 - Store actionable backlog and active tasks in `08_Todos`.
 - Keep one task per note for larger initiatives.
 - Start from template: `99_Templates/TPL - Todo.md`.
+
+## Planning Index
+- Store horizon plans and reviews in `09_Planning`.
+- Keep one active note per horizon (weekly, quarterly, two-year).
+- Use weekly reviews to update `00_System/Planning Memory`.
