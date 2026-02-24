@@ -1,0 +1,13 @@
+# OS
+.DS_Store
+Thumbs.db
+
+# Obsidian local state (machine-specific)
+.obsidian/workspace*.json
+.obsidian/cache/
+.obsidian/workspace.json
+
+# Optional local/plugin temp state
+.trash/
+*.tmp
+*.swp
