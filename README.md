@@ -66,6 +66,32 @@ That is enough to get started.
 - You can browse folders normally and use backlinks/graph view for connected context.
 - You can use Max OS in any Markdown app, but Obsidian gives the best linking experience.
 
+## Set Up Your Own Private Max OS Repo (recommended)
+Use Max OS as a public starter, then keep your real notes in your own private GitHub repo.
+
+### One-time setup
+1. Clone this public repo:
+	- `git clone git@github.com:hcekne/max_os.git max_os_personal`
+2. Enter the folder:
+	- `cd max_os_personal`
+3. Rename current remote to `upstream` (public starter):
+	- `git remote rename origin upstream`
+4. Create your own private repo on GitHub (empty), for example `yourname/max_os_personal`.
+5. Add your private repo as `origin`:
+	- `git remote add origin git@github.com:<your-username>/max_os_personal.git`
+6. Push your copy:
+	- `git push -u origin main`
+
+### Daily/weekly sync routine
+- Pull latest starter updates from Max OS:
+  - `git fetch upstream && git merge upstream/main`
+- Push your personal notes to your private repo:
+  - `git push origin main`
+
+### Safety tip
+Disable accidental push to the public starter remote:
+- `git remote set-url --push upstream DISABLED`
+
 ## For Advanced Users (optional)
 - AI uses `00_System/` as its instruction layer.
 - Most users can ignore `00_System/` and just use chat + notes.
