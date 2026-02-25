@@ -9,7 +9,7 @@ tags: [planning, strategy]
 # Two-Year Goal State
 
 ## Target State
-- Define clear business and personal operating state for 2028.
+- Define a clear work operating state for 2028.
 
 ## Strategic Pillars
 - [ ] Build a reliable planning and execution system.

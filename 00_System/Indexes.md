@@ -19,6 +19,19 @@
 - Store written content in `05_Content`.
 - Add links to related clients/projects/people in frontmatter and body.
 
+## Notes Index
+- Store general ideas and unclassified notes in `11_Notes`.
+- Move or link notes later if they become client/project/person specific.
+
+## Workflow Index
+- Store repeatable processes in `12_Workflows`.
+- Use this for step-by-step human workflows and AI/agent workflows.
+
+## Goals Index
+- Store major work goals in `13_Goals`.
+- Keep one note per major goal.
+- Link goals to projects and planning notes.
+
 ## Interaction Index
 - One note per interaction in `06_Interactions`.
 - Use date-first naming for easy sorting.
@@ -28,18 +41,31 @@
 - Keep one task per note for larger initiatives.
 - Start from template: `99_Templates/TPL - Todo.md`.
 
+## Inbox Index
+- Store raw and unprocessed captures in `10_Inbox`.
+- Process inbox items daily into canonical folders.
+- Keep `10_Inbox` transient; avoid long-term storage there.
+
 ## Planning Index
 - Store horizon plans and reviews in `09_Planning`.
 - Keep one active note per horizon (weekly, quarterly, two-year).
 - Use weekly reviews to update `00_System/Planning Memory`.
 
 ## System Control Files
-- User onboarding: `00_System/User Quickstart.md`.
-- Session startup and due-review logic: `00_System/Session Start Protocol.md`.
+- Primary LLM instructions: `00_System/LLM Operating Manual.md`.
 - Last checkpoint tracker: `00_System/System State.md`.
-- AI operating instructions: `00_System/AI Assistant Guide.md`.
+- Planning schedule definitions: `00_System/Planning Cadence.md`.
+- Planning learning memory: `00_System/Planning Memory.md`.
+- Folder and note placement map: `00_System/Indexes.md`.
 
 ## Planning Templates
 - Weekly review: `99_Templates/TPL - Review Weekly.md`
 - Monthly review: `99_Templates/TPL - Review Monthly.md`
 - Yearly review: `99_Templates/TPL - Review Yearly.md`
+- General note: `99_Templates/TPL - Note.md`
+- Workflow: `99_Templates/TPL - Workflow.md`
+- Goal: `99_Templates/TPL - Goal.md`
+
+## Optional Modules
+- Optional personal capability packs live in `20_Modules`.
+- Default recommendation for shared deployments: keep modules disabled until needed.

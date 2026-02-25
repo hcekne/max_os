@@ -45,4 +45,4 @@ tags: [todo, automation, voice, transcription]
 
 ## Links
 - [[07_Daily]]
-- [[00_System/Interaction Workflow]]
+- [[00_System/LLM Operating Manual]]
