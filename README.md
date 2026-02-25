@@ -1,4 +1,4 @@
-# Max Vault
+# Max OS
 
 A personal thinking hub for planning, decisions, actions, projects, and daily execution.
 
