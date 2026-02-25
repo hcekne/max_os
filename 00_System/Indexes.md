@@ -18,6 +18,7 @@
 ## Content Index
 - Store written content in `05_Content`.
 - Add links to related clients/projects/people in frontmatter and body.
+- Use pillar + derivative model for content repurposing.
 
 ## Notes Index
 - Store general ideas and unclassified notes in `11_Notes`.
@@ -26,6 +27,10 @@
 ## Workflow Index
 - Store repeatable processes in `12_Workflows`.
 - Use this for step-by-step human workflows and AI/agent workflows.
+- Content workflows:
+	- `Workflow - Thought Leadership Article Lifecycle.md`
+	- `Workflow - Content Waterfall from Pillar Article.md`
+	- `Workflow - Build AI GTM Deck from Ideas or Articles.md`
 
 ## Guides Index
 - Store setup and usage guides in `14_Guides`.
@@ -69,6 +74,10 @@
 - General note: `99_Templates/TPL - Note.md`
 - Workflow: `99_Templates/TPL - Workflow.md`
 - Goal: `99_Templates/TPL - Goal.md`
+- Pillar article: `99_Templates/TPL - Content Pillar Article.md`
+- Review round: `99_Templates/TPL - Content Review Round.md`
+- Derivative asset: `99_Templates/TPL - Content Derivative Asset.md`
+- Presentation (AI GTM): `99_Templates/TPL - Presentation AI GTM.md`
 
 ## Optional Modules
 - Optional personal capability packs live in `20_Modules`.
