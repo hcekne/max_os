@@ -9,6 +9,7 @@ Templates help create consistent notes quickly.
 - `TPL - Note.md`
 - `TPL - Workflow.md`
 - `TPL - Presentation AI GTM.md`
+- `TPL - Meeting Prep.md`
 
 ## Usage
 Copy a template, rename it, then fill it in.

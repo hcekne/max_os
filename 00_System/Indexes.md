@@ -31,6 +31,8 @@
 	- `Workflow - Thought Leadership Article Lifecycle.md`
 	- `Workflow - Content Waterfall from Pillar Article.md`
 	- `Workflow - Build AI GTM Deck from Ideas or Articles.md`
+- Meeting workflow:
+	- `Workflow - Meeting Prep Assistant.md`
 
 ## Guides Index
 - Store setup and usage guides in `14_Guides`.
@@ -78,6 +80,7 @@
 - Review round: `99_Templates/TPL - Content Review Round.md`
 - Derivative asset: `99_Templates/TPL - Content Derivative Asset.md`
 - Presentation (AI GTM): `99_Templates/TPL - Presentation AI GTM.md`
+- Meeting prep: `99_Templates/TPL - Meeting Prep.md`
 
 ## Optional Modules
 - Optional personal capability packs live in `20_Modules`.
