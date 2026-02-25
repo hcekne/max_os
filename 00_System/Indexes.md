@@ -27,6 +27,10 @@
 - Store repeatable processes in `12_Workflows`.
 - Use this for step-by-step human workflows and AI/agent workflows.
 
+## Guides Index
+- Store setup and usage guides in `14_Guides`.
+- Keep beginner setup instructions for supported AI tools here.
+
 ## Goals Index
 - Store major work goals in `13_Goals`.
 - Keep one note per major goal.

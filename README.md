@@ -19,6 +19,17 @@ Max OS is just organized Markdown files that link to each other.
 
 That is enough to get started.
 
+## Use Max OS With AI (important)
+Max OS works best when used with an AI assistant.
+Think of it like this:
+- your Markdown notes are the operating system
+- you + AI together are the CPU that runs it every day
+
+Pick one setup guide:
+- `14_Guides/Guide - VS Code Chat.md`
+- `14_Guides/Guide - Codex CLI.md`
+- `14_Guides/Guide - Claude Code.md`
+
 ## How to Use Max OS Daily
 1. Write notes during the day.
 2. If you are in a hurry, dump rough notes in `10_Inbox/`.
@@ -45,6 +56,7 @@ That is enough to get started.
 - `11_Notes/` -> general notes and ideas that do not fit anywhere yet
 - `12_Workflows/` -> step-by-step workflows (including AI/agent workflows)
 - `13_Goals/` -> big work goals and long-term outcomes
+- `14_Guides/` -> setup guides for VS Code Chat, Codex CLI, and Claude Code
 - `20_Modules/` -> optional personal modules (off by default)
 - `99_Templates/` -> templates for new notes
 
