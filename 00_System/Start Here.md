@@ -1,5 +1,8 @@
 # Max Vault - Start Here
 
+## First Step
+- Open [[00_System/User Quickstart]]
+
 ## Core Areas
 - People: [[01_People/]]
 - Organizations: [[02_Organizations/]]
@@ -32,6 +35,7 @@
 5. Client notes track account-level status and risk.
 
 ## Quick Navigation
+- [[00_System/User Quickstart]]
 - [[00_System/Interaction Workflow]]
 - [[00_System/Copilot Update Prompt]]
 - [[00_System/Session Start Protocol]]

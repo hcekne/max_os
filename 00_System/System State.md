@@ -1,6 +1,6 @@
 ---
 type: system-state
-last_interaction_date: 2026-02-24
+last_interaction_date: 2026-02-25
 last_weekly_review_date: 2026-02-24
 last_monthly_review_date: 2026-02-01
 last_quarterly_review_date: 2026-02-24
@@ -19,6 +19,9 @@ Single source of truth for the latest planning checkpoints.
 ## How to use
 - Update this note at the end of each review session.
 - Any AI assistant should read this note first to decide what is due.
+- `last_*_review_date` fields are canonical and drive due checks.
+- "Next review" dates, if ever added, are optional derived values only.
 
 ## Session Log
 - 2026-02-24: Initial system-state baseline created.
+- 2026-02-25: Session started; interaction date updated. No review completed yet.

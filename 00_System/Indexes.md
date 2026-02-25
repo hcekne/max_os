@@ -34,6 +34,7 @@
 - Use weekly reviews to update `00_System/Planning Memory`.
 
 ## System Control Files
+- User onboarding: `00_System/User Quickstart.md`.
 - Session startup and due-review logic: `00_System/Session Start Protocol.md`.
 - Last checkpoint tracker: `00_System/System State.md`.
 - AI operating instructions: `00_System/AI Assistant Guide.md`.

@@ -5,6 +5,11 @@ Use this at the beginning of any session (especially after long gaps).
 ## Goal
 Determine what review cadence is due and guide the user into the right next actions.
 
+## Mandatory First Action
+1. Read [[00_System/System State]] first.
+2. Resolve today's local date.
+3. If `last_interaction_date` is not today's date, update it immediately before continuing.
+
 ## Required Inputs
 - [[00_System/System State]]
 - [[00_System/Planning Cadence]]
@@ -16,6 +21,11 @@ Determine what review cadence is due and guide the user into the right next acti
 - Monthly review due if month has changed since `last_monthly_review_date`.
 - Quarterly review due if quarter has changed since `last_quarterly_review_date`.
 - Yearly review due if year has changed since `last_yearly_review_date`.
+
+## Canonical Date Rule
+- `last_*_review_date` fields are authoritative.
+- "Next review" dates are optional convenience only and must never be used as the source of truth.
+- Always compute due status from today's date vs last review dates.
 
 ## Execution Order (when multiple are due)
 1. Yearly
