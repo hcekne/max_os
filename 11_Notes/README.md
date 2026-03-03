@@ -9,3 +9,6 @@ Examples:
 - rough drafts before they become structured notes
 
 If a note becomes important, you can later move or link it into the right folder.
+
+## Suggested reading
+- [[Note - Patterns Learned from Real Usage]]
