@@ -10,6 +10,7 @@ This folder contains optional capability packs that extend Max OS beyond the cor
 ## Current modules
 - `Finance-Subscriptions/` - recurring payments, utilities, billing reminders.
 - `Lifestyle-Training/` - health/training planning and readiness-aware scheduling.
+- `Agent Registry/` - optional catalog of specialized agents/tools with risk and approval rules.
 
 ## Enablement rule
 A module is considered active only when:
