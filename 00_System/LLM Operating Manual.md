@@ -44,12 +44,37 @@ When given an interaction note:
 4. Update referenced organization/client/project note with key updates and commitments.
 5. Return a short factual changelog.
 
+## Note Lifecycle and Archive Protocol
+Purpose: keep `11_Notes/` high-signal and reduce redundancy for both humans and AI.
+
+When to run:
+- During monthly review cycles, or when multiple notes cover the same topic.
+
+Archive trigger conditions (any):
+- A newer canonical note supersedes older notes.
+- A note is mostly duplicated by another active note.
+- A draft/synthesis is no longer needed as an active working note.
+
+Archive process:
+1. Pick one canonical active note to keep in `11_Notes/` root.
+2. Move superseded notes to `11_Notes/Archive/` (do not delete by default).
+3. Set frontmatter `status: archived` in moved notes.
+4. Add a short "Archive status" pointer to the canonical note.
+5. Remove archived notes from active index lists (for example in `11_Notes/README.md`).
+6. Update major goals/projects to reference the canonical note only.
+
+Guardrails:
+- Preserve history, but keep active strategy surfaces minimal.
+- Prefer archiving over deletion unless explicitly requested.
+- Avoid creating extra system files for each cleanup; update existing indexes/manuals instead.
+
 ## Rules
 - Keep edits minimal, factual, and linked.
 - Do not invent names, dates, commitments, or outcomes.
 - Ask one focused clarification question only when required context is missing.
 - Treat `last_*_review_date` fields as canonical truth.
 - Keep `20_Modules/` optional unless explicitly activated in `System State`.
+- Keep one canonical active note per strategy topic when possible; archive redundant variants.
 
 ## Required Session Output
 1. Due reviews summary and reason.
