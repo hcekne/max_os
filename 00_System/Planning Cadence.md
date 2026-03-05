@@ -23,6 +23,7 @@ Run planning and review loops across horizons so daily execution stays aligned w
 2. Identify execution patterns (what repeated and why).
 3. Capture process improvements in [[00_System/Planning Memory]].
 4. Update operating rules for next month.
+5. Run note hygiene in `11_Notes`: consolidate duplicates, archive superseded notes to `11_Notes/Archive`, and keep active index lists clean.
 
 ## Quarterly Session (60-90 min)
 1. Review the quarter plan in `09_Planning/Quarterly`.

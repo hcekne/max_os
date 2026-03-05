@@ -23,6 +23,9 @@
 ## Notes Index
 - Store general ideas and unclassified notes in `11_Notes`.
 - Move or link notes later if they become client/project/person specific.
+- Keep active notes in `11_Notes/` root.
+- Move superseded or redundant notes to `11_Notes/Archive/` with `status: archived`.
+- Keep one canonical note per major strategy topic when practical.
 
 ## Workflow Index
 - Store repeatable processes in `12_Workflows`.
