@@ -5,13 +5,15 @@ Thumbs.db
 # Editor / IDE
 .vscode/
 
-# Obsidian local state (machine-specific)
-.obsidian/workspace*.json
-.obsidian/cache/
-.obsidian/.trash/
-.obsidian/graph.json
+# Obsidian (entire folder is local state, not needed in repo)
+.obsidian/
 
 # Misc local temp files
 .trash/
 *.tmp
 *.swp
+
+# PDF profile contents (PDFs are user data, not tracked; structure is tracked via .gitkeep)
+10_Inbox/PDF_Profiles/Unprocessed/*.pdf
+10_Inbox/PDF_Profiles/Processed/*.pdf
+10_Inbox/PDF_Profiles/Extracted_Text/*.txt

@@ -59,6 +59,16 @@
 - Store raw and unprocessed captures in `10_Inbox`.
 - Process inbox items daily into canonical folders.
 - Keep `10_Inbox` transient; avoid long-term storage there.
+- `10_Inbox/PDF_Profiles/` holds LinkedIn profile PDFs for processing into `01_People/`.
+
+## Skills Index
+- Store agent-executable skill definitions in `15_Skills`.
+- Each skill has: Purpose, Trigger, Inputs, Steps, Outputs, Quality Checks.
+- The master manifest is `SKILLS.md` at the vault root.
+- Skills differ from workflows: skills are agent-autonomous, workflows are human-led.
+- Some workflows in `12_Workflows/` are also listed as skills in `SKILLS.md`.
+- Active skills:
+	- `Skill - Process PDF Profiles to People Notes.md`
 
 ## Planning Index
 - Store horizon plans and reviews in `09_Planning`.

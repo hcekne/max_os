@@ -1,11 +1,13 @@
 # Workflows
 
-Use this folder for repeatable step-by-step work processes.
+Use this folder for repeatable step-by-step work processes that are **human-led** with optional AI assistance.
+
+For **agent-executable** capabilities (things the AI can run autonomously), see `15_Skills/` and `SKILLS.md`.
 
 A workflow is useful when:
 - the same task happens often
 - you want consistent quality
-- AI agents can run parts of the process
+- a human drives the process with AI assisting specific steps
 
 Each workflow note should include:
 1. Goal

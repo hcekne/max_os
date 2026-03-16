@@ -26,7 +26,13 @@ If you can write text, you can run Max OS.
 "Use this workspace as Max OS. Read `00_System/LLM Operating Manual.md`. Check `00_System/System State.md` and tell me what I should do today. Then process anything in `10_Inbox/` and give me my top 3 actions."
 
 ## Use with AI tools
-Choose your setup guide:
+
+Most AI tools auto-discover this workspace with zero setup:
+- **VS Code Copilot** reads `.github/copilot-instructions.md` automatically.
+- **Claude Code** reads `CLAUDE.md` automatically.
+- **OpenAI Codex** reads `AGENTS.md` automatically.
+
+Or choose a setup guide for manual configuration:
 - `14_Guides/Guide - VS Code Chat.md`
 - `14_Guides/Guide - Codex CLI.md`
 - `14_Guides/Guide - Claude Code.md`
@@ -43,11 +49,30 @@ Choose your setup guide:
 4. Ask AI to update `00_System/System State.md` at the end of the session.
 
 ## Structure at a glance
-- Goals live in `13_Goals/`.
-- Plans live in `09_Planning/`.
-- Work records live in people/clients/projects/interactions/content folders.
-- Templates live in `99_Templates/`.
-- Full folder map: `00_System/Indexes.md`.
+
+| Folder | Purpose |
+|--------|--------|
+| `00_System/` | AI operating rules and system state (read first) |
+| `01_People/` | One note per person (`First Last.md`) |
+| `02_Organizations/` | Company and org notes |
+| `03_Clients/` | Client folders with `Client - Name.md` |
+| `04_Projects/` | `Project - Name.md` |
+| `05_Content/` | Written content (pillar + derivatives) |
+| `06_Interactions/` | Date-first interaction notes |
+| `07_Daily/` | Daily notes |
+| `08_Todos/` | Task backlog |
+| `09_Planning/` | Weekly, Monthly, Quarterly, Two-Year plans |
+| `10_Inbox/` | Raw captures — process daily |
+| `11_Notes/` | General notes; archive superseded to `11_Notes/Archive/` |
+| `12_Workflows/` | Repeatable human-led processes |
+| `13_Goals/` | One note per major goal |
+| `14_Guides/` | Setup and usage guides |
+| `15_Skills/` | Agent-executable capabilities |
+| `20_Modules/` | Optional capability packs (disabled by default) |
+| `99_Templates/` | Templates for new notes |
+
+Full folder map: `00_System/Indexes.md`.
+Agent capability manifest: `SKILLS.md`.
 
 ## Notes and linking
 - Max OS is plain Markdown files.
