@@ -44,3 +44,10 @@ When should this skill be invoked?
 - `SKILLS.md` — master manifest of all skills (at vault root)
 - `12_Workflows/` — human-led processes (some also agent-executable)
 - `00_System/LLM Operating Manual.md` — core algorithms that function as built-in skills
+
+## Current skills
+- [[Skill - Process PDF Profiles to People Notes]]
+- [[Skill - Digest Deck to Markdown]]
+- [[Skill - Export Markdown to Word Document]]
+- [[Skill - Executive Thought Leadership Rewriter with Review Loops]]
+- [[Skill - Evidence Finding and Narrative Integration with Validation Loops]]

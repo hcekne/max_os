@@ -34,13 +34,37 @@ For detailed skill cards, see `15_Skills/`. For human-led step-by-step processes
 
 ---
 
-## Workflow Skills (in 15_Skills/)
+## Vault Skills (in 15_Skills/)
+
+### Executive Thought Leadership Rewriter with Review Loops
+- **File:** `15_Skills/Skill - Executive Thought Leadership Rewriter with Review Loops.md`
+- **Inputs:** Original article draft, stakeholder feedback, optional style benchmarks, optional target word count
+- **Outputs:** Intake summary, rewrite brief, new structure, two critique/revision loops, final polished draft
+
+### Evidence Finding and Narrative Integration with Validation Loops
+- **File:** `15_Skills/Skill - Evidence Finding and Narrative Integration with Validation Loops.md`
+- **Inputs:** Full article draft, optional stakeholder feedback, optional geography/sector/source preferences
+- **Outputs:** Argument map, insertion points, evidence bank, selected proof points, validation log, rewritten article with integrated evidence
 
 ### Process PDF Profiles to People Notes
 - **File:** `15_Skills/Skill - Process PDF Profiles to People Notes.md`
 - **Inputs:** PDF files in `10_Inbox/PDF_Profiles/Unprocessed/`
 - **Outputs:** Created/updated notes in `01_People/`
 - **Guide:** `14_Guides/Guide - Export LinkedIn Profiles as PDF.md`
+
+### Digest Deck to Markdown
+- **File:** `15_Skills/Skill - Digest Deck to Markdown.md`
+- **Inputs:** One source presentation deck as PDF, optional output filename/path
+- **Outputs:** One slide-by-slide Markdown digest in `05_Content/` or a requested project folder
+
+### Export Markdown to Word Document
+- **File:** `15_Skills/Skill - Export Markdown to Word Document.md`
+- **Inputs:** One source Markdown note, optional output filename/path, optional title override, optional portrait/landscape orientation
+- **Outputs:** One formatted `.docx` file suitable for sharing externally
+
+---
+
+## Workflow Skills (in 12_Workflows/)
 
 ### Meeting Prep
 - **File:** `12_Workflows/Workflow - Meeting Prep Assistant.md`

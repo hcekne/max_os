@@ -39,12 +39,14 @@ After a successful run:
 
 ## Phase 1 — Intake and Extraction
 
-1. Scan `10_Inbox/PDF_Profiles/Unprocessed/` for `.pdf` files.
-2. For each PDF, run primary extraction with `pdftotext -layout`.
-3. If `pdftotext -layout` is unavailable or produces empty output, use fallback parser chain: `pypdf → pymupdf → pdfplumber`.
-4. Save extracted text as one file per person in `10_Inbox/PDF_Profiles/Extracted_Text/`.
-5. If extraction succeeds (non-empty text), move source PDF to `10_Inbox/PDF_Profiles/Processed/`.
-6. If extraction fails, keep PDF in `10_Inbox/PDF_Profiles/Unprocessed/` and flag it in the run summary.
+1. Scan `10_Inbox/PDF_Profiles/Unprocessed/` with a direct folder listing for `.pdf` files.
+2. Treat the direct folder listing as the source of truth.
+3. If a search tool, glob search, or secondary scan disagrees with the direct folder listing, trust the direct folder listing and process every visible PDF.
+4. For each PDF, run primary extraction with `pdftotext -layout`.
+5. If `pdftotext -layout` is unavailable or produces empty output, use fallback parser chain: `pypdf → pymupdf → pdfplumber`.
+6. Save extracted text as one file per person in `10_Inbox/PDF_Profiles/Extracted_Text/`.
+7. If extraction succeeds (non-empty text), move source PDF to `10_Inbox/PDF_Profiles/Processed/`.
+8. If extraction fails, keep PDF in `10_Inbox/PDF_Profiles/Unprocessed/` and flag it in the run summary.
 
 ### Extraction method details
 - Default command per file:
@@ -123,7 +125,7 @@ Use this precedence when conflicts occur:
 
 ## Validation Checklist (run at end)
 1. **Coverage check:**
-   - Count input PDFs processed.
+   - Count input PDFs seen in the direct folder listing.
    - Count text files processed.
    - Confirm no files remain in Unprocessed/ or Extracted_Text/ (except explicit failures or ambiguities).
 2. **Note completeness check for touched people:**

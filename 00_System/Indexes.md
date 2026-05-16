@@ -69,6 +69,10 @@
 - Some workflows in `12_Workflows/` are also listed as skills in `SKILLS.md`.
 - Active skills:
 	- `Skill - Process PDF Profiles to People Notes.md`
+	- `Skill - Digest Deck to Markdown.md`
+	- `Skill - Export Markdown to Word Document.md`
+	- `Skill - Executive Thought Leadership Rewriter with Review Loops.md`
+	- `Skill - Evidence Finding and Narrative Integration with Validation Loops.md`
 
 ## Planning Index
 - Store horizon plans and reviews in `09_Planning`.

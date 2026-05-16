@@ -19,3 +19,6 @@ Temporary capture area for raw notes, voice transcript dumps, and unprocessed in
 
 ## Suggested prompt
 "Process whatever I added yesterday in `10_Inbox/`. Create or update canonical notes using templates, extract tasks into `08_Todos/` or today's daily note, and leave a short change summary."
+
+## Specialized intake lanes
+- `PDF_Profiles/` - LinkedIn profile PDFs for `15_Skills/Skill - Process PDF Profiles to People Notes.md`.
