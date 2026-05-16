@@ -51,3 +51,7 @@ When should this skill be invoked?
 - [[Skill - Export Markdown to Word Document]]
 - [[Skill - Executive Thought Leadership Rewriter with Review Loops]]
 - [[Skill - Evidence Finding and Narrative Integration with Validation Loops]]
+- [[Skill - Create HTML Artifact]]
+- [[Skill - Create HTML Worklet]]
+- [[Skill - Review HTML Artifact Safety]]
+- [[Skill - Convert Markdown to HTML Artifact]]

@@ -79,6 +79,12 @@ Agent capability manifest: `SKILLS.md`.
 - Link notes with `[[Note Name]]`.
 - It works especially well in Obsidian (backlinks and graph view).
 
+## Markdown-first, multi-format aware
+- Markdown is the source of truth for memory, plans, people, projects, goals, workflows, skills, and system state.
+- HTML artifacts and worklets are supported for rich human-facing views, but they do not replace canonical Markdown.
+- JSON can be used for structured worklet state when needed.
+- Future harnesses can render artifacts and worklets in a middle-pane interface while keeping Max OS usable as plain files.
+
 ## Private personal copy (recommended)
 Use this repo as a public starter and keep your real notes in a private repo.
 Setup + sync instructions are in the guides:

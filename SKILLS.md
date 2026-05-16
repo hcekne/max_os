@@ -62,6 +62,26 @@ For detailed skill cards, see `15_Skills/`. For human-led step-by-step processes
 - **Inputs:** One source Markdown note, optional output filename/path, optional title override, optional portrait/landscape orientation
 - **Outputs:** One formatted `.docx` file suitable for sharing externally
 
+### Create HTML Artifact
+- **File:** `15_Skills/Skill - Create HTML Artifact.md`
+- **Inputs:** Canonical Markdown source files, artifact purpose, optional output filename
+- **Outputs:** Self-contained HTML artifact in `05_Content/Artifacts/`, optional artifact manifest, optional Markdown proposal
+
+### Create HTML Worklet
+- **File:** `15_Skills/Skill - Create HTML Worklet.md`
+- **Inputs:** Worklet purpose, source files, input/output contract, optional JSON state shape
+- **Outputs:** HTML worklet in `20_Modules/Worklets/`, worklet manifest, optional JSON state example or proposal
+
+### Review HTML Artifact Safety
+- **File:** `15_Skills/Skill - Review HTML Artifact Safety.md`
+- **Inputs:** HTML artifact or worklet, companion manifest, source files, intended viewing context
+- **Outputs:** Safety review summary, required fixes, approval recommendation
+
+### Convert Markdown to HTML Artifact
+- **File:** `15_Skills/Skill - Convert Markdown to HTML Artifact.md`
+- **Inputs:** Source Markdown note or notes, optional target audience, optional artifact filename
+- **Outputs:** Read-only HTML artifact in `05_Content/Artifacts/`, optional manifest, optional Markdown proposal
+
 ---
 
 ## Workflow Skills (in 12_Workflows/)

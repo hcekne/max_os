@@ -1,0 +1,199 @@
+<!--
+max_os_document_type: html-worklet
+source_files:
+generated_date: YYYY-MM-DD
+generator:
+approval_status: draft
+manifest:
+state_files:
+harness_runtime: optional
+notes: Worklets may produce proposals, but must not silently edit canonical Markdown.
+-->
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="max-os-document-type" content="html-worklet">
+  <meta name="max-os-approval-status" content="draft">
+  <title>Worklet Title</title>
+  <style>
+    :root {
+      color-scheme: light dark;
+      --bg: #f7f8fb;
+      --fg: #172033;
+      --muted: #5f6c80;
+      --panel: #ffffff;
+      --line: #ccd5e1;
+      --accent: #2f6f4e;
+      --accent-contrast: #ffffff;
+      --focus: #b45309;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      line-height: 1.5;
+      background: var(--bg);
+      color: var(--fg);
+    }
+
+    main {
+      width: min(980px, calc(100% - 2rem));
+      margin: 0 auto;
+      padding: 2rem 0;
+    }
+
+    header {
+      border-bottom: 1px solid var(--line);
+      margin-bottom: 1.5rem;
+      padding-bottom: 1rem;
+    }
+
+    h1,
+    h2 {
+      line-height: 1.2;
+      margin: 0 0 0.75rem;
+    }
+
+    h1 {
+      font-size: 2.5rem;
+    }
+
+    .muted {
+      color: var(--muted);
+    }
+
+    .worklet-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+      gap: 1rem;
+    }
+
+    section {
+      border: 1px solid var(--line);
+      background: var(--panel);
+      padding: 1rem;
+    }
+
+    label {
+      display: block;
+      font-weight: 700;
+      margin-bottom: 0.35rem;
+    }
+
+    textarea {
+      width: 100%;
+      min-height: 12rem;
+      resize: vertical;
+      border: 1px solid var(--line);
+      padding: 0.75rem;
+      font: inherit;
+      color: var(--fg);
+      background: var(--bg);
+    }
+
+    button {
+      border: 0;
+      background: var(--accent);
+      color: var(--accent-contrast);
+      font: inherit;
+      font-weight: 700;
+      padding: 0.65rem 0.9rem;
+      margin-top: 0.75rem;
+      cursor: pointer;
+    }
+
+    button:focus,
+    textarea:focus {
+      outline: 3px solid var(--focus);
+      outline-offset: 2px;
+    }
+
+    pre {
+      min-height: 12rem;
+      overflow: auto;
+      white-space: pre-wrap;
+      border: 1px solid var(--line);
+      background: var(--bg);
+      padding: 0.75rem;
+    }
+
+    @media (max-width: 760px) {
+      .worklet-grid {
+        grid-template-columns: 1fr;
+      }
+
+      h1 {
+        font-size: 1.9rem;
+      }
+    }
+
+    @media (prefers-color-scheme: dark) {
+      :root {
+        --bg: #10131a;
+        --fg: #eef2f7;
+        --muted: #a6b0bf;
+        --panel: #171c26;
+        --line: #364254;
+        --accent: #3d9469;
+        --accent-contrast: #07130d;
+        --focus: #fbbf24;
+      }
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <header>
+      <p class="muted">HTML Worklet</p>
+      <h1>Worklet Title</h1>
+      <p class="muted">Describe the local task this worklet supports. Canonical changes should be exported as proposals.</p>
+    </header>
+
+    <div class="worklet-grid">
+      <section aria-labelledby="input-heading">
+        <h2 id="input-heading">Input</h2>
+        <label for="source-text">Source text</label>
+        <textarea id="source-text" autocomplete="off" spellcheck="true">Paste Markdown-derived input here.</textarea>
+        <button type="button" id="run-worklet">Generate Proposal</button>
+      </section>
+
+      <section aria-labelledby="output-heading">
+        <h2 id="output-heading">Output</h2>
+        <p class="muted">Review before applying to canonical Markdown.</p>
+        <pre id="proposal-output" tabindex="0">No proposal generated yet.</pre>
+      </section>
+    </div>
+
+    <noscript>
+      <p>This worklet needs JavaScript for local interaction. It should still keep all canonical memory in Markdown.</p>
+    </noscript>
+  </main>
+
+  <script>
+    (function () {
+      const input = document.getElementById("source-text");
+      const output = document.getElementById("proposal-output");
+      const button = document.getElementById("run-worklet");
+
+      button.addEventListener("click", function () {
+        const source = input.value.trim();
+        const proposal = [
+          "# Proposal",
+          "",
+          "Source length: " + source.length + " characters",
+          "",
+          "Review this proposal before applying any changes to canonical Markdown."
+        ].join("\n");
+
+        output.textContent = proposal;
+      });
+    })();
+  </script>
+</body>
+</html>

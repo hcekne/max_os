@@ -19,6 +19,18 @@
 - Store written content in `05_Content`.
 - Add links to related clients/projects/people in frontmatter and body.
 - Use pillar + derivative model for content repurposing.
+- Store rich generated HTML artifacts in `05_Content/Artifacts/`.
+- Keep source Markdown in its canonical location; artifacts are rendered outputs, not replacement notes.
+
+## Artifact Index
+- Store static human-facing HTML artifacts in `05_Content/Artifacts/`.
+- Use artifacts for rich visual summaries, previews, dashboards, and shareable views generated from canonical sources.
+- Each meaningful artifact should include metadata identifying source files, generated date, generator, and approval status.
+- Use `99_Templates/TPL - HTML Artifact.html` for new HTML artifacts.
+- Use `99_Templates/TPL - Artifact Manifest.md` for companion manifests.
+- Artifact manifests should record source files, artifact file, generation notes, review status, safety review, and any canonical backport plan.
+- Generated artifacts may include proposal outputs, but proposed changes are not canonical until applied to Markdown source notes.
+- Generated artifacts should be safe to delete without losing canonical truth.
 
 ## Notes Index
 - Store general ideas and unclassified notes in `11_Notes`.
@@ -36,6 +48,9 @@
 	- `Workflow - Build AI GTM Deck from Ideas or Articles.md`
 - Meeting workflow:
 	- `Workflow - Meeting Prep Assistant.md`
+- HTML artifact and worklet workflows:
+	- `Workflow - HTML Artifact Review.md`
+	- `Workflow - Weekly Review as HTML Worklet.md`
 
 ## Guides Index
 - Store setup and usage guides in `14_Guides`.
@@ -73,6 +88,10 @@
 	- `Skill - Export Markdown to Word Document.md`
 	- `Skill - Executive Thought Leadership Rewriter with Review Loops.md`
 	- `Skill - Evidence Finding and Narrative Integration with Validation Loops.md`
+	- `Skill - Create HTML Artifact.md`
+	- `Skill - Create HTML Worklet.md`
+	- `Skill - Review HTML Artifact Safety.md`
+	- `Skill - Convert Markdown to HTML Artifact.md`
 
 ## Planning Index
 - Store horizon plans and reviews in `09_Planning`.
@@ -85,6 +104,10 @@
 - Planning schedule definitions: `00_System/Planning Cadence.md`.
 - Planning learning memory: `00_System/Planning Memory.md`.
 - Folder and note placement map: `00_System/Indexes.md`.
+- Markdown/HTML/JSON document rules: `00_System/Document Model.md`.
+- Rendering rules for artifacts and worklets: `00_System/Rendering Policy.md`.
+- HTML artifact and worklet safety rules: `00_System/Artifact Safety Policy.md`.
+- Interactive worklet conventions: `00_System/Worklet Conventions.md`.
 
 ## Planning Templates
 - Weekly review: `99_Templates/TPL - Review Weekly.md`
@@ -98,7 +121,28 @@
 - Derivative asset: `99_Templates/TPL - Content Derivative Asset.md`
 - Presentation (AI GTM): `99_Templates/TPL - Presentation AI GTM.md`
 - Meeting prep: `99_Templates/TPL - Meeting Prep.md`
+- HTML artifact: `99_Templates/TPL - HTML Artifact.html`
+- HTML worklet: `99_Templates/TPL - HTML Worklet.html`
+- Artifact manifest: `99_Templates/TPL - Artifact Manifest.md`
+- Worklet manifest: `99_Templates/TPL - Worklet Manifest.md`
 
 ## Optional Modules
 - Optional personal capability packs live in `20_Modules`.
 - Default recommendation for shared deployments: keep modules disabled until needed.
+- Store optional interactive HTML worklets in `20_Modules/Worklets/`.
+- Use `99_Templates/TPL - HTML Worklet.html` for new worklets.
+- Use `99_Templates/TPL - Worklet Manifest.md` for worklet manifests.
+- Worklet manifests should record purpose, source files, inputs, outputs, state files, harness contract, safety notes, and approval status.
+- Worklets may use JSON state for runtime data, but must not silently rewrite canonical Markdown.
+
+## Proposal Outputs
+- Store proposed changes as Markdown wherever possible, linked to the canonical source notes they would update.
+- HTML artifacts and worklets may display proposal outputs, but the proposal is not canonical until accepted into Markdown.
+- If a generated file suggests updates to people, projects, goals, plans, workflows, skills, or system state, backport those updates through explicit Markdown edits.
+
+## Generated vs Canonical Files
+- Canonical files are Markdown notes and system files in their normal folders.
+- Generated files include HTML artifacts, HTML worklets, JSON state exports, and rendered previews.
+- Generated files should identify their source files and approval status.
+- Do not silently overwrite canonical Markdown based on generated HTML.
+- Treat Git history as the durable record of accepted canonical changes.

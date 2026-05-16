@@ -24,3 +24,5 @@ Each workflow note should include:
 - [[Workflow - Thought Leadership Article Lifecycle]]
 - [[Workflow - Write an Article]]
 - [[Workflow - Backport Private Learnings to Public Repo via Pull Request]]
+- [[Workflow - HTML Artifact Review]]
+- [[Workflow - Weekly Review as HTML Worklet]]

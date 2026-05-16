@@ -1,0 +1,182 @@
+<!--
+max_os_document_type: html-artifact
+source_files:
+generated_date: YYYY-MM-DD
+generator:
+approval_status: draft
+manifest:
+canonical_source: markdown
+notes: Generated HTML is not canonical Max OS memory.
+-->
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="max-os-document-type" content="html-artifact">
+  <meta name="max-os-approval-status" content="draft">
+  <title>Artifact Title</title>
+  <style>
+    :root {
+      color-scheme: light dark;
+      --bg: #f8fafc;
+      --fg: #172033;
+      --muted: #5f6c80;
+      --panel: #ffffff;
+      --line: #ccd5e1;
+      --accent: #1f7a8c;
+      --accent-strong: #145568;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      line-height: 1.5;
+      background: var(--bg);
+      color: var(--fg);
+    }
+
+    a {
+      color: var(--accent-strong);
+    }
+
+    .skip-link {
+      position: absolute;
+      left: 1rem;
+      top: -4rem;
+      padding: 0.5rem 0.75rem;
+      background: var(--fg);
+      color: var(--bg);
+      z-index: 10;
+    }
+
+    .skip-link:focus {
+      top: 1rem;
+    }
+
+    main {
+      width: min(960px, calc(100% - 2rem));
+      margin: 0 auto;
+      padding: 3rem 0;
+    }
+
+    header {
+      border-bottom: 1px solid var(--line);
+      padding-bottom: 1.5rem;
+      margin-bottom: 2rem;
+    }
+
+    h1,
+    h2 {
+      line-height: 1.2;
+      margin: 0 0 0.75rem;
+    }
+
+    h1 {
+      font-size: 3rem;
+    }
+
+    h2 {
+      font-size: 1.35rem;
+    }
+
+    .eyebrow {
+      margin: 0 0 0.5rem;
+      color: var(--accent-strong);
+      font-size: 0.8rem;
+      font-weight: 700;
+      text-transform: uppercase;
+    }
+
+    .summary {
+      max-width: 70ch;
+      color: var(--muted);
+      font-size: 1.05rem;
+    }
+
+    .metadata {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 0.75rem;
+      margin: 1.5rem 0 0;
+    }
+
+    .metadata div,
+    section {
+      border: 1px solid var(--line);
+      background: var(--panel);
+      padding: 1rem;
+    }
+
+    dt {
+      color: var(--muted);
+      font-size: 0.78rem;
+      font-weight: 700;
+      text-transform: uppercase;
+    }
+
+    dd {
+      margin: 0.2rem 0 0;
+    }
+
+    section + section {
+      margin-top: 1rem;
+    }
+
+    @media (prefers-color-scheme: dark) {
+      :root {
+        --bg: #10131a;
+        --fg: #eef2f7;
+        --muted: #a6b0bf;
+        --panel: #171c26;
+        --line: #364254;
+        --accent: #64c4d2;
+        --accent-strong: #8ddce7;
+      }
+    }
+
+    @media (max-width: 720px) {
+      h1 {
+        font-size: 2.1rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <a class="skip-link" href="#content">Skip to content</a>
+  <main id="content">
+    <header>
+      <p class="eyebrow">HTML Artifact</p>
+      <h1>Artifact Title</h1>
+      <p class="summary">Briefly state what this artifact renders and which canonical Markdown source it comes from.</p>
+      <dl class="metadata" aria-label="Artifact metadata">
+        <div>
+          <dt>Source files</dt>
+          <dd>[[Source Note]]</dd>
+        </div>
+        <div>
+          <dt>Generated</dt>
+          <dd>YYYY-MM-DD</dd>
+        </div>
+        <div>
+          <dt>Generator</dt>
+          <dd>Agent or workflow name</dd>
+        </div>
+        <div>
+          <dt>Approval</dt>
+          <dd>draft</dd>
+        </div>
+      </dl>
+    </header>
+
+    <section aria-labelledby="artifact-overview">
+      <h2 id="artifact-overview">Overview</h2>
+      <p>Replace this section with the rendered artifact content. Keep canonical updates in Markdown source files, not only in this HTML file.</p>
+    </section>
+  </main>
+</body>
+</html>
