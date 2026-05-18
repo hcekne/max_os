@@ -8,10 +8,17 @@ Thumbs.db
 # Obsidian (entire folder is local state, not needed in repo)
 .obsidian/
 
+# Max OS local clone state
+.maxos/
+
 # Misc local temp files
 .trash/
 *.tmp
 *.swp
+
+# Runtime byproducts
+__pycache__/
+*.py[cod]
 
 # PDF profile contents (PDFs are user data, not tracked; structure is tracked via .gitkeep)
 10_Inbox/PDF_Profiles/Unprocessed/*.pdf

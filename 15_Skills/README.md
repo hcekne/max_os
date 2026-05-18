@@ -55,3 +55,6 @@ When should this skill be invoked?
 - [[Skill - Create HTML Worklet]]
 - [[Skill - Review HTML Artifact Safety]]
 - [[Skill - Convert Markdown to HTML Artifact]]
+- [[Skill - Workspace Hygiene and File Lifecycle Review]]
+- [[Skill - Knowledge System Lint and Link Check]]
+- [[Skill - Pre-Commit Knowledge Quality Gate]]

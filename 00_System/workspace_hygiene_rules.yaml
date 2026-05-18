@@ -1,0 +1,113 @@
+review_cadence:
+  lightweight: weekly
+  deep: monthly
+  project_closeout: on_project_closeout
+  pre_deliverable: before_major_external_delivery
+  post_milestone: after_major_milestone
+
+default_actions:
+  expired_event_prep: archive
+  superseded_draft: archive_or_delete_after_review
+  superseded_generated_export: archive_or_delete_after_review
+  versioned_deliverable_pack: preserve_final_archive_old_versions
+  final_deliverable: keep
+  client_source_material: keep
+  legal_or_commercial_document: keep
+  evergreen_reference: keep
+  completed_interview_summary: keep_or_archive_by_project_phase
+  raw_transcript_after_processing: move_to_processed_or_archive
+  generated_html_pdf_docx: keep_if_current_or_final_else_archive
+  python_bytecode: do_not_track
+  generated_scratch: delete_after_review
+  unclear_value: needs_human_review
+
+archive_paths:
+  default: "90_Archive"
+  existing_archive_ok: true
+  scratch: "99_Scratch"
+  proposals: "00_System/Proposals"
+  general_notes: "11_Notes/Archive"
+
+approval_required:
+  delete: true
+  move_final_deliverable: true
+  move_legal_or_commercial: true
+  move_client_source_material: true
+  modify_canonical: true
+  public_repo_update: true
+  push_remote: true
+
+version_bloat:
+  detect_patterns:
+    - "v[0-9]+"
+    - "draft"
+    - "old"
+    - "copy"
+    - "latest"
+    - "final"
+    - "revised"
+    - "split"
+    - "stakeholder share"
+    - "full_pack"
+  preserve:
+    - canonical
+    - final
+    - submitted
+    - client_source_material
+    - legal_or_commercial
+  archive_old_versions: true
+
+generated_artifacts:
+  generated_extensions:
+    - ".html"
+    - ".pdf"
+    - ".docx"
+  canonical_source_preference:
+    - ".md"
+    - ".yaml"
+    - ".json"
+  never_track:
+    - "__pycache__"
+    - "*.pyc"
+
+quality_gates:
+  local_setup:
+    command: "sh 15_Skills/tools/ensure_local_setup.sh"
+    requirements_file: "00_System/local_setup_requirements.yaml"
+    local_status_file: ".maxos/local_setup_status.yaml"
+    ready_field: "ready"
+    expected_ready_value: true
+  pre_commit:
+    command: "python3 15_Skills/tools/maxos_quality_gate.py --root ."
+    ensure_setup_command: "sh 15_Skills/tools/ensure_local_setup.sh"
+    hook_path: ".githooks/pre-commit"
+    public_template_command: "python3 15_Skills/tools/maxos_quality_gate.py --root . --full --public-template"
+    default_public_template_denylist: ".maxos/public_template_denylist.txt"
+    denylist_example: "00_System/public_template_denylist.example.txt"
+    checks:
+      - git_diff_check
+      - knowledge_lint
+      - runtime_byproducts
+      - secret_patterns
+      - optional_private_denylist
+  changed_markdown_lint:
+    command: "python3 15_Skills/tools/knowledge_lint.py --root . --changed-only --fail-on error"
+    checks:
+      - frontmatter
+      - headings
+      - wiki_links
+      - local_markdown_links
+      - lifecycle_metadata_values
+  full_lint_cadence: monthly_or_before_large_commit
+
+classification_defaults:
+  confidence_threshold_for_safe_archive: high
+  uncertain_classification: NEEDS_HUMAN_REVIEW
+  deletion_requires_separate_approval: true
+
+public_extraction:
+  allow_generic_patterns: true
+  include_private_names: false
+  include_client_details: false
+  include_confidential_numbers: false
+  default_confidentiality: public_template_safe

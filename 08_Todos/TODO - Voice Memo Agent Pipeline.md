@@ -2,7 +2,7 @@
 type: todo
 status: backlog
 priority: medium
-owner: [[Hans Christian Ekne]]
+owner:
 created: 2026-02-24
 target_date: 
 tags: [todo, automation, voice, transcription]

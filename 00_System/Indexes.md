@@ -51,6 +51,8 @@
 - HTML artifact and worklet workflows:
 	- `Workflow - HTML Artifact Review.md`
 	- `Workflow - Weekly Review as HTML Worklet.md`
+- Hygiene workflow:
+	- `Workflow - Weekly Workspace Hygiene Review.md`
 
 ## Guides Index
 - Store setup and usage guides in `14_Guides`.
@@ -74,6 +76,7 @@
 - Store raw and unprocessed captures in `10_Inbox`.
 - Process inbox items daily into canonical folders.
 - Keep `10_Inbox` transient; avoid long-term storage there.
+- Move processed raw captures to `10_Inbox/Processed/` unless a specialized processed folder applies.
 - `10_Inbox/PDF_Profiles/` holds LinkedIn profile PDFs for processing into `01_People/`.
 
 ## Skills Index
@@ -92,6 +95,9 @@
 	- `Skill - Create HTML Worklet.md`
 	- `Skill - Review HTML Artifact Safety.md`
 	- `Skill - Convert Markdown to HTML Artifact.md`
+	- `Skill - Workspace Hygiene and File Lifecycle Review.md`
+	- `Skill - Knowledge System Lint and Link Check.md`
+	- `Skill - Pre-Commit Knowledge Quality Gate.md`
 
 ## Planning Index
 - Store horizon plans and reviews in `09_Planning`.
@@ -105,6 +111,12 @@
 - Planning learning memory: `00_System/Planning Memory.md`.
 - Folder and note placement map: `00_System/Indexes.md`.
 - Markdown/HTML/JSON document rules: `00_System/Document Model.md`.
+- Document lifecycle rules: `00_System/Document Lifecycle Policy.md`.
+- Archive rules: `00_System/Archive Policy.md`.
+- Git preservation rules: `00_System/Git Preservation Policy.md`.
+- Machine-readable hygiene defaults: `00_System/workspace_hygiene_rules.yaml`.
+- Local clone setup requirements: `00_System/local_setup_requirements.yaml`.
+- Public-template denylist example: `00_System/public_template_denylist.example.txt`.
 - Rendering rules for artifacts and worklets: `00_System/Rendering Policy.md`.
 - HTML artifact and worklet safety rules: `00_System/Artifact Safety Policy.md`.
 - Interactive worklet conventions: `00_System/Worklet Conventions.md`.
@@ -125,6 +137,11 @@
 - HTML worklet: `99_Templates/TPL - HTML Worklet.html`
 - Artifact manifest: `99_Templates/TPL - Artifact Manifest.md`
 - Worklet manifest: `99_Templates/TPL - Worklet Manifest.md`
+- Lifecycle metadata: `99_Templates/TPL - Lifecycle Metadata.md`
+- Archive index: `99_Templates/TPL - Archive Index.md`
+- Workspace hygiene proposal: `99_Templates/TPL - Workspace Hygiene Proposal.md`
+- Project closeout review: `99_Templates/TPL - Project Closeout Review.md`
+- Knowledge lint report: `99_Templates/TPL - Knowledge Lint Report.md`
 
 ## Optional Modules
 - Optional personal capability packs live in `20_Modules`.
@@ -136,6 +153,7 @@
 - Worklets may use JSON state for runtime data, but must not silently rewrite canonical Markdown.
 
 ## Proposal Outputs
+- Store system proposals in `00_System/Proposals/`.
 - Store proposed changes as Markdown wherever possible, linked to the canonical source notes they would update.
 - HTML artifacts and worklets may display proposal outputs, but the proposal is not canonical until accepted into Markdown.
 - If a generated file suggests updates to people, projects, goals, plans, workflows, skills, or system state, backport those updates through explicit Markdown edits.

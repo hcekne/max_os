@@ -26,3 +26,4 @@ Each workflow note should include:
 - [[Workflow - Backport Private Learnings to Public Repo via Pull Request]]
 - [[Workflow - HTML Artifact Review]]
 - [[Workflow - Weekly Review as HTML Worklet]]
+- [[Workflow - Weekly Workspace Hygiene Review]]

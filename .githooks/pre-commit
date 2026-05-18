@@ -1,0 +1,12 @@
+#!/usr/bin/env sh
+set -eu
+
+if [ "${MAXOS_SKIP_QUALITY_GATE:-}" = "1" ]; then
+  echo "Max OS quality gate skipped because MAXOS_SKIP_QUALITY_GATE=1"
+  exit 0
+fi
+
+ROOT="$(git rev-parse --show-toplevel)"
+cd "$ROOT"
+
+python3 15_Skills/tools/maxos_quality_gate.py --root .
