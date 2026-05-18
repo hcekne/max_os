@@ -20,8 +20,10 @@ All PDF profile processing uses this folder structure inside `10_Inbox/PDF_Profi
 10_Inbox/PDF_Profiles/
 ├── Unprocessed/         ← Drop LinkedIn profile PDFs here
 ├── Extracted_Text/      ← Intermediate text files (auto-managed)
-└── Processed/           ← Successfully processed PDFs land here
 ```
+
+Successfully processed PDFs move to `16_Cleaning/Rubbish Bin/10_Inbox/PDF_Profiles/`, mirroring the original source path after `10_Inbox/`.
+Do not recreate a local processed-staging folder.
 
 For instructions on how to create LinkedIn profile PDFs, see `14_Guides/Guide - Export LinkedIn Profiles as PDF.md`.
 
@@ -32,7 +34,7 @@ For instructions on how to create LinkedIn profile PDFs, see `14_Guides/Guide - 
 After a successful run:
 - `10_Inbox/PDF_Profiles/Unprocessed/` is empty (except failures)
 - `10_Inbox/PDF_Profiles/Extracted_Text/` is empty (except ambiguities)
-- PDFs have been moved to `10_Inbox/PDF_Profiles/Processed/`
+- PDFs have been moved to `16_Cleaning/Rubbish Bin/10_Inbox/PDF_Profiles/`
 - All corresponding person notes in `01_People/` are updated or created
 
 ---
@@ -45,8 +47,7 @@ After a successful run:
 4. For each PDF, run primary extraction with `pdftotext -layout`.
 5. If `pdftotext -layout` is unavailable or produces empty output, use fallback parser chain: `pypdf → pymupdf → pdfplumber`.
 6. Save extracted text as one file per person in `10_Inbox/PDF_Profiles/Extracted_Text/`.
-7. If extraction succeeds (non-empty text), move source PDF to `10_Inbox/PDF_Profiles/Processed/`.
-8. If extraction fails, keep PDF in `10_Inbox/PDF_Profiles/Unprocessed/` and flag it in the run summary.
+7. If extraction fails, keep PDF in `10_Inbox/PDF_Profiles/Unprocessed/` and flag it in the run summary. Do not move the PDF yet; the move happens only after the person note is successfully written in Phase 2.
 
 ### Extraction method details
 - Default command per file:
@@ -61,11 +62,14 @@ After a successful run:
 
 Process each file in `10_Inbox/PDF_Profiles/Extracted_Text/` sequentially, one at a time:
 
-1. Derive person name from filename.
+1. Derive person name from the extracted text, not just the filename.
 2. Search for corresponding note in `01_People/`.
 3. If note exists: update and enrich that specific note.
 4. If note does not exist: create a new note using `99_Templates/TPL - Person.md`.
-5. After successful update/create, delete the text file from `10_Inbox/PDF_Profiles/Extracted_Text/`.
+5. After the note is successfully written, perform cleanup in this exact order:
+   a. Move the source PDF from `10_Inbox/PDF_Profiles/Unprocessed/` to `16_Cleaning/Rubbish Bin/10_Inbox/PDF_Profiles/`.
+   b. Delete the intermediate text file from `10_Inbox/PDF_Profiles/Extracted_Text/`.
+6. If note write fails, keep both the source PDF and the text file in place and flag the failure in the run summary.
 
 ---
 
@@ -151,7 +155,7 @@ PDFs found in Unprocessed/:       N
 Text files extracted:             N
 Person notes updated:             N
 Person notes created:             N
-PDFs moved to Processed/:        N
+PDFs moved to Rubbish Bin/:      N
 Text files cleaned up:            N
 Failures/ambiguities:             N + list
 ```

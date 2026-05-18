@@ -20,7 +20,7 @@ Thumbs.db
 __pycache__/
 *.py[cod]
 
-# PDF profile contents (PDFs are user data, not tracked; structure is tracked via .gitkeep)
+# PDF profile contents (PDFs are user data, not tracked; structure is tracked via .gitkeep/index files)
 10_Inbox/PDF_Profiles/Unprocessed/*.pdf
-10_Inbox/PDF_Profiles/Processed/*.pdf
 10_Inbox/PDF_Profiles/Extracted_Text/*.txt
+16_Cleaning/Rubbish Bin/10_Inbox/PDF_Profiles/*.pdf

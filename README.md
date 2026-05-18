@@ -61,6 +61,7 @@ Max OS treats the active workspace as the current operating surface, archives as
 - Use `15_Skills/Skill - Workspace Hygiene and File Lifecycle Review.md` to classify drafts, generated files, expired prep, superseded versions, canonical notes, archive candidates, and delete candidates.
 - Default to `PLAN_ONLY`; archive moves and deletions require explicit approval.
 - Keep final deliverables and canonical Markdown easy to find, while moving stale working files out of active folders.
+- Use `16_Cleaning/Archive/` for historically useful retired material and `16_Cleaning/Rubbish Bin/` for short-retention deletion candidates.
 - Use lifecycle metadata from `99_Templates/TPL - Lifecycle Metadata.md` for temporary, event-specific, superseded, and generated material when useful.
 
 ## Knowledge linting
@@ -107,11 +108,12 @@ Add private names, clients, projects, and terms to that local file. The public-t
 | `08_Todos/` | Task backlog |
 | `09_Planning/` | Weekly, Monthly, Quarterly, Two-Year plans |
 | `10_Inbox/` | Raw captures — process daily |
-| `11_Notes/` | General notes; archive superseded to `11_Notes/Archive/` |
+| `11_Notes/` | General notes; keep active/canonical notes only |
 | `12_Workflows/` | Repeatable human-led processes |
 | `13_Goals/` | One note per major goal |
 | `14_Guides/` | Setup and usage guides |
 | `15_Skills/` | Agent-executable capabilities |
+| `16_Cleaning/` | Central archive and rubbish bin |
 | `20_Modules/` | Optional capability packs (disabled by default) |
 | `99_Templates/` | Templates for new notes |
 

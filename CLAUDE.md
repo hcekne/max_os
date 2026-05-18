@@ -17,7 +17,8 @@ This workspace is **Max OS**, a personal operating system for knowledge workers 
 - Process `10_Inbox/` when asked or when items are pending.
 - Prefer updating canonical files over creating endless new versions.
 - Use lifecycle metadata for temporary, event-specific, draft, superseded, and generated files when useful.
-- Archive superseded drafts after review; do not delete without explicit approval.
+- Move stale historical material to `16_Cleaning/Archive/` and clear delete candidates to `16_Cleaning/Rubbish Bin/`.
+- Archive superseded drafts after review; do not delete outside the rubbish-bin purge policy without explicit approval.
 - Run `python3 15_Skills/tools/maxos_quality_gate.py --root .` before committing structural knowledge-system changes.
 - Run `sh 15_Skills/tools/ensure_local_setup.sh` at session start; missing or false `.maxos/local_setup_status.yaml` means setup is incomplete.
 - Use `python3 15_Skills/tools/maxos_quality_gate.py --root . --full --public-template` before public-template commits or pull requests.
@@ -46,11 +47,12 @@ This workspace is **Max OS**, a personal operating system for knowledge workers 
 | `08_Todos/` | Task backlog |
 | `09_Planning/` | Weekly, Monthly, Quarterly, Two-Year plans |
 | `10_Inbox/` | Raw captures, process daily |
-| `11_Notes/` | General notes; archive superseded to `11_Notes/Archive/` |
+| `11_Notes/` | General notes; keep active/canonical notes only |
 | `12_Workflows/` | Repeatable human-led processes |
 | `13_Goals/` | One note per major goal |
 | `14_Guides/` | Setup and usage guides |
 | `15_Skills/` | Agent-executable capabilities |
+| `16_Cleaning/` | Central archive and rubbish bin |
 | `20_Modules/` | Optional capability packs (disabled by default) |
 | `20_Modules/Worklets/` | Optional HTML worklets |
 | `99_Templates/` | Templates for new notes |

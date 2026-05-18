@@ -24,24 +24,26 @@ Define when and how Max OS moves material out of active folders without losing u
 - The file is a broken extraction, temporary export, or stale intermediate.
 - The file is non-canonical, non-final, and preserved in Git history.
 
-Deletion always requires explicit human approval unless a future policy says otherwise for a narrow automated path.
+Deletion requires explicit human approval unless the file is already inside the narrow rubbish-bin purge path defined by [[00_System/Rubbish Bin Policy]].
 
 ## Archive Locations
-Use the smallest archive scope that preserves context:
+Use `16_Cleaning/Archive/` as the central archive root. Mirror the original source path beneath it so context is preserved.
 
-- Project-specific files: `04_Projects/<Project Name>/90_Archive/` or existing project `Archive/`.
-- Versioned deliverables: `04_Projects/<Project Name>/90_Archive/Draft Versions/` or an existing project archive.
-- Expired interview prep: `04_Projects/<Project Name>/90_Archive/Interview Prep/`.
-- Generated packs: `04_Projects/<Project Name>/90_Archive/Generated Packs/` when no longer active.
-- General notes: `11_Notes/Archive/`.
+- Project-specific files: `16_Cleaning/Archive/04_Projects/<Project Name>/...`.
+- Versioned deliverables: `16_Cleaning/Archive/04_Projects/<Project Name>/Draft Versions/...`.
+- Expired interview prep: `16_Cleaning/Archive/04_Projects/<Project Name>/Interview Prep/...`.
+- Generated packs: `16_Cleaning/Archive/04_Projects/<Project Name>/Generated Packs/...` when no longer active.
+- General notes: `16_Cleaning/Archive/11_Notes/...`.
 - Todos: `08_Todos/Completed/` for completed todos, or archive folder if obsolete.
-- Content drafts: archive under the relevant content folder when a canonical/final version exists.
+- Content drafts: `16_Cleaning/Archive/05_Content/...` when a canonical/final version exists.
 - System proposals: `00_System/Proposals/`.
 
-Existing project archive folders may be kept. New projects should prefer numbered folders if adopting a structured project layout.
+Existing project archive folders may be kept during migration, but new cleanup moves should default to the central `16_Cleaning/Archive/` root.
 
 ## Archive Indexes
-Each significant archive folder should eventually have an `Archive Index.md` that records:
+`16_Cleaning/Archive/Index.md` is the vault-wide archive index. Significant archive subtrees may also have local index files when useful.
+
+Archive indexes should record:
 - archive period
 - project or domain
 - files archived
@@ -66,7 +68,7 @@ Archive structure should preserve enough context to retrieve material:
 3. Classify candidate files.
 4. Create/update cleanup proposal.
 5. Get approval for non-trivial moves.
-6. Use `git mv` for moves.
+6. Use `git mv` for moves into `16_Cleaning/Archive/...`.
 7. Add lifecycle metadata where useful.
 8. Update archive index and canonical project links.
 9. Review `git diff`.

@@ -23,6 +23,8 @@ Git is the full-history layer. Active folders should not preserve every old draf
 - Do not push cleanup commits without explicit approval.
 - Treat final deliverables, contracts, invoices, submitted documents, legal/commercial files, and client-provided source materials as high-retention by default.
 - Do not commit Python bytecode, runtime cache folders, or generated intermediate files that can be recreated.
+- Default historically useful old material into `16_Cleaning/Archive/`.
+- Default low-value superseded versions into `16_Cleaning/Rubbish Bin/` only when [[00_System/Rubbish Bin Policy]] applies.
 
 ## Draft and Version Cleanup
 When many draft versions exist:
@@ -40,6 +42,8 @@ Deletion may be appropriate after approval if all of the following are true:
 - useful content has been merged or is duplicated elsewhere;
 - Git history preserves the old file;
 - the cleanup proposal records the reason.
+
+Files already in `16_Cleaning/Rubbish Bin/` may be deleted without separate case-by-case approval only if they satisfy [[00_System/Rubbish Bin Policy]]. This is the only narrow automated purge path.
 
 ## Recommended Commit Pattern
 Use focused commit messages:

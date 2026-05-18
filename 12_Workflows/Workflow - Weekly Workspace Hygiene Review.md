@@ -32,7 +32,8 @@ Make workspace hygiene a recurring Max OS operating loop so active folders stay 
 ### Monthly Deep Cleanup
 - Review large project and content folders.
 - Clean version bloat.
-- Archive old phases.
+- Archive old phases into `16_Cleaning/Archive/`.
+- Move clear low-retention delete candidates into `16_Cleaning/Rubbish Bin/`.
 - Identify canonical files.
 - Prepare cleanup commit plan.
 
@@ -40,6 +41,7 @@ Make workspace hygiene a recurring Max OS operating loop so active folders stay 
 - Preserve final deliverables.
 - Archive working drafts.
 - Update project state.
+- Move low-value generated scratch to the rubbish bin when policy allows.
 - Extract reusable lessons.
 - Propose public Max OS improvements.
 
@@ -104,7 +106,7 @@ Make workspace hygiene a recurring Max OS operating loop so active folders stay 
 ## Human Approval Points
 - Moving final deliverables
 - Moving contracts, invoices, legal/commercial files, or client-provided source materials
-- Deleting any file
+- Deleting any file outside the `16_Cleaning/Rubbish Bin/` purge policy
 - Modifying canonical project state
 - Public repo changes
 - Remote pushes
@@ -132,7 +134,7 @@ For later cleanup operations, use focused messages:
 - Number of public-template improvements identified
 - Number of versioned deliverable files by artifact family
 - Number of generated HTML/PDF/DOCX files in active roots
-- Number of raw inbox captures still sitting outside `Processed/`
+- Number of raw inbox captures still sitting in active inbox folders instead of `16_Cleaning/`
 - Number of lint errors and warnings on changed Markdown files
 
 ## Project State Updates
@@ -170,6 +172,7 @@ weekly:
 monthly:
   - run deeper review of high-bloat folders
   - propose archive moves
+  - propose rubbish-bin moves for clear delete candidates
   - identify canonical files
   - prepare cleanup commit
 
@@ -182,3 +185,4 @@ project_closeout:
 ```
 
 The harness should never automatically delete files unless explicit future policy allows it.
+The only narrow exception is files already in `16_Cleaning/Rubbish Bin/` that satisfy `00_System/Rubbish Bin Policy.md`.

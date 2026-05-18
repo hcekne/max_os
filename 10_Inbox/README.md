@@ -7,7 +7,8 @@ Temporary capture area for raw notes, voice transcript dumps, and unprocessed in
 - Do not keep items here long-term.
 - Process inbox items at session start or once daily.
 - After routing, move processed captures out of active inbox roots.
-- Use `10_Inbox/Processed/` as the default destination for processed raw captures unless a specialized processed folder applies.
+- Use `16_Cleaning/Rubbish Bin/10_Inbox/` as the default destination for low-retention processed raw captures.
+- Use `16_Cleaning/Archive/10_Inbox/` when the raw capture has historical value.
 - When scanning inbox folders, list directories directly before relying on globbed search.
 
 ## Processing target folders
@@ -25,4 +26,3 @@ Temporary capture area for raw notes, voice transcript dumps, and unprocessed in
 
 ## Specialized intake lanes
 - `PDF_Profiles/` - LinkedIn profile PDFs for `15_Skills/Skill - Process PDF Profiles to People Notes.md`.
-- `Processed/` - processed raw captures that no longer belong in the active inbox root.

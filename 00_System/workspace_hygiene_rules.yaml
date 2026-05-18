@@ -22,11 +22,13 @@ default_actions:
   unclear_value: needs_human_review
 
 archive_paths:
-  default: "90_Archive"
+  default: "16_Cleaning/Archive"
   existing_archive_ok: true
   scratch: "99_Scratch"
   proposals: "00_System/Proposals"
-  general_notes: "11_Notes/Archive"
+  rubbish_bin: "16_Cleaning/Rubbish Bin"
+  inbox_processed: "16_Cleaning/Rubbish Bin/10_Inbox"
+  general_notes: "16_Cleaning/Archive/11_Notes"
 
 approval_required:
   delete: true

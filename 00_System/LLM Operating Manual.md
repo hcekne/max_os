@@ -52,7 +52,7 @@ The script is safe to run repeatedly. It checks `python3`, verifies required fil
 5. Extract explicit tasks into `08_Todos/` or today's daily note.
 6. Add cross-links between touched notes.
 7. Move processed raw captures out of active inbox roots.
-8. Use `10_Inbox/Processed/` as the default destination unless a specialized processed folder applies.
+8. Use `16_Cleaning/Rubbish Bin/10_Inbox/` as the default destination for low-retention processed captures; use `16_Cleaning/Archive/10_Inbox/` when the raw source has historical value.
 9. Do not leave already-routed article drafts, transcripts, or processed captures beside active inbox items.
 
 ## Interaction Update Algorithm
@@ -76,17 +76,21 @@ Archive trigger conditions (any):
 
 Archive process:
 1. Pick one canonical active note to keep in `11_Notes/` root.
-2. Move superseded notes to `11_Notes/Archive/` (do not delete by default).
-3. Set frontmatter `status: archived` in moved notes.
-4. Add a short "Archive status" pointer to the canonical note.
-5. Remove archived notes from active index lists (for example in `11_Notes/README.md`).
-6. Update major goals/projects to reference the canonical note only.
+2. Move historically useful superseded notes to `16_Cleaning/Archive/11_Notes/`.
+3. Move clearly stale or low-value superseded notes to `16_Cleaning/Rubbish Bin/11_Notes/`.
+4. Set frontmatter `status: archived` in archived notes or `lifecycle: delete_candidate` in rubbish-bin notes where useful.
+5. Add a short "Archive status" pointer to the canonical note.
+6. Remove archived notes from active index lists (for example in `11_Notes/README.md`).
+7. Update major goals/projects to reference the canonical note only.
 
 Guardrails:
 - Preserve history, but keep active strategy surfaces minimal.
 - Prefer archiving over deletion unless explicitly requested.
 - Avoid creating extra system files for each cleanup; update existing indexes/manuals instead.
 - For workspace-wide hygiene, use [[Skill - Workspace Hygiene and File Lifecycle Review]] and [[Workflow - Weekly Workspace Hygiene Review]].
+- Use `16_Cleaning/Archive/` for historically useful material.
+- Use `16_Cleaning/Rubbish Bin/` for clearly stale, superseded, or low-value material that should be purged quickly.
+- Deletion outside the rubbish-bin purge path requires explicit approval.
 
 ## Workspace Hygiene and File Lifecycle Protocol
 Purpose: keep the active workspace focused while using Git history and archives for preservation.

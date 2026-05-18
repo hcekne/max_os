@@ -12,7 +12,8 @@ If a note becomes important, you can later move or link it into the right folder
 
 ## Note lifecycle (important)
 - Keep active/canonical notes in `11_Notes/` root.
-- Move superseded or redundant notes to `11_Notes/Archive/`.
+- Move historically useful superseded or redundant notes to `16_Cleaning/Archive/11_Notes/`.
+- Move clearly stale low-retention notes to `16_Cleaning/Rubbish Bin/11_Notes/`.
 - Mark archived notes with `status: archived` in frontmatter.
 - Prefer one canonical note per major strategy topic to reduce clutter for humans and AI.
 - During monthly review, run quick note hygiene: consolidate duplicates, update links, and archive stale variants.
@@ -21,4 +22,4 @@ If a note becomes important, you can later move or link it into the right folder
 - [[Note - Patterns Learned from Real Usage]]
 - [[Note - Executive Thought Leadership Generation Principles]]
 
-Archived notes are kept in `11_Notes/Archive/`.
+Archived notes are kept in `16_Cleaning/Archive/11_Notes/`.

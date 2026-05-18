@@ -25,7 +25,7 @@ Run planning and review loops across horizons so daily execution stays aligned w
 2. Identify execution patterns (what repeated and why).
 3. Capture process improvements in [[00_System/Planning Memory]].
 4. Update operating rules for next month.
-5. Run note hygiene in `11_Notes`: consolidate duplicates, archive superseded notes to `11_Notes/Archive`, and keep active index lists clean.
+5. Run note hygiene in `11_Notes`: consolidate duplicates, archive historically useful superseded notes to `16_Cleaning/Archive/11_Notes`, move clear delete candidates to `16_Cleaning/Rubbish Bin/11_Notes`, and keep active index lists clean.
 6. Run monthly workspace hygiene using `12_Workflows/Workflow - Weekly Workspace Hygiene Review.md` as the operating loop and `15_Skills/Skill - Workspace Hygiene and File Lifecycle Review.md` as the executable review skill.
 7. Run full or high-bloat-folder knowledge lint and capture unresolved issues in a report if warnings are too noisy to fix immediately.
 

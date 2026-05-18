@@ -24,11 +24,12 @@ This workspace is **Max OS** — a personal operating system for knowledge worke
 | `08_Todos/` | Task backlog | Markdown tasks with due dates |
 | `09_Planning/` | Plans by cadence | `Weekly/`, `Monthly/`, `Quarterly/`, `Two-Year/` |
 | `10_Inbox/` | Raw captures | Process daily, route to canonical locations |
-| `11_Notes/` | General notes | Archive superseded to `11_Notes/Archive/` |
+| `11_Notes/` | General notes | Keep active/canonical notes only |
 | `12_Workflows/` | Human-led repeatable processes | Step-by-step with quality checks |
 | `13_Goals/` | Major goals | One note per goal |
 | `14_Guides/` | Setup and usage guides | For human onboarding |
 | `15_Skills/` | Agent-executable capabilities | Structured skill cards |
+| `16_Cleaning/` | Archive and rubbish bin | Mirror original source paths |
 | `20_Modules/` | Optional capability packs | Disabled by default |
 | `20_Modules/Worklets/` | Optional HTML worklets | Interactive, non-canonical |
 | `99_Templates/` | Templates for new notes | Used by Inbox Processing and skills |
@@ -69,7 +70,9 @@ Use `15_Skills/Skill - Workspace Hygiene and File Lifecycle Review.md` and `12_W
 - Mark temporary, event-specific, draft, superseded, and generated files with lifecycle metadata when useful.
 - Put scratch or generated material in scratch, artifact, proposal, or processed folders rather than active project roots.
 - Identify expiry or review dates for event-specific prep and temporary research.
-- Archive superseded drafts after review; do not delete without explicit approval.
+- Move historically useful stale material to `16_Cleaning/Archive/`.
+- Move clearly stale, superseded, low-retention material to `16_Cleaning/Rubbish Bin/` only when it fits `00_System/Rubbish Bin Policy.md`.
+- Archive superseded drafts after review; do not delete outside the rubbish-bin purge policy without explicit approval.
 - Treat Git as the preservation layer and active folders as the current operating surface.
 - Run `15_Skills/Skill - Knowledge System Lint and Link Check.md` on changed Markdown files before committing substantial knowledge-system changes.
 - Do not push public repo changes without explicit approval.
@@ -120,5 +123,6 @@ Max OS follows the principle: Markdown memory. HTML worklets. JSON state. Git hi
 - Treat `last_*_review_date` fields as canonical truth.
 - One canonical note per strategy topic; archive redundant variants.
 - Avoid uncontrolled file bloat; use lifecycle metadata, proposals, archives, and Git history to retire stale working files.
+- Use `16_Cleaning/` as the central cleaning surface; do not rely on untracked empty folders.
 - Validate frontmatter, headings, wiki-links, and local Markdown links when adding or changing canonical files.
 - Run the Max OS quality gate before committing structural or public-template changes.

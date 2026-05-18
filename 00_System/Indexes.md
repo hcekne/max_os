@@ -36,8 +36,14 @@
 - Store general ideas and unclassified notes in `11_Notes`.
 - Move or link notes later if they become client/project/person specific.
 - Keep active notes in `11_Notes/` root.
-- Move superseded or redundant notes to `11_Notes/Archive/` with `status: archived`.
+- Move superseded or redundant notes to `16_Cleaning/Archive/11_Notes/` with `status: archived`.
 - Keep one canonical note per major strategy topic when practical.
+
+## Cleaning Index
+- Central historical retention lives in `16_Cleaning/Archive/`.
+- Central short-retention delete queue lives in `16_Cleaning/Rubbish Bin/`.
+- Mirror original source paths under both cleaning roots.
+- Rubbish-bin rules: `00_System/Rubbish Bin Policy.md`.
 
 ## Workflow Index
 - Store repeatable processes in `12_Workflows`.
@@ -76,7 +82,7 @@
 - Store raw and unprocessed captures in `10_Inbox`.
 - Process inbox items daily into canonical folders.
 - Keep `10_Inbox` transient; avoid long-term storage there.
-- Move processed raw captures to `10_Inbox/Processed/` unless a specialized processed folder applies.
+- Move processed raw captures to `16_Cleaning/Rubbish Bin/10_Inbox/` unless they need historical archive retention.
 - `10_Inbox/PDF_Profiles/` holds LinkedIn profile PDFs for processing into `01_People/`.
 
 ## Skills Index
@@ -113,6 +119,7 @@
 - Markdown/HTML/JSON document rules: `00_System/Document Model.md`.
 - Document lifecycle rules: `00_System/Document Lifecycle Policy.md`.
 - Archive rules: `00_System/Archive Policy.md`.
+- Rubbish-bin rules: `00_System/Rubbish Bin Policy.md`.
 - Git preservation rules: `00_System/Git Preservation Policy.md`.
 - Machine-readable hygiene defaults: `00_System/workspace_hygiene_rules.yaml`.
 - Local clone setup requirements: `00_System/local_setup_requirements.yaml`.

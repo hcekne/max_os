@@ -38,6 +38,7 @@ Use this skill when:
 - File classification table
 - Canonical file recommendations
 - Archive/delete/merge candidates
+- Rubbish-bin candidates
 - Lifecycle metadata recommendations
 - Optional safe archive moves or metadata updates, depending on mode
 - Public Max OS improvement proposal when reusable patterns are found
@@ -50,6 +51,7 @@ Inspect the workspace and create a cleanup proposal. Do not move, delete, rename
 ### APPLY_SAFE
 Apply only safe, reversible, non-destructive changes:
 - create archive folders;
+- create `16_Cleaning/Archive/` and `16_Cleaning/Rubbish Bin/` index files when missing;
 - create proposal files;
 - create archive indexes;
 - add lifecycle metadata where obvious;
@@ -214,11 +216,18 @@ Do not add lifecycle metadata to every file blindly. Add it where it improves fu
 ## Archive Process
 1. Identify high-confidence archive candidates.
 2. Confirm they are not final deliverables, legal/commercial documents, invoices, contracts, or client-provided source materials.
-3. Identify archive destination.
-4. If applying, create archive folder and archive index first.
+3. Identify archive destination under `16_Cleaning/Archive/` by mirroring the original source path.
+4. If applying, create archive folder and update `16_Cleaning/Archive/Index.md` first.
 5. Use `git mv` for moves.
 6. Add metadata such as `status: archived`, `lifecycle: archive`, `superseded_by`, and `retention_policy` where useful.
 7. Update canonical indexes and project state links.
+
+## Rubbish Bin Process
+1. Use `16_Cleaning/Rubbish Bin/` only for clear low-retention material that fits [[00_System/Rubbish Bin Policy]].
+2. Mirror the original source path beneath the rubbish-bin root.
+3. Add `delete_after` metadata where useful, usually 30 days from the move date.
+4. Never put final deliverables, contracts, invoices, legal/commercial files, client source material, evergreen reference, or ambiguous files in the rubbish bin.
+5. Files outside the rubbish bin still require explicit deletion approval.
 
 ## Deletion Approval Process
 1. Record delete candidates in proposal only.
@@ -273,11 +282,10 @@ Use existing project patterns where they work. If a folder is bloated or ambiguo
   04_Deliverables/
   05_Meetings/
   06_Decisions/
-  90_Archive/
   99_Scratch/
 ```
 
-Do not impose this globally if a lighter structure is enough.
+Do not impose this globally if a lighter structure is enough. Use `16_Cleaning/Archive/04_Projects/<Project Name>/...` for retired project material instead of creating new distributed archive folders by default.
 
 ## Public-Template Extraction Logic
 When a hygiene run reveals reusable Max OS improvements:
@@ -306,7 +314,8 @@ find 04_Projects -type f | rg -i '(v[0-9]+|draft|final|latest|old|copy|prep|inte
 find 04_Projects/<Project Name> -type f -printf '%s %p\n' | sort -nr
 find . -type f | rg '(__pycache__|\.pyc$)'
 python3 15_Skills/tools/knowledge_lint.py --root . --changed-only --fail-on error
-git mv "old/path.md" "04_Projects/<Project Name>/90_Archive/old/path.md"
+git mv "old/path.md" "16_Cleaning/Archive/old/path.md"
+git mv "old/generated.md" "16_Cleaning/Rubbish Bin/old/generated.md"
 ```
 
 ## Example Proposal Output
@@ -327,6 +336,7 @@ git mv "old/path.md" "04_Projects/<Project Name>/90_Archive/old/path.md"
 - [ ] Classifications include reason and confidence
 - [ ] Canonical files identified where possible
 - [ ] Archive destinations proposed
+- [ ] Rubbish-bin candidates comply with `00_System/Rubbish Bin Policy.md`
 - [ ] Metadata updates are targeted, not blanket-applied
 - [ ] Versioned deliverable packs are reviewed for canonical/final outputs
 - [ ] Interview prep, completed summaries, and raw transcripts are separated

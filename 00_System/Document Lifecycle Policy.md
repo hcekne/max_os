@@ -14,6 +14,7 @@ Keep the active Max OS workspace focused on current operating material while pre
 ## Core Principle
 Active workspace = current operating surface.
 Archive = historically useful but not actively needed.
+Rubbish Bin = short-retention holding area for clear delete candidates.
 Git history = full preservation layer.
 Lifecycle metadata = structured expiry and review logic.
 Agent hygiene skill = recurring cleanup intelligence.
@@ -134,3 +135,5 @@ Agents should:
 3. Propose archive/delete actions before applying them.
 4. Use Git as the preservation layer, not as an excuse for uncontrolled active-folder bloat.
 5. Never delete files without explicit approval.
+6. Use `16_Cleaning/Archive/` for historical retention and `16_Cleaning/Rubbish Bin/` only for clear delete candidates.
+7. Use [[00_System/Rubbish Bin Policy]] for bin guardrails and purge rules.
