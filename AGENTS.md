@@ -3,9 +3,10 @@
 This workspace is **Max OS** — a personal operating system for knowledge workers built on plain Markdown. AI agents operating here should follow the instructions below.
 
 ## Quick Start
-1. Read `00_System/LLM Operating Manual.md` for full algorithms and rules.
-2. Read `00_System/System State.md` for current dates and active plans.
-3. Read `SKILLS.md` for a manifest of executable capabilities.
+1. Run `sh 15_Skills/tools/ensure_local_setup.sh` to verify clone-local setup.
+2. Read `00_System/LLM Operating Manual.md` for full algorithms and rules.
+3. Read `00_System/System State.md` for current dates and active plans.
+4. Read `SKILLS.md` for a manifest of executable capabilities.
 
 ## Vault Structure
 
@@ -36,11 +37,21 @@ This workspace is **Max OS** — a personal operating system for knowledge worke
 
 ### Session Start
 Follow the Session Start Algorithm in `00_System/LLM Operating Manual.md`:
-1. Read System State → resolve date → check recurring triggers
-2. Compute due reviews → run them in order (yearly > quarterly > monthly > weekly)
-3. Process inbox if items pending
-4. Align daily plan with active goals
-5. Propose next 1–3 concrete actions
+1. Verify local setup with `sh 15_Skills/tools/ensure_local_setup.sh`.
+2. Read System State → resolve date → check recurring triggers.
+3. Compute due reviews → run them in order (yearly > quarterly > monthly > weekly).
+4. Process inbox if items pending.
+5. Align daily plan with active goals.
+6. Propose next 1–3 concrete actions.
+
+### Local Setup
+Max OS has clone-local setup requirements in `00_System/local_setup_requirements.yaml`.
+
+- Run `sh 15_Skills/tools/ensure_local_setup.sh` at the start of work in a clone.
+- The script installs or repairs the local Git hook configuration when needed.
+- It writes ignored local state to `.maxos/local_setup_status.yaml`.
+- If `.maxos/local_setup_status.yaml` is missing or `ready: false`, treat setup as incomplete.
+- Do not commit `.maxos/`; it is local runtime state.
 
 ### Inbox Processing
 Route items from `10_Inbox/` to canonical note locations. Create missing notes from templates in `99_Templates/`. Extract tasks to `08_Todos/` or today's daily note. Cross-link everything.
@@ -50,6 +61,30 @@ When given an interaction note: ensure all mentioned people/orgs/clients have no
 
 ### Review Cadence
 Reviews are driven by `last_*_review_date` fields in System State. Cadence rules are in `00_System/Planning Cadence.md`. Never skip ahead — run each due review in order.
+
+### Workspace Hygiene
+Use `15_Skills/Skill - Workspace Hygiene and File Lifecycle Review.md` and `12_Workflows/Workflow - Weekly Workspace Hygiene Review.md` to keep active folders focused.
+
+- Prefer updating canonical files over creating endless new versions.
+- Mark temporary, event-specific, draft, superseded, and generated files with lifecycle metadata when useful.
+- Put scratch or generated material in scratch, artifact, proposal, or processed folders rather than active project roots.
+- Identify expiry or review dates for event-specific prep and temporary research.
+- Archive superseded drafts after review; do not delete without explicit approval.
+- Treat Git as the preservation layer and active folders as the current operating surface.
+- Run `15_Skills/Skill - Knowledge System Lint and Link Check.md` on changed Markdown files before committing substantial knowledge-system changes.
+- Do not push public repo changes without explicit approval.
+- Extract reusable, non-private improvements back to the public Max OS template when appropriate.
+
+### Commit Quality Gate
+Before committing or proposing public-template changes, run `15_Skills/Skill - Pre-Commit Knowledge Quality Gate.md`.
+
+- Run `python3 15_Skills/tools/maxos_quality_gate.py --root .` for changed-file checks.
+- Run `sh 15_Skills/tools/ensure_local_setup.sh` to install or repair the local hook automatically.
+- Use `--full --public-template` before public repo commits or pull requests.
+- Use `.maxos/public_template_denylist.txt` for private terms that must not enter public-template changes.
+- Fix failures before commit unless the user explicitly accepts a documented exception.
+- Review untracked files explicitly; `git diff` does not show them.
+- Do not commit runtime byproducts such as `__pycache__/` or `*.pyc`.
 
 ## Access Patterns for External Agents
 
@@ -84,3 +119,6 @@ Max OS follows the principle: Markdown memory. HTML worklets. JSON state. Git hi
 - Use `[[Note Name]]` wiki-links.
 - Treat `last_*_review_date` fields as canonical truth.
 - One canonical note per strategy topic; archive redundant variants.
+- Avoid uncontrolled file bloat; use lifecycle metadata, proposals, archives, and Git history to retire stale working files.
+- Validate frontmatter, headings, wiki-links, and local Markdown links when adding or changing canonical files.
+- Run the Max OS quality gate before committing structural or public-template changes.

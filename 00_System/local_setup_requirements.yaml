@@ -1,0 +1,45 @@
+version: 1
+
+purpose: >
+  Define clone-local setup checks that agents should verify before working in a
+  Max OS repository. This file is tracked and describes the desired state.
+  Actual local state is written to .maxos/local_setup_status.yaml, which is
+  intentionally ignored by Git.
+
+required_commands:
+  ensure_local_setup: "sh 15_Skills/tools/ensure_local_setup.sh"
+  install_git_hooks: "sh 15_Skills/tools/install_git_hooks.sh"
+  quality_gate: "python3 15_Skills/tools/maxos_quality_gate.py --root ."
+
+required_git_config:
+  core.hooksPath:
+    expected: ".githooks"
+    reason: "Use the versioned Max OS pre-commit hook in this clone."
+
+required_files:
+  - path: ".githooks/pre-commit"
+    executable: true
+  - path: "15_Skills/tools/install_git_hooks.sh"
+    executable: true
+  - path: "15_Skills/tools/ensure_local_setup.sh"
+    executable: true
+  - path: "15_Skills/tools/maxos_quality_gate.py"
+    executable: false
+  - path: "15_Skills/tools/knowledge_lint.py"
+    executable: false
+
+local_state:
+  path: ".maxos/local_setup_status.yaml"
+  tracked_by_git: false
+  default_ready: false
+  ready_when:
+    git_repo: true
+    hooks_path_configured: true
+    hook_file_executable: true
+    python3_available: true
+    quality_gate_available: true
+
+agent_startup_rule:
+  run_first: "sh 15_Skills/tools/ensure_local_setup.sh"
+  safe_to_repeat: true
+  blocks_work_if_fails: true

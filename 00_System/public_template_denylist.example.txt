@@ -1,0 +1,18 @@
+# Public Template Denylist Example
+#
+# Copy this file to:
+#
+#   .maxos/public_template_denylist.txt
+#
+# Then replace the examples below with private names, client names, project names,
+# internal product names, private company names, or other terms that should not
+# appear in public-template changes.
+#
+# The Max OS quality gate automatically uses .maxos/public_template_denylist.txt
+# during --public-template scans when the file exists.
+#
+# One term per line. Blank lines and lines starting with # are ignored.
+
+Example Client Name
+Example Private Project
+Example Internal Company
