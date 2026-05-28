@@ -30,6 +30,7 @@ This workspace is **Max OS** — a personal operating system for knowledge worke
 | `14_Guides/` | Setup and usage guides | For human onboarding |
 | `15_Skills/` | Agent-executable capabilities | Structured skill cards |
 | `16_Cleaning/` | Archive and rubbish bin | Mirror original source paths |
+| `17_Outbox/` | Materials staged for delivery to other actors or recipients | Symmetric to `10_Inbox/`; archive after pickup |
 | `20_Modules/` | Optional capability packs | Disabled by default |
 | `20_Modules/Worklets/` | Optional HTML worklets | Interactive, non-canonical |
 | `99_Templates/` | Templates for new notes | Used by Inbox Processing and skills |
@@ -97,6 +98,7 @@ If you are an external agent (e.g., OpenClaw, custom bot) with partial access:
 - **Task sources:** `08_Todos/` and `10_Inbox/` for pending work
 - **Reference data:** `01_People/`, `02_Organizations/`, `03_Clients/`, `04_Projects/`
 - **Output locations:** `07_Daily/`, `06_Interactions/`, `05_Content/`
+- **Delivery surface (for downstream actors or recipients):** `17_Outbox/`
 - **Modify with care:** `00_System/System State.md`, `13_Goals/` — only update after completing the corresponding review or action
 
 ## HTML Artifacts and Worklets

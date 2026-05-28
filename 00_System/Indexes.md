@@ -85,6 +85,14 @@
 - Move processed raw captures to `16_Cleaning/Rubbish Bin/10_Inbox/` unless they need historical archive retention.
 - `10_Inbox/PDF_Profiles/` holds LinkedIn profile PDFs for processing into `01_People/`.
 
+## Outbox Index
+- Store materials staged for delivery to another actor, agent, or external recipient in `17_Outbox`.
+- Symmetric to `10_Inbox/`: inbox is what arrives, outbox is what leaves.
+- Treat the outbox as transient; archive or rubbish-bin items after pickup.
+- Use `<recipient>/` subfolders to group deliveries to multiple downstream destinations.
+- Cross-link each outbox item back to the canonical source note(s) that produced it.
+- Move delivered items to `16_Cleaning/Archive/17_Outbox/` (historical value) or `16_Cleaning/Rubbish Bin/17_Outbox/` (low retention).
+
 ## Skills Index
 - Store agent-executable skill definitions in `15_Skills`.
 - Each skill has: Purpose, Trigger, Inputs, Steps, Outputs, Quality Checks.
