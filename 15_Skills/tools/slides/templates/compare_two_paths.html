@@ -1,0 +1,44 @@
+<section class="slide slide--compare-paths" data-slide="{{slide_number}}">
+  <header class="slide__header">
+    <div class="slide__eyebrow">{{eyebrow}}</div>
+    <div class="slide__page-number">{{slide_number}} / {{slide_count}}</div>
+  </header>
+  <h1 class="slide__title">{{title}}</h1>
+  {{subtitle_block}}
+  <div class="slide__body">
+    <div class="paths-row">
+      <div class="path path--a">
+        <div class="path__badge">A</div>
+        <div class="path__name">{{path_a_name}}</div>
+        <div class="path__one_liner">{{path_a_one_liner}}</div>
+        <div class="path__section">
+          <div class="path__section-label">{{pros_label}}</div>
+          <div class="path__section-body">{{path_a_pros_md}}</div>
+        </div>
+        <div class="path__section">
+          <div class="path__section-label">{{cons_label}}</div>
+          <div class="path__section-body">{{path_a_cons_md}}</div>
+        </div>
+      </div>
+      <div class="path path--b">
+        <div class="path__badge">B</div>
+        <div class="path__name">{{path_b_name}}</div>
+        <div class="path__one_liner">{{path_b_one_liner}}</div>
+        <div class="path__section">
+          <div class="path__section-label">{{pros_label}}</div>
+          <div class="path__section-body">{{path_b_pros_md}}</div>
+        </div>
+        <div class="path__section">
+          <div class="path__section-label">{{cons_label}}</div>
+          <div class="path__section-body">{{path_b_cons_md}}</div>
+        </div>
+      </div>
+    </div>
+    {{kicker_block}}
+  </div>
+  <footer class="slide__footer">
+    <div>{{footer_left}}</div>
+    <div>{{footer_right}}</div>
+  </footer>
+  <div class="notes">{{notes}}</div>
+</section>

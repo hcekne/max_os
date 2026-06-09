@@ -8,10 +8,10 @@ tags: [skill, slides, presentation, deck, markdown, extraction]
 # Skill - Digest Deck to Markdown
 
 ## Purpose
-Convert one or more presentation deck PDFs into high-fidelity Markdown digests, with one section per slide/page that preserves visible text, slide structure, and useful visual context.
+Convert one or more presentation deck PDFs into high-fidelity markdown digests, with one section per slide/page that preserves visible text, slide structure, and useful visual context.
 
 ## Trigger
-Use this skill when the user asks to read, digest, transcribe, extract, convert, or summarize a slide deck, presentation, or PDF into one Markdown file.
+Use this skill when the user asks to read, digest, transcribe, extract, convert, or summarize a slide deck / presentation / PDF into one markdown file.
 
 Typical trigger phrases:
 - "digest this deck"
@@ -20,7 +20,7 @@ Typical trigger phrases:
 - "extract this PDF deck slide by slide"
 - "turn this presentation into a markdown digest"
 
-## Scope
+## Scope (Version 1)
 - Input format: PDF only
 - Output format: one `.md` file per source PDF
 - Output location: default `05_Content/`, or an explicitly requested destination such as a project folder under `04_Projects/`
@@ -32,7 +32,7 @@ Typical trigger phrases:
 - Optional destination path under `05_Content/` or a project folder such as `04_Projects/<Project Name>/`
 
 ## Output Contract
-Produce exactly one Markdown file per deck.
+Produce exactly one markdown file per deck.
 
 Default filename pattern:
 - `Deck Digest - <Source Deck Name> (YYYY-MM-DD).md`
@@ -47,17 +47,17 @@ The output file should contain:
    - detected slide type
    - layout notes
    - all visible text, organized by block
-   - visual description of charts, images, diagrams, and tables
+   - visual description of charts / images / diagrams
    - speaker notes if available
    - one-slide summary
 
 ## End-State Definition
 After a successful run:
-- The Markdown file exists in the requested destination.
-- The number of slide sections matches the number of slides/pages in the source PDF.
-- No slide is skipped, including title, agenda, divider, closing, or appendix slides.
-- Text is captured as faithfully as possible.
-- Unclear or unreadable content is flagged rather than invented.
+- The markdown file exists in the requested destination
+- The number of slide sections matches the number of slides/pages in the source PDF
+- No slide is skipped, including title, agenda, divider, closing, or appendix slides
+- Text is captured as faithfully as possible
+- Unclear or unreadable content is flagged rather than invented
 
 ## Slide-Type Rules
 Classify each slide into one of these types:
@@ -89,27 +89,27 @@ Organize visible slide text by block rather than dumping it as one paragraph.
 Reading-order rules:
 - Top to bottom
 - Left to right within the same row
-- Preserve grouped boxes or panels where visible
+- Preserve grouped boxes / panels where visible
 - Preserve headers separately from their body text
 
 Block-format rules:
-- Use one numbered item per major text block.
-- If a block has a header, label it explicitly.
-- Keep bullets under the correct block.
-- If a slide has columns, reflect that in the block descriptions or layout notes.
+- Use one numbered item per major text block
+- If a block has a header, label it explicitly
+- Keep bullets under the correct block
+- If a slide has columns, reflect that in the block descriptions or layout notes
 
 ## Visual Description Rules
 For charts, diagrams, images, tables, icons, and other visuals:
-- Describe what is visibly present and relevant.
-- Mention labels, axes, legends, or callouts if readable.
-- Do not infer non-visible numbers or conclusions.
-- If the visual mainly reinforces a text point, say so briefly.
+- Describe what is visibly present and relevant
+- Mention labels, axes, legends, or callouts if readable
+- Do not infer non-visible numbers or conclusions
+- If the visual mainly reinforces a text point, say so briefly
 - If there is no meaningful visual beyond text layout, say `No separate visual beyond text layout.`
 
 ## Speaker Notes Rules
-- Include speaker notes only if they are actually available from the source.
-- Do not infer speaker notes from slide text.
-- If no notes are available, say `None available`.
+- Include speaker notes only if they are actually available from the source
+- Do not infer speaker notes from slide text
+- If no notes are available, say `None available`
 
 ## Required Markdown Schema
 
@@ -180,14 +180,14 @@ tags: [content, deck-digest, slides]
 8. Write a short slide summary.
 
 ### Phase 3 - Assemble the Digest
-1. Compile all slide sections into one Markdown file.
+1. Compile all slide sections into one markdown file.
 2. Add deck-level source metadata.
 3. Add a short deck summary only after all slides have been reviewed.
 4. Save the final digest to the requested destination.
 
 ### Phase 3b - Batch Runs
 1. If multiple PDFs were requested, repeat Phases 1-3 for each source file.
-2. Keep one output Markdown per source PDF.
+2. Keep one output markdown per source PDF.
 3. If the destination is project-scoped, add or update project links after all files are written.
 
 ### Phase 4 - Quality Review
@@ -198,12 +198,12 @@ tags: [content, deck-digest, slides]
 5. Check that unclear text is flagged rather than guessed.
 
 ## Outputs
-- One Markdown digest file per source PDF in the requested destination
+- One markdown digest file per source PDF in the requested destination
 - One ordered section per slide
 - A deck-level summary suitable for later AI use
 
 ## Quality Checks
-- [ ] Slide count in the Markdown file matches the PDF slide/page count
+- [ ] Slide count in the markdown file matches the PDF slide/page count
 - [ ] Every slide has its own section
 - [ ] Title, subtitle, and text blocks are captured where present
 - [ ] Visuals are described without hallucinated content
@@ -219,4 +219,4 @@ tags: [content, deck-digest, slides]
 - If a slide is mostly visual, keep the text section minimal and make the visual description more explicit.
 
 ## Operating Principle
-High-fidelity slide reading, not generic summarization. The Markdown digest should let a later agent or human reconstruct what was actually on each slide without needing to reopen the deck.
+High-fidelity slide reading, not generic summarization. The markdown digest should let a later agent or human reconstruct what was actually on each slide without needing to reopen the deck.

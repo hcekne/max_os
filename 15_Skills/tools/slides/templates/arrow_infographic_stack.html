@@ -1,0 +1,42 @@
+<section class="slide slide--arrow-stack" data-slide="{{slide_number}}">
+  <header class="slide__header">
+    <div class="slide__eyebrow">{{eyebrow}}</div>
+    <div class="slide__page-number">{{slide_number}} / {{slide_count}}</div>
+  </header>
+  <h1 class="slide__title">{{title}}</h1>
+  {{subtitle_block}}
+  <div class="slide__body">
+    <div class="arrow-stack">
+      <div class="arrow-row">
+        <div class="arrow-row__period">{{a1_period}}</div>
+        <div class="arrow-row__arrow"></div>
+        <div class="arrow-row__value">{{a1_value}}</div>
+        <div class="arrow-row__note">{{a1_note}}</div>
+      </div>
+      <div class="arrow-row">
+        <div class="arrow-row__period">{{a2_period}}</div>
+        <div class="arrow-row__arrow"></div>
+        <div class="arrow-row__value">{{a2_value}}</div>
+        <div class="arrow-row__note">{{a2_note}}</div>
+      </div>
+      <div class="arrow-row">
+        <div class="arrow-row__period">{{a3_period}}</div>
+        <div class="arrow-row__arrow"></div>
+        <div class="arrow-row__value">{{a3_value}}</div>
+        <div class="arrow-row__note">{{a3_note}}</div>
+      </div>
+      <div class="arrow-row arrow-row--optional">
+        <div class="arrow-row__period">{{a4_period}}</div>
+        <div class="arrow-row__arrow"></div>
+        <div class="arrow-row__value">{{a4_value}}</div>
+        <div class="arrow-row__note">{{a4_note}}</div>
+      </div>
+    </div>
+    {{kicker_block}}
+  </div>
+  <footer class="slide__footer">
+    <div>{{footer_left}}</div>
+    <div>{{footer_right}}</div>
+  </footer>
+  <div class="notes">{{notes}}</div>
+</section>

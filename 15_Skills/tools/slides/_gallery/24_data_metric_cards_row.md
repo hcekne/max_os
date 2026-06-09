@@ -1,0 +1,20 @@
+---
+template: data_metric_cards_row
+eyebrow: "TEMPLATE: data_metric_cards_row"
+title: "Where the FY26 plan is landing"
+subtitle: "Four headline metrics, all measured against the FY26 baseline"
+m1_value: "+14%"
+m1_label: "Revenue YoY"
+m1_note: "Beats plan by 3 pts; .com over-delivered"
+m2_value: "£71M"
+m2_label: "Cost out"
+m2_note: "Run-rate; full-year impact lands in FY27"
+m3_value: "8.4 pts"
+m3_label: "EBIT margin"
+m3_note: "Now within 1.2 pts of best-in-class peer"
+m4_value: "NPS 42"
+m4_label: "Customer NPS"
+m4_note: "+11 pts YoY; first time above peer median"
+context: "These are the four metrics on the FY27 board scorecard, in the order they're reviewed."
+kicker: "**The pattern.** Revenue and cost moved in opposite directions for the first time in six quarters — that's what created the EBIT margin expansion."
+---

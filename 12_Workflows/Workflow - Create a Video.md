@@ -1,7 +1,7 @@
 ---
 type: workflow
 status: active
-owner: 
+owner:
 review_cycle: monthly
 tags: [workflow, content, video]
 ---

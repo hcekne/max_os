@@ -47,7 +47,7 @@ After a successful run:
 4. For each PDF, run primary extraction with `pdftotext -layout`.
 5. If `pdftotext -layout` is unavailable or produces empty output, use fallback parser chain: `pypdf → pymupdf → pdfplumber`.
 6. Save extracted text as one file per person in `10_Inbox/PDF_Profiles/Extracted_Text/`.
-7. If extraction fails, keep PDF in `10_Inbox/PDF_Profiles/Unprocessed/` and flag it in the run summary. Do not move the PDF yet; the move happens only after the person note is successfully written in Phase 2.
+7. If extraction fails, keep PDF in `10_Inbox/PDF_Profiles/Unprocessed/` and flag it in the run summary. **Do not move the PDF yet — the move happens only after the person note is successfully written in Phase 2.**
 
 ### Extraction method details
 - Default command per file:
@@ -62,14 +62,23 @@ After a successful run:
 
 Process each file in `10_Inbox/PDF_Profiles/Extracted_Text/` sequentially, one at a time:
 
-1. Derive person name from the extracted text, not just the filename.
+1. Derive person name from the extracted text (top-of-profile "Name" line), not just the filename — LinkedIn often exports as `Profile.pdf` / `Profile-2.pdf` etc.
 2. Search for corresponding note in `01_People/`.
 3. If note exists: update and enrich that specific note.
 4. If note does not exist: create a new note using `99_Templates/TPL - Person.md`.
-5. After the note is successfully written, perform cleanup in this exact order:
+5. **After the note is successfully written** (file exists on disk, has valid frontmatter, has the LinkedIn Profile Snapshot section), perform cleanup in this exact order:
    a. Move the source PDF from `10_Inbox/PDF_Profiles/Unprocessed/` to `16_Cleaning/Rubbish Bin/10_Inbox/PDF_Profiles/`.
    b. Delete the intermediate text file from `10_Inbox/PDF_Profiles/Extracted_Text/`.
 6. If note write fails, keep both the source PDF and the text file in place and flag the failure in the run summary.
+
+## Phase 3 — Final Hygiene Sweep
+
+After all profiles have been processed:
+
+1. Verify `10_Inbox/PDF_Profiles/Unprocessed/` is empty (except `.gitkeep` and any explicit failures).
+2. Verify `10_Inbox/PDF_Profiles/Extracted_Text/` is empty (except `.gitkeep` and any explicit ambiguities).
+3. Remove any stray `.DS_Store` files that macOS may have created in the affected directories: `find 10_Inbox 16_Cleaning -name '.DS_Store' -delete`.
+4. Run `python3 15_Skills/tools/check_vault.py` and confirm the report shows no new findings.
 
 ---
 

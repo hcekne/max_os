@@ -1,0 +1,41 @@
+<section class="slide slide--roadmap-swimlane" data-slide="{{slide_number}}">
+  <header class="slide__header">
+    <div class="slide__eyebrow">{{eyebrow}}</div>
+    <div class="slide__page-number">{{slide_number}} / {{slide_count}}</div>
+  </header>
+  <h1 class="slide__title">{{title}}</h1>
+  {{subtitle_block}}
+  <div class="slide__body">
+    <div class="swimlane-grid">
+      <div class="swimlane-header swimlane-header--corner"></div>
+      <div class="swimlane-header swimlane-header--phase">{{phase_1_label}}</div>
+      <div class="swimlane-header swimlane-header--phase">{{phase_2_label}}</div>
+      <div class="swimlane-header swimlane-header--phase">{{phase_3_label}}</div>
+      <div class="swimlane-header swimlane-header--phase">{{phase_4_label}}</div>
+
+      <div class="swimlane-row-label">{{lane_1_label}}</div>
+      <div class="swimlane-cell">{{lane_1_p1}}</div>
+      <div class="swimlane-cell">{{lane_1_p2}}</div>
+      <div class="swimlane-cell">{{lane_1_p3}}</div>
+      <div class="swimlane-cell">{{lane_1_p4}}</div>
+
+      <div class="swimlane-row-label">{{lane_2_label}}</div>
+      <div class="swimlane-cell">{{lane_2_p1}}</div>
+      <div class="swimlane-cell">{{lane_2_p2}}</div>
+      <div class="swimlane-cell">{{lane_2_p3}}</div>
+      <div class="swimlane-cell">{{lane_2_p4}}</div>
+
+      <div class="swimlane-row-label">{{lane_3_label}}</div>
+      <div class="swimlane-cell">{{lane_3_p1}}</div>
+      <div class="swimlane-cell">{{lane_3_p2}}</div>
+      <div class="swimlane-cell">{{lane_3_p3}}</div>
+      <div class="swimlane-cell">{{lane_3_p4}}</div>
+    </div>
+    {{kicker_block}}
+  </div>
+  <footer class="slide__footer">
+    <div>{{footer_left}}</div>
+    <div>{{footer_right}}</div>
+  </footer>
+  <div class="notes">{{notes}}</div>
+</section>

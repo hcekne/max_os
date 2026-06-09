@@ -1,0 +1,50 @@
+<section class="slide slide--bridge" data-slide="{{slide_number}}">
+  <header class="slide__header">
+    <div class="slide__eyebrow">{{eyebrow}}</div>
+    <div class="slide__page-number">{{slide_number}} / {{slide_count}}</div>
+  </header>
+  <h1 class="slide__title">{{title}}</h1>
+  {{subtitle_block}}
+  <div class="slide__body">
+    <div class="bridge-stage">
+      <div class="bridge-state bridge-state--now">
+        <div class="bridge-state__label">{{now_label}}</div>
+        <div class="bridge-state__headline">{{now_headline}}</div>
+        <div class="bridge-state__body">{{now_body_md}}</div>
+      </div>
+      <div class="bridge-svg-wrap">
+        <svg viewBox="0 0 400 120" class="bridge-svg" preserveAspectRatio="xMidYMid meet">
+          <!-- Left cliff -->
+          <polygon class="bridge-svg__cliff" points="0,80 60,80 60,120 0,120" />
+          <!-- Right cliff -->
+          <polygon class="bridge-svg__cliff" points="340,80 400,80 400,120 340,120" />
+          <!-- Bridge deck -->
+          <rect class="bridge-svg__deck" x="60" y="75" width="280" height="6" />
+          <!-- Bridge arches/suspension lines -->
+          <path class="bridge-svg__arch" d="M 60,75 Q 200,5 340,75" fill="none" />
+          <!-- Suspension cables -->
+          <line class="bridge-svg__cable" x1="100" y1="75" x2="100" y2="34" />
+          <line class="bridge-svg__cable" x1="140" y1="75" x2="140" y2="22" />
+          <line class="bridge-svg__cable" x1="180" y1="75" x2="180" y2="14" />
+          <line class="bridge-svg__cable" x1="220" y1="75" x2="220" y2="14" />
+          <line class="bridge-svg__cable" x1="260" y1="75" x2="260" y2="22" />
+          <line class="bridge-svg__cable" x1="300" y1="75" x2="300" y2="34" />
+          <!-- Direction arrow on deck -->
+          <polygon class="bridge-svg__arrow" points="200,82 215,82 215,79 222,82.5 215,86 215,83 200,83" />
+        </svg>
+        <div class="bridge-mid-label">{{bridge_label}}</div>
+      </div>
+      <div class="bridge-state bridge-state--future">
+        <div class="bridge-state__label">{{future_label}}</div>
+        <div class="bridge-state__headline">{{future_headline}}</div>
+        <div class="bridge-state__body">{{future_body_md}}</div>
+      </div>
+    </div>
+    {{kicker_block}}
+  </div>
+  <footer class="slide__footer">
+    <div>{{footer_left}}</div>
+    <div>{{footer_right}}</div>
+  </footer>
+  <div class="notes">{{notes}}</div>
+</section>

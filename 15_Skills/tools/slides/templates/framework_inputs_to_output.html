@@ -1,0 +1,41 @@
+<section class="slide slide--framework-inputs" data-slide="{{slide_number}}">
+  <header class="slide__header">
+    <div class="slide__eyebrow">{{eyebrow}}</div>
+    <div class="slide__page-number">{{slide_number}} / {{slide_count}}</div>
+  </header>
+  <h1 class="slide__title">{{title}}</h1>
+  {{subtitle_block}}
+  <div class="slide__body">
+    <div class="inputs-flow">
+      <div class="inputs-col">
+        <div class="inputs-col__label">{{inputs_label}}</div>
+        <div class="input-card">
+          <div class="input-card__title">{{i1_title}}</div>
+          <div class="input-card__body">{{i1_body}}</div>
+        </div>
+        <div class="input-card">
+          <div class="input-card__title">{{i2_title}}</div>
+          <div class="input-card__body">{{i2_body}}</div>
+        </div>
+        <div class="input-card input-card--optional">
+          <div class="input-card__title">{{i3_title}}</div>
+          <div class="input-card__body">{{i3_body}}</div>
+        </div>
+      </div>
+      <div class="inputs-arrow"></div>
+      <div class="output-col">
+        <div class="output-col__label">{{output_label}}</div>
+        <div class="output-card">
+          <div class="output-card__title">{{output_title}}</div>
+          <div class="output-card__body">{{output_body_md}}</div>
+        </div>
+      </div>
+    </div>
+    {{kicker_block}}
+  </div>
+  <footer class="slide__footer">
+    <div>{{footer_left}}</div>
+    <div>{{footer_right}}</div>
+  </footer>
+  <div class="notes">{{notes}}</div>
+</section>

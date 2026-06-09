@@ -1,0 +1,25 @@
+<section class="slide slide--section-watermark" data-slide="{{slide_number}}">
+  <header class="slide__header">
+    <div class="slide__eyebrow">{{eyebrow}}</div>
+    <div class="slide__page-number">{{slide_number}} / {{slide_count}}</div>
+  </header>
+  <h1 class="slide__title">{{title}}</h1>
+  {{subtitle_block}}
+  <div class="slide__body">
+    <div class="watermark-row">
+      <div class="watermark-row__commentary">
+        <div class="watermark-row__commentary-label">{{commentary_label}}</div>
+        <div class="watermark-row__commentary-body">{{commentary_md}}</div>
+      </div>
+      <div class="watermark-row__charts">
+        {{body}}
+      </div>
+    </div>
+    <div class="watermark-row__caption">{{watermark_text}}</div>
+  </div>
+  <footer class="slide__footer">
+    <div>{{footer_left}}</div>
+    <div>{{footer_right}}</div>
+  </footer>
+  <div class="notes">{{notes}}</div>
+</section>

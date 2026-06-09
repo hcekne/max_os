@@ -6,6 +6,11 @@ cd "$ROOT"
 
 STATUS_DIR=".maxos"
 STATUS_FILE="$STATUS_DIR/local_setup_status.yaml"
+HOOK_FILE=".githooks/pre-commit"
+INSTALL_SCRIPT="15_Skills/tools/install_git_hooks.sh"
+SETUP_SCRIPT="15_Skills/tools/ensure_local_setup.sh"
+QUALITY_GATE_SCRIPT="15_Skills/tools/maxos_quality_gate.py"
+KNOWLEDGE_LINT_SCRIPT="15_Skills/tools/knowledge_lint.py"
 mkdir -p "$STATUS_DIR"
 
 write_status() {
@@ -23,12 +28,15 @@ message: "$message"
 git_repo: true
 hooks_path_configured: $([ "$hooks_path" = ".githooks" ] && printf true || printf false)
 hooks_path: "$hooks_path"
-hook_file_executable: $([ -x ".githooks/pre-commit" ] && printf true || printf false)
+hook_file_executable: $([ -x "$HOOK_FILE" ] && printf true || printf false)
+install_script_executable: $([ -x "$INSTALL_SCRIPT" ] && printf true || printf false)
+setup_script_executable: $([ -x "$SETUP_SCRIPT" ] && printf true || printf false)
 python3_available: $([ -n "$python_path" ] && printf true || printf false)
 python3_path: "$python_path"
-quality_gate_available: $([ -f "15_Skills/tools/maxos_quality_gate.py" ] && printf true || printf false)
-install_command: "sh 15_Skills/tools/install_git_hooks.sh"
-quality_gate_command: "python3 15_Skills/tools/maxos_quality_gate.py --root ."
+quality_gate_available: $([ -f "$QUALITY_GATE_SCRIPT" ] && printf true || printf false)
+knowledge_lint_available: $([ -f "$KNOWLEDGE_LINT_SCRIPT" ] && printf true || printf false)
+install_command: "sh $INSTALL_SCRIPT"
+quality_gate_command: "python3 $QUALITY_GATE_SCRIPT --root ."
 EOF
 }
 
@@ -38,21 +46,42 @@ if ! command -v python3 >/dev/null 2>&1; then
   exit 1
 fi
 
-if [ ! -f ".githooks/pre-commit" ]; then
-  write_status false ".githooks/pre-commit is missing"
-  echo "Max OS local setup failed: .githooks/pre-commit is missing." >&2
+if [ ! -f "$HOOK_FILE" ]; then
+  write_status false "$HOOK_FILE is missing"
+  echo "Max OS local setup failed: $HOOK_FILE is missing." >&2
   exit 1
 fi
 
-if [ ! -f "15_Skills/tools/maxos_quality_gate.py" ]; then
+if [ ! -f "$INSTALL_SCRIPT" ]; then
+  write_status false "$INSTALL_SCRIPT is missing"
+  echo "Max OS local setup failed: $INSTALL_SCRIPT is missing." >&2
+  exit 1
+fi
+
+if [ ! -f "$QUALITY_GATE_SCRIPT" ]; then
   write_status false "quality gate script is missing"
   echo "Max OS local setup failed: quality gate script is missing." >&2
   exit 1
 fi
 
+if [ ! -f "$KNOWLEDGE_LINT_SCRIPT" ]; then
+  write_status false "knowledge lint script is missing"
+  echo "Max OS local setup failed: knowledge lint script is missing." >&2
+  exit 1
+fi
+
+chmod +x "$HOOK_FILE" "$INSTALL_SCRIPT" "$SETUP_SCRIPT"
+
 current_hooks_path="$(git config --get core.hooksPath || true)"
-if [ "$current_hooks_path" != ".githooks" ] || [ ! -x ".githooks/pre-commit" ]; then
-  sh 15_Skills/tools/install_git_hooks.sh >/dev/null
+if [ "$current_hooks_path" != ".githooks" ] || [ ! -x "$HOOK_FILE" ]; then
+  sh "$INSTALL_SCRIPT" >/dev/null
+fi
+
+current_hooks_path="$(git config --get core.hooksPath || true)"
+if [ "$current_hooks_path" != ".githooks" ] || [ ! -x "$HOOK_FILE" ]; then
+  write_status false "git hooks are not installed correctly"
+  echo "Max OS local setup failed: git hooks are not installed correctly." >&2
+  exit 1
 fi
 
 write_status true "local setup ready"

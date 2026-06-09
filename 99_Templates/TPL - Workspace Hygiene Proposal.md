@@ -17,12 +17,6 @@ tags: [proposal, workspace-hygiene, lifecycle, archive]
 
 ## 4. Bloat Patterns Found
 
-### Versioned Deliverables
-
-### Interview / Event Materials
-
-### Generated Artifacts and Runtime Byproducts
-
 ## 5. Classification Summary by Category
 
 | Classification | Count | Notes |
@@ -81,12 +75,6 @@ tags: [proposal, workspace-hygiene, lifecycle, archive]
 # No commands should be run until approved.
 ```
 
-## 15. Generated Artifact / Ignore Updates
+## 15. Proposed Commit Plan
 
-| Path | Type | Canonical source | Suggested action |
-|---|---|---|---|
-|  |  |  |  |
-
-## 16. Proposed Commit Plan
-
-## 17. Risks and Unresolved Questions
+## 16. Risks and Unresolved Questions

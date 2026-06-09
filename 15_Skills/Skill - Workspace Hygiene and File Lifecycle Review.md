@@ -37,8 +37,7 @@ Use this skill when:
 - Workspace hygiene proposal in `00_System/Proposals/`
 - File classification table
 - Canonical file recommendations
-- Archive/delete/merge candidates
-- Rubbish-bin candidates
+- Archive/rubbish-bin/delete/merge candidates
 - Lifecycle metadata recommendations
 - Optional safe archive moves or metadata updates, depending on mode
 - Public Max OS improvement proposal when reusable patterns are found
@@ -50,17 +49,19 @@ Inspect the workspace and create a cleanup proposal. Do not move, delete, rename
 
 ### APPLY_SAFE
 Apply only safe, reversible, non-destructive changes:
-- create archive folders;
-- create `16_Cleaning/Archive/` and `16_Cleaning/Rubbish Bin/` index files when missing;
+- create central archive or rubbish-bin folders;
 - create proposal files;
-- create archive indexes;
+- create archive or rubbish-bin indexes;
 - add lifecycle metadata where obvious;
-- move clearly expired/superseded files into archive using `git mv`.
+- move clearly expired files into the central archive using `git mv`;
+- move clearly superseded low-value versions into the central rubbish bin using `git mv`.
 
 Do not delete files.
 
 ### APPLY_APPROVED
 Only after explicit human approval, apply agreed archive moves, metadata updates, canonical renames, and deletions.
+
+Rubbish-bin purge is the only exception: files already in the central rubbish bin may be deleted once they satisfy [[00_System/Rubbish Bin Policy]].
 
 Default to `PLAN_ONLY` unless the user explicitly requests another mode.
 
@@ -103,6 +104,7 @@ status:
 project:
 created:
 last_reviewed:
+version_family:
 valid_until:
 review_after:
 archive_after:
@@ -161,7 +163,7 @@ Do not add lifecycle metadata to every file blindly. Add it where it improves fu
 8. Treat final deliverables, contracts, submitted documents, invoices, legal/commercial documents, and client-provided materials as high-retention by default.
 
 ## Review Process
-1. Inspect top-level folder counts.
+1. Inspect the vault root for stray markdown files outside the allowed control-file set, especially empty files and numbered folder-mirror files.
 2. Identify large project/content folders.
 3. Identify archive folders and proposal folders.
 4. Find recently modified files.
@@ -195,39 +197,26 @@ Do not add lifecycle metadata to every file blindly. Add it where it improves fu
    - decisions;
    - archive;
    - scratch/generated material.
-8. Review versioned deliverable packs:
-   - numbered drafts;
-   - final/stakeholder/submitted exports;
-   - generated PDF/DOCX/HTML variants;
-   - split section packs and build scripts.
-9. Review interview/event packs:
-   - upcoming prep;
-   - expired prep;
-   - completed summaries;
-   - raw transcripts;
-   - generated Word/PDF prep packs.
-10. Review generated artifacts and runtime byproducts:
-   - generated HTML/PDF/DOCX outputs;
-   - generated pack folders;
-   - build scripts and CSS;
-   - `__pycache__` and `*.pyc` files.
-11. Create a proposal before applying changes.
+8. Create a proposal before applying changes.
+
+Root-level empty markdown placeholders and numbered folder-mirror files should default to `DELETE_CANDIDATE` unless they contain meaningful content that clearly belongs elsewhere.
 
 ## Archive Process
 1. Identify high-confidence archive candidates.
 2. Confirm they are not final deliverables, legal/commercial documents, invoices, contracts, or client-provided source materials.
-3. Identify archive destination under `16_Cleaning/Archive/` by mirroring the original source path.
-4. If applying, create archive folder and update `16_Cleaning/Archive/Index.md` first.
-5. Use `git mv` for moves.
+3. Identify archive destination.
+4. If applying, create archive folder and archive index first.
+5. Use `git mv` for moves into `16_Cleaning/Archive/`.
 6. Add metadata such as `status: archived`, `lifecycle: archive`, `superseded_by`, and `retention_policy` where useful.
 7. Update canonical indexes and project state links.
 
-## Rubbish Bin Process
-1. Use `16_Cleaning/Rubbish Bin/` only for clear low-retention material that fits [[00_System/Rubbish Bin Policy]].
-2. Mirror the original source path beneath the rubbish-bin root.
-3. Add `delete_after` metadata where useful, usually 30 days from the move date.
-4. Never put final deliverables, contracts, invoices, legal/commercial files, client source material, evergreen reference, or ambiguous files in the rubbish bin.
-5. Files outside the rubbish bin still require explicit deletion approval.
+## Rubbish-Bin Process
+1. Identify clearly superseded, low-value, or stale version files.
+2. Confirm a current canonical replacement exists.
+3. Confirm the file is not final, submitted, client-provided, legal, or commercial.
+4. Move it into `16_Cleaning/Rubbish Bin/` using a mirrored source path.
+5. Add `delete_after` and `superseded_by` where useful.
+6. Update any active links that should now point to the current canonical version.
 
 ## Deletion Approval Process
 1. Record delete candidates in proposal only.
@@ -241,34 +230,11 @@ Do not add lifecycle metadata to every file blindly. Add it where it improves fu
 For multiple versions of the same artifact:
 1. Identify likely canonical/latest/current/final file.
 2. Preserve final/submitted versions separately.
-3. Recommend one clean canonical filename.
-4. Move old versions to archive, or mark as delete candidates after approval.
+3. Recommend one clean canonical family stem.
+4. Move old versions to the rubbish bin by default, or to the archive if they have explicit historical value.
 5. Merge useful content into canonical file before retiring old files.
-6. Add `canonical: true` to the current file when useful.
+6. Add `canonical: true` and `version_family` to the current file when useful.
 7. Add `superseded_by` to old versions when useful.
-
-## Deliverable-Pack Handling
-When a project contains a deliverable pack with many Markdown sections, generated PDF/DOCX/HTML files, build scripts, and old numbered versions:
-1. Identify the final/submitted deliverable, if any.
-2. Identify the canonical source format used to generate it.
-3. Keep the final/submitted file and canonical source visible or clearly linked.
-4. Archive old numbered versions and generated variants when superseded.
-5. Preserve build scripts only if they are needed to regenerate a useful final artifact.
-6. Treat generated artifacts as non-canonical unless explicitly marked final/submitted.
-
-## Interview-Pack Handling
-When a project contains interview prep, completed interview notes, raw transcripts, and generated prep packs:
-1. Keep upcoming interview prep active until the event date.
-2. Archive expired prep after the event date.
-3. Keep completed interview summaries active while synthesis is underway.
-4. Move raw transcripts out of inbox root after processing.
-5. Archive generated Word/PDF interview packs after the interview phase closes.
-6. Link completed summaries from the project state or current synthesis file.
-
-## Runtime Byproduct Handling
-- `__pycache__/` and `*.pyc` should not be committed.
-- If tracked runtime byproducts are found, propose removal from Git and add ignore rules.
-- Do not delete source scripts just because their generated bytecode is deleted.
 
 ## Project-Folder Hygiene Logic
 Use existing project patterns where they work. If a folder is bloated or ambiguous, recommend a structure such as:
@@ -285,7 +251,7 @@ Use existing project patterns where they work. If a folder is bloated or ambiguo
   99_Scratch/
 ```
 
-Do not impose this globally if a lighter structure is enough. Use `16_Cleaning/Archive/04_Projects/<Project Name>/...` for retired project material instead of creating new distributed archive folders by default.
+Do not impose this globally if a lighter structure is enough.
 
 ## Public-Template Extraction Logic
 When a hygiene run reveals reusable Max OS improvements:
@@ -312,10 +278,7 @@ git status --short --branch
 find . -type f -not -path './.git/*' | awk -F/ '{print $2}' | sort | uniq -c | sort -nr
 find 04_Projects -type f | rg -i '(v[0-9]+|draft|final|latest|old|copy|prep|interview|memo|research)'
 find 04_Projects/<Project Name> -type f -printf '%s %p\n' | sort -nr
-find . -type f | rg '(__pycache__|\.pyc$)'
-python3 15_Skills/tools/knowledge_lint.py --root . --changed-only --fail-on error
-git mv "old/path.md" "16_Cleaning/Archive/old/path.md"
-git mv "old/generated.md" "16_Cleaning/Rubbish Bin/old/generated.md"
+git mv "old/path.md" "16_Cleaning/Archive/04_Projects/<Project Name>/old/path.md"
 ```
 
 ## Example Proposal Output
@@ -335,14 +298,8 @@ git mv "old/generated.md" "16_Cleaning/Rubbish Bin/old/generated.md"
 - [ ] Final/client/legal/commercial files protected
 - [ ] Classifications include reason and confidence
 - [ ] Canonical files identified where possible
-- [ ] Archive destinations proposed
-- [ ] Rubbish-bin candidates comply with `00_System/Rubbish Bin Policy.md`
+- [ ] Archive or rubbish-bin destinations proposed
 - [ ] Metadata updates are targeted, not blanket-applied
-- [ ] Versioned deliverable packs are reviewed for canonical/final outputs
-- [ ] Interview prep, completed summaries, and raw transcripts are separated
-- [ ] Generated artifacts are not treated as canonical unless marked final/submitted
-- [ ] Runtime byproducts are not committed
-- [ ] Knowledge lint run on changed Markdown files when proposals, policies, skills, workflows, templates, or canonical notes are changed
 - [ ] Public repo extraction is privacy-safe
 - [ ] Final report lists unresolved questions
 

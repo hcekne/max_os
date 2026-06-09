@@ -1,0 +1,23 @@
+<section class="slide slide--diag-root" data-slide="{{slide_number}}">
+  <header class="slide__header">
+    <div class="slide__eyebrow">{{eyebrow}}</div>
+    <div class="slide__page-number">{{slide_number}} / {{slide_count}}</div>
+  </header>
+  <h1 class="slide__title">{{title}}</h1>
+  {{subtitle_block}}
+  <div class="slide__body">
+    <div class="root-symptom">
+      <div class="root-symptom__label">{{symptom_label}}</div>
+      <div class="root-symptom__body">{{symptom_body}}</div>
+    </div>
+    <div class="root-connector"></div>
+    <div class="root-causes">
+      {{body}}
+    </div>
+  </div>
+  <footer class="slide__footer">
+    <div>{{footer_left}}</div>
+    <div>{{footer_right}}</div>
+  </footer>
+  <div class="notes">{{notes}}</div>
+</section>

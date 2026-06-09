@@ -1,0 +1,22 @@
+---
+template: next_steps_horizontal_track
+eyebrow: "TEMPLATE: next_steps_horizontal_track"
+title: "Five next steps — sequenced over the next 14 days"
+subtitle: "Each step has a single named owner; the connecting line is the critical path"
+s1_action: "Confirm sponsor tie-breaker"
+s1_when: "FRI 23 MAY"
+s1_owner: "James Welsh"
+s2_action: "Open data access (read-only)"
+s2_when: "MON 26 MAY"
+s2_owner: "Sigrid Larsen"
+s3_action: "Engineering + trading intros"
+s3_when: "WED 28 MAY"
+s3_owner: "Anneliese Voss"
+s4_action: "Comms plan sign-off"
+s4_when: "FRI 30 MAY"
+s4_owner: "Mark Maitland"
+s5_action: "Day-90 gate criteria locked"
+s5_when: "MON 02 JUN"
+s5_owner: "Alex Rivera"
+kicker: "**Where it can slip.** Step 3 (intros) is the one outside our direct control — if it slides, step 5 (gate criteria) slides with it."
+---

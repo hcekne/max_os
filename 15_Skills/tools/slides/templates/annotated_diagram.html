@@ -1,0 +1,73 @@
+<section class="slide slide--annotated-diagram" data-slide="{{slide_number}}">
+  <header class="slide__header">
+    <div class="slide__eyebrow">{{eyebrow}}</div>
+    <div class="slide__page-number">{{slide_number}} / {{slide_count}}</div>
+  </header>
+  <h1 class="slide__title">{{title}}</h1>
+  {{subtitle_block}}
+  <div class="slide__body">
+    <div class="annotated">
+      <div class="annotated__callouts annotated__callouts--left">
+        <div class="annotated-call">
+          <div class="annotated-call__num">01</div>
+          <div class="annotated-call__title">{{a1_title}}</div>
+          <div class="annotated-call__body">{{a1_body}}</div>
+        </div>
+        <div class="annotated-call">
+          <div class="annotated-call__num">02</div>
+          <div class="annotated-call__title">{{a2_title}}</div>
+          <div class="annotated-call__body">{{a2_body}}</div>
+        </div>
+        <div class="annotated-call">
+          <div class="annotated-call__num">03</div>
+          <div class="annotated-call__title">{{a3_title}}</div>
+          <div class="annotated-call__body">{{a3_body}}</div>
+        </div>
+      </div>
+      <div class="annotated__centre">
+        <svg viewBox="0 0 280 280" class="annotated-svg" preserveAspectRatio="xMidYMid meet">
+          <!-- Stylised hexagonal central object -->
+          <polygon class="annotated-svg__hex" points="140,20 240,80 240,200 140,260 40,200 40,80" />
+          <polygon class="annotated-svg__hex-inner" points="140,60 210,100 210,180 140,220 70,180 70,100" />
+          <circle class="annotated-svg__node" cx="140" cy="20" r="11" />
+          <text x="140" y="25" class="annotated-svg__node-label" text-anchor="middle">1</text>
+          <circle class="annotated-svg__node" cx="240" cy="80" r="11" />
+          <text x="240" y="85" class="annotated-svg__node-label" text-anchor="middle">2</text>
+          <circle class="annotated-svg__node" cx="240" cy="200" r="11" />
+          <text x="240" y="205" class="annotated-svg__node-label" text-anchor="middle">3</text>
+          <circle class="annotated-svg__node" cx="140" cy="260" r="11" />
+          <text x="140" y="265" class="annotated-svg__node-label" text-anchor="middle">4</text>
+          <circle class="annotated-svg__node" cx="40" cy="200" r="11" />
+          <text x="40" y="205" class="annotated-svg__node-label" text-anchor="middle">5</text>
+          <circle class="annotated-svg__node" cx="40" cy="80" r="11" />
+          <text x="40" y="85" class="annotated-svg__node-label" text-anchor="middle">6</text>
+          <text class="annotated-svg__centre-label" x="140" y="138" text-anchor="middle">{{centre_label_top}}</text>
+          <text class="annotated-svg__centre-sub" x="140" y="158" text-anchor="middle">{{centre_label_bottom}}</text>
+        </svg>
+      </div>
+      <div class="annotated__callouts annotated__callouts--right">
+        <div class="annotated-call">
+          <div class="annotated-call__num">04</div>
+          <div class="annotated-call__title">{{a4_title}}</div>
+          <div class="annotated-call__body">{{a4_body}}</div>
+        </div>
+        <div class="annotated-call">
+          <div class="annotated-call__num">05</div>
+          <div class="annotated-call__title">{{a5_title}}</div>
+          <div class="annotated-call__body">{{a5_body}}</div>
+        </div>
+        <div class="annotated-call">
+          <div class="annotated-call__num">06</div>
+          <div class="annotated-call__title">{{a6_title}}</div>
+          <div class="annotated-call__body">{{a6_body}}</div>
+        </div>
+      </div>
+    </div>
+    {{kicker_block}}
+  </div>
+  <footer class="slide__footer">
+    <div>{{footer_left}}</div>
+    <div>{{footer_right}}</div>
+  </footer>
+  <div class="notes">{{notes}}</div>
+</section>

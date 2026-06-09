@@ -1,0 +1,31 @@
+<section class="slide slide--diag-scr" data-slide="{{slide_number}}">
+  <header class="slide__header">
+    <div class="slide__eyebrow">{{eyebrow}}</div>
+    <div class="slide__page-number">{{slide_number}} / {{slide_count}}</div>
+  </header>
+  <h1 class="slide__title">{{title}}</h1>
+  {{subtitle_block}}
+  <div class="slide__body">
+    <div class="scr-row">
+      <div class="scr-card scr-card--situation">
+        <div class="scr-label">{{situation_label}}</div>
+        <div class="scr-body">{{situation_body_md}}</div>
+      </div>
+      <div class="scr-connector"></div>
+      <div class="scr-card scr-card--complication">
+        <div class="scr-label">{{complication_label}}</div>
+        <div class="scr-body">{{complication_body_md}}</div>
+      </div>
+      <div class="scr-connector"></div>
+      <div class="scr-card scr-card--resolution">
+        <div class="scr-label">{{resolution_label}}</div>
+        <div class="scr-body">{{resolution_body_md}}</div>
+      </div>
+    </div>
+  </div>
+  <footer class="slide__footer">
+    <div>{{footer_left}}</div>
+    <div>{{footer_right}}</div>
+  </footer>
+  <div class="notes">{{notes}}</div>
+</section>

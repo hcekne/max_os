@@ -1,132 +1,52 @@
 # Skills
 
-Agent-executable capabilities in Max OS. Each skill describes something an AI agent can perform autonomously within this workspace.
+Manifest of agent-executable capabilities in Max OS. Each entry is a pointer to a canonical card; read the linked file for trigger, inputs, steps, outputs, and quality checks.
 
-For detailed skill cards, see `15_Skills/`. For human-led step-by-step processes, see `12_Workflows/`.
+- **Skills** (agent-autonomous): defined in `15_Skills/`. Differ from workflows in that agents can run them end-to-end without human steering.
+- **Workflows** (human-led, step-by-step with checkpoints): defined in `12_Workflows/`.
+- **Core algorithms** (Session Start, Inbox Processing, Interaction Processing, Note Lifecycle): defined inline in `00_System/LLM Operating Manual.md`.
 
----
+When adding or removing a skill or workflow, update the relevant list below.
 
-## Core Skills (built into LLM Operating Manual)
+## Skills (`15_Skills/`)
+- [[Skill - Digest Deck to Markdown]]
+- [[Skill - Evidence Finding and Narrative Integration with Validation Loops]]
+- [[Skill - Executive Thought Leadership Rewriter with Review Loops]]
+- [[Skill - Export Markdown to Word Document]]
+- [[Skill - Knowledge System Lint and Link Check]]
+- [[Skill - Pre-Commit Knowledge Quality Gate]]
+- [[Skill - Process PDF Profiles to People Notes]]
+- [[Skill - Slide Deck Generation]]
+- [[Skill - Workspace Hygiene and File Lifecycle Review]]
 
-### Session Start
-- **Trigger:** Beginning of any session
-- **Instructions:** `00_System/LLM Operating Manual.md` → Session Start Algorithm
-- **Inputs:** Current date
-- **Outputs:** Due reviews, operational reminders, daily plan, proposed actions
+## Workflows (`12_Workflows/`)
+- [[Workflow - Backport Private Learnings to Public Repo via Pull Request]]
+- [[Workflow - Build AI GTM Deck from Ideas or Articles]]
+- [[Workflow - Content Waterfall from Pillar Article]]
+- [[Workflow - Create LinkedIn Carousel from Thought Leadership Article]]
+- [[Workflow - Create a Video]]
+- [[Workflow - Digest Deck to Markdown]]
+- [[Workflow - Draft LinkedIn Newsletter from Thesis]]
+- [[Workflow - Generate Website UI Prompts (Antigravity + Gemini)]]
+- [[Workflow - Launch Max OS Website in 90 Minutes]]
+- [[Workflow - Meeting Prep Assistant]]
+- [[Workflow - Process PDF Profiles to People Notes]]
+- [[Workflow - Ship Idea to Live Website (Factory Sprint)]]
+- [[Workflow - Thought Leadership Article Lifecycle]]
+- [[Workflow - Weekly Todo Hygiene and Archive]]
+- [[Workflow - Weekly Workspace Hygiene Review]]
+- [[Workflow - Write LinkedIn Posts for One Specific Reader]]
+- [[Workflow - Write an Article]]
 
-### Inbox Processing
-- **Trigger:** Items pending in `10_Inbox/`
-- **Instructions:** `00_System/LLM Operating Manual.md` → Inbox Processing Algorithm
-- **Inputs:** Files in `10_Inbox/`
-- **Outputs:** Routed notes, created/updated people/org/project notes, extracted tasks
+## Tools (`15_Skills/tools/`)
+- `15_Skills/tools/check_dependencies.py` — one-shot system-dependency report (pandoc, WeasyPrint, Node, Playwright + Chromium, Pillow, git hooks). Pairs with `14_Guides/Guide - System Dependencies.md`.
+- `15_Skills/tools/check_vault.py` — warn-only vault validator (frontmatter, wiki-links, naming, hygiene, System State sanity).
+- `15_Skills/tools/ensure_local_setup.sh` — idempotent local clone setup and hook installer.
+- `15_Skills/tools/knowledge_lint.py` — strict changed-file/frontmatter/link validator used by the quality gate.
+- `15_Skills/tools/maxos_quality_gate.py` — pre-commit quality gate for whitespace, lint, byproducts, and public-template privacy scan.
+- `15_Skills/tools/md_to_docx.py` — Markdown → Word document export (used by `Skill - Export Markdown to Word Document`).
+- `15_Skills/tools/slides/build_deck.py` — Markdown slide folder → self-contained HTML deck. Needs `pandoc`, optional `pillow` for logo safety check.
+- `15_Skills/tools/slides/check_deck_visual.mjs` — headless browser screenshot and overflow QA for generated HTML decks. Needs `node`, Playwright + Chromium installed under `.maxos/visual-check/`.
 
-### Interaction Processing
-- **Trigger:** New interaction note provided
-- **Instructions:** `00_System/LLM Operating Manual.md` → Interaction Update Algorithm
-- **Inputs:** Interaction note
-- **Outputs:** Updated people/org/client/project notes, changelog
-
-### Note Lifecycle & Archive
-- **Trigger:** Monthly review or duplicate notes detected
-- **Instructions:** `00_System/LLM Operating Manual.md` → Note Lifecycle and Archive Protocol
-- **Inputs:** Notes in `11_Notes/`
-- **Outputs:** Archived duplicates, updated indexes
-
----
-
-## Vault Skills (in 15_Skills/)
-
-### Executive Thought Leadership Rewriter with Review Loops
-- **File:** `15_Skills/Skill - Executive Thought Leadership Rewriter with Review Loops.md`
-- **Inputs:** Original article draft, stakeholder feedback, optional style benchmarks, optional target word count
-- **Outputs:** Intake summary, rewrite brief, new structure, two critique/revision loops, final polished draft
-
-### Evidence Finding and Narrative Integration with Validation Loops
-- **File:** `15_Skills/Skill - Evidence Finding and Narrative Integration with Validation Loops.md`
-- **Inputs:** Full article draft, optional stakeholder feedback, optional geography/sector/source preferences
-- **Outputs:** Argument map, insertion points, evidence bank, selected proof points, validation log, rewritten article with integrated evidence
-
-### Process PDF Profiles to People Notes
-- **File:** `15_Skills/Skill - Process PDF Profiles to People Notes.md`
-- **Inputs:** PDF files in `10_Inbox/PDF_Profiles/Unprocessed/`
-- **Outputs:** Created/updated notes in `01_People/`
-- **Guide:** `14_Guides/Guide - Export LinkedIn Profiles as PDF.md`
-
-### Digest Deck to Markdown
-- **File:** `15_Skills/Skill - Digest Deck to Markdown.md`
-- **Inputs:** One source presentation deck as PDF, optional output filename/path
-- **Outputs:** One slide-by-slide Markdown digest in `05_Content/` or a requested project folder
-
-### Export Markdown to Word Document
-- **File:** `15_Skills/Skill - Export Markdown to Word Document.md`
-- **Inputs:** One source Markdown note, optional output filename/path, optional title override, optional portrait/landscape orientation, optional PDF export
-- **Outputs:** One formatted `.docx` file suitable for sharing externally, optional `.pdf` export, optional export report
-
-### Create HTML Artifact
-- **File:** `15_Skills/Skill - Create HTML Artifact.md`
-- **Inputs:** Canonical Markdown source files, artifact purpose, optional output filename
-- **Outputs:** Self-contained HTML artifact in `05_Content/Artifacts/`, optional artifact manifest, optional Markdown proposal
-
-### Create HTML Worklet
-- **File:** `15_Skills/Skill - Create HTML Worklet.md`
-- **Inputs:** Worklet purpose, source files, input/output contract, optional JSON state shape
-- **Outputs:** HTML worklet in `20_Modules/Worklets/`, worklet manifest, optional JSON state example or proposal
-
-### Review HTML Artifact Safety
-- **File:** `15_Skills/Skill - Review HTML Artifact Safety.md`
-- **Inputs:** HTML artifact or worklet, companion manifest, source files, intended viewing context
-- **Outputs:** Safety review summary, required fixes, approval recommendation
-
-### Convert Markdown to HTML Artifact
-- **File:** `15_Skills/Skill - Convert Markdown to HTML Artifact.md`
-- **Inputs:** Source Markdown note or notes, optional target audience, optional artifact filename
-- **Outputs:** Read-only HTML artifact in `05_Content/Artifacts/`, optional manifest, optional Markdown proposal
-
-### Workspace Hygiene and File Lifecycle Review
-- **File:** `15_Skills/Skill - Workspace Hygiene and File Lifecycle Review.md`
-- **Inputs:** Workspace root, optional target folder/project, optional mode (`PLAN_ONLY`, `APPLY_SAFE`, `APPLY_APPROVED`)
-- **Outputs:** Hygiene proposal, file classification table, canonical file recommendations, archive/delete/merge candidates, lifecycle metadata recommendations
-
-### Knowledge System Lint and Link Check
-- **File:** `15_Skills/Skill - Knowledge System Lint and Link Check.md`
-- **Inputs:** Workspace root, optional changed-file scope, optional report path
-- **Outputs:** Frontmatter, heading, wiki-link, local Markdown link, and lifecycle metadata validation report
-
-### Pre-Commit Knowledge Quality Gate
-- **File:** `15_Skills/Skill - Pre-Commit Knowledge Quality Gate.md`
-- **Inputs:** Workspace root, optional full-workspace mode, optional public-template privacy mode, optional private denylist
-- **Outputs:** Pass/fail summary for whitespace, knowledge lint, runtime byproducts, and privacy/secret checks
-
----
-
-## Workflow Skills (in 12_Workflows/)
-
-### Meeting Prep
-- **File:** `12_Workflows/Workflow - Meeting Prep Assistant.md`
-- **Inputs:** Meeting details, attendee names
-- **Outputs:** Briefing with attendee context, open loops, suggested talking points
-
-### Write an Article
-- **File:** `12_Workflows/Workflow - Write an Article.md`
-- **Inputs:** Topic, thesis, target audience
-- **Outputs:** Draft article in `05_Content/`
-
-### Content Waterfall from Pillar Article
-- **File:** `12_Workflows/Workflow - Content Waterfall from Pillar Article.md`
-- **Inputs:** Pillar article
-- **Outputs:** Derivative content pieces (LinkedIn posts, carousels, newsletters)
-
-### Build AI GTM Deck
-- **File:** `12_Workflows/Workflow - Build AI GTM Deck from Ideas or Articles.md`
-- **Inputs:** Ideas or source articles
-- **Outputs:** Go-to-market presentation deck
-
-### Backport to Public Repo
-- **File:** `12_Workflows/Workflow - Backport Private Learnings to Public Repo via Pull Request.md`
-- **Inputs:** Private vault learnings to share
-- **Outputs:** Pull request to public repo
-
-### Weekly Workspace Hygiene Review
-- **File:** `12_Workflows/Workflow - Weekly Workspace Hygiene Review.md`
-- **Inputs:** Recent file changes, workspace scope, Git status, active project state
-- **Outputs:** Weekly hygiene proposal, safe archive recommendations, lifecycle metadata recommendations
+## System Dependencies
+External software some skills and tools require (pandoc, WeasyPrint, Node + Playwright, Pillow) is documented in `14_Guides/Guide - System Dependencies.md`. Run `python3 15_Skills/tools/check_dependencies.py` to verify everything is installed on a new machine.

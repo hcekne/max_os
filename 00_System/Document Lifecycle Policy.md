@@ -9,50 +9,45 @@ tags: [policy, lifecycle, hygiene, files, metadata]
 # Document Lifecycle Policy
 
 ## Purpose
-Keep the active Max OS workspace focused on current operating material while preserving historical context through archive folders and Git history.
+Define the lifecycle decision model for files in Max OS.
 
-## Core Principle
-Active workspace = current operating surface.
-Archive = historically useful but not actively needed.
-Rubbish Bin = short-retention holding area for clear delete candidates.
-Git history = full preservation layer.
-Lifecycle metadata = structured expiry and review logic.
-Agent hygiene skill = recurring cleanup intelligence.
+## Lifecycle Model
+- `active` = current operating surface.
+- `archive` = no longer active, but still useful for history or retrieval.
+- `rubbish bin` = no longer active, low-value, and likely deleteable after a short hold.
+- `git history` = the preservation layer behind all of the above.
+- If classification is unclear, do not move the file. Mark it as `NEEDS_HUMAN_REVIEW` in a proposal.
 
 ## Lifecycle Metadata
-Use YAML frontmatter for files where lifecycle state matters. Do not add metadata blindly to every note.
+Use YAML frontmatter when it improves later cleanup judgment. Do not add lifecycle metadata blindly to every file.
 
-Recommended schema:
+Recommended lifecycle fields:
 
 ```yaml
----
-title:
-type:
 status:
-project:
-created:
-last_reviewed:
+lifecycle:
+canonical:
+version_family:
+supersedes:
+superseded_by:
 valid_until:
 review_after:
 archive_after:
 delete_after:
-lifecycle:
-canonical:
-supersedes:
-superseded_by:
 retention_policy:
 confidentiality:
----
 ```
 
+Add normal note metadata separately as needed.
+
 ## Allowed Lifecycle Values
-- `evergreen` - lasting reference material that remains useful beyond the original project or event.
+- `evergreen` - lasting reference material.
 - `active` - currently relevant working material.
-- `temporary` - working, scratch, generated, or task-specific material with expected expiry.
+- `temporary` - working, scratch, generated, or task-specific material.
 - `expired` - tied to a date, meeting, phase, or event that has passed.
 - `superseded` - replaced by a newer, final, or canonical file.
-- `archive` - historically useful but no longer part of the active operating surface.
-- `delete_candidate` - likely removable after explicit approval because Git preserves history and no active/final value remains.
+- `archive` - historically useful but no longer active.
+- `delete_candidate` - likely removable after the rubbish-bin hold period.
 
 ## Allowed Status Values
 - `draft`
@@ -67,7 +62,7 @@ confidentiality:
 - `keep` - retain indefinitely in active or archive location.
 - `review` - review on or after a specified date.
 - `archive` - move out of active surface when no longer current.
-- `delete_after_review` - eligible for deletion only after explicit approval.
+- `delete_after_review` - eligible for deletion through the rubbish-bin purge path.
 - `preserve_final_only` - retain final/submitted file and retire intermediates.
 - `preserve_canonical_only` - retain canonical file and retire duplicates or old working versions.
 
@@ -78,62 +73,25 @@ confidentiality:
 - `public_template_safe`
 
 ## When to Add Metadata
-Add lifecycle metadata when it improves future agent judgment, especially for:
-- event prep
-- meeting prep
-- draft deliverables
-- versioned deliverable packs
-- generated HTML, PDF, and DOCX exports
-- build scripts and support files for generated packs
-- interview prep and completed interview summaries
-- temporary research
-- project-specific scratch files
-- files with obvious expiry dates
-- files with many versions
-- files likely to be superseded
+Add lifecycle metadata when it improves future agent judgment, especially for event prep, draft deliverables, temporary research, project-specific scratch files, files with obvious expiry dates, and files with many versions.
+
+For version families, add `version_family` when the relationship may stop being obvious after later restructuring from a single file into a folder or bundle.
 
 ## Classification Rules
-- Canonical files should be marked `status: canonical`, `lifecycle: active`, and `canonical: true` where useful.
-- Final deliverables should be marked `status: final`, `retention_policy: keep`, and should not be moved or deleted without explicit approval.
-- Event prep should have `valid_until` or `archive_after` based on the event date.
-- Draft series should identify the current/canonical version and mark older drafts as `superseded` before archiving.
-- Client-provided files, contracts, invoices, submitted documents, legal/commercial files, and final deliverables are high-retention by default.
-- If classification is uncertain, use `NEEDS_HUMAN_REVIEW` in proposals rather than changing the file.
+- Keep a file active when it is current, canonical, final, or still needed for execution.
+- Archive a file when it is no longer active but still useful for history, reasoning, retrieval, or later review.
+- Use the rubbish bin when a file is clearly superseded, stale, low-value, and likely safe to purge after a short hold.
+- Final deliverables, client-provided source material, contracts, invoices, submitted documents, and legal or commercial files are high-retention by default.
+- If a file is ambiguous, do not force classification. Keep it active or propose `NEEDS_HUMAN_REVIEW`.
 
-## Versioned Deliverables
-Versioned deliverables should not all remain active indefinitely.
+## Common Metadata Patterns
+- Mark canonical files with `status: canonical`, `lifecycle: active`, and `canonical: true` when useful.
+- Mark final deliverables with `status: final` and `retention_policy: keep`.
+- Use `valid_until` or `archive_after` for date-bound prep.
+- Use `superseded_by` and `delete_after` when retiring old versions into the rubbish bin.
+- Use `retention_policy: preserve_canonical_only` or `preserve_final_only` for obvious version families.
 
-Recommended handling:
-- mark the current/final version as canonical or final;
-- preserve final/submitted files with `retention_policy: keep`;
-- archive older numbered versions once the canonical/final version is confirmed;
-- mark older drafts with `superseded_by` where useful;
-- treat generated exports (`.docx`, `.pdf`, `.html`) as outputs from canonical Markdown unless explicitly submitted as final deliverables.
-
-## Interview and Event Materials
-Interview and event files should be lifecycle-aware:
-- upcoming prep can stay active until the event date;
-- expired prep should be archived after the meeting;
-- completed interview summaries can stay active while synthesis is underway;
-- raw transcripts should move out of inbox root after processing;
-- generated interview packs should be archived or kept with the relevant project phase, not left as loose root files.
-
-## Generated Artifact Lifecycle
-Generated files are useful, but they should not obscure canonical Markdown.
-
-Use these defaults:
-- Markdown source and project state remain canonical.
-- HTML/PDF/DOCX exports are generated unless marked final/submitted.
-- Build scripts and CSS used for generated packs should live with the pack or in a tooling folder.
-- Python bytecode and runtime cache files should never be committed.
-- Generated scratch experiments should be delete candidates after review.
-
-## Agent Responsibilities
-Agents should:
-1. Prefer updating canonical files over creating uncontrolled new versions.
-2. Mark temporary and event-specific files with expiry or review metadata when useful.
-3. Propose archive/delete actions before applying them.
-4. Use Git as the preservation layer, not as an excuse for uncontrolled active-folder bloat.
-5. Never delete files without explicit approval.
-6. Use `16_Cleaning/Archive/` for historical retention and `16_Cleaning/Rubbish Bin/` only for clear delete candidates.
-7. Use [[00_System/Rubbish Bin Policy]] for bin guardrails and purge rules.
+## Policy Boundaries
+- Use [[00_System/Archive Policy]] for archive structure and archive moves.
+- Use [[00_System/Rubbish Bin Policy]] for bin guardrails and purge rules.
+- Use [[00_System/Git Preservation Policy]] for Git-specific cleanup behavior.

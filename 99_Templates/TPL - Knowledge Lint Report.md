@@ -1,3 +1,9 @@
+---
+type: template
+status: active
+tags: [template, lint, quality-gate]
+---
+
 # Knowledge Lint Report - YYYY-MM-DD
 
 ## Scope

@@ -268,9 +268,30 @@ def collect_headings(path: Path) -> dict[str, set[str]]:
     return {"text": headings, "slug": slugs}
 
 
+def is_content_fragment(path: Path, root: Path) -> bool:
+    """Files that are slide fragments, generated assemblies, transcripts, or raw captures.
+
+    These are not standalone documents and should not be lint-checked for heading
+    structure (MD001 no-headings, MD005 duplicate-headings).
+    """
+    if path.name == ".instructions.md":
+        return True
+    rel_parts = rel(path, root).parts
+    if any(part in {"_gallery", "decks"} for part in rel_parts):
+        return True
+    if "16_Cleaning" in rel_parts and "Rubbish Bin" in rel_parts:
+        return True
+    name = path.name
+    if name == "99_full_pack.md":
+        return True
+    if name.startswith("Source - ") or name.startswith("Deck Digest - "):
+        return True
+    return False
+
+
 def lint_headings(path: Path, root: Path, lines: list[str]) -> list[Issue]:
     issues: list[Issue] = []
-    if path.name == ".instructions.md":
+    if is_content_fragment(path, root):
         return issues
     headings: list[tuple[int, int, str]] = []
     for line_number, line in iter_content_lines(lines):
@@ -360,13 +381,21 @@ def resolve_wiki(
         return [current_path], "self"
     if "/" in note:
         normalized = note.removesuffix(".md").lower()
-        candidates = []
+        candidates: list[Path] = []
         directory_candidate = root / note
         if directory_candidate.exists() and directory_candidate.is_dir():
             candidates.append(directory_candidate)
         for key in (normalized, f"{normalized}.md"):
             if key in by_path:
                 candidates.append(by_path[key])
+        if not candidates:
+            suffix_md = f"/{normalized}.md"
+            suffix = f"/{normalized}"
+            seen: set[Path] = set()
+            for key, file_path in by_path.items():
+                if (key.endswith(suffix_md) or key.endswith(suffix)) and file_path not in seen:
+                    seen.add(file_path)
+                    candidates.append(file_path)
         return candidates, "path"
     directory_candidate = root / note
     if directory_candidate.exists() and directory_candidate.is_dir():

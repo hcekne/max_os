@@ -16,18 +16,17 @@ Run planning and review loops across horizons so daily execution stays aligned w
 3. Compare plan vs actual (what was done, what slipped, why).
 4. Capture lessons in [[00_System/Planning Memory]].
 5. Draft next weekly plan aligned to current quarterly plan.
-6. Run lightweight workspace hygiene in `PLAN_ONLY` when recent work created many drafts, exports, inbox captures, or generated files.
-7. Run changed-file knowledge lint if the week included substantial note creation, system changes, or inbox processing.
-8. Confirm workload buffer for incoming/unplanned work.
+6. Confirm workload buffer for incoming/unplanned work.
+7. Run [[Workflow - Weekly Workspace Hygiene Review]] in `PLAN_ONLY` for recent files and high-bloat active project folders.
 
 ## Monthly Session (45-60 min)
 1. Review the month across weekly plans/reviews and daily highlights.
 2. Identify execution patterns (what repeated and why).
 3. Capture process improvements in [[00_System/Planning Memory]].
 4. Update operating rules for next month.
-5. Run note hygiene in `11_Notes`: consolidate duplicates, archive historically useful superseded notes to `16_Cleaning/Archive/11_Notes`, move clear delete candidates to `16_Cleaning/Rubbish Bin/11_Notes`, and keep active index lists clean.
-6. Run monthly workspace hygiene using `12_Workflows/Workflow - Weekly Workspace Hygiene Review.md` as the operating loop and `15_Skills/Skill - Workspace Hygiene and File Lifecycle Review.md` as the executable review skill.
-7. Run full or high-bloat-folder knowledge lint and capture unresolved issues in a report if warnings are too noisy to fix immediately.
+5. Run note hygiene in `11_Notes` using the Note Lifecycle and Archive Protocol in [[00_System/LLM Operating Manual]] plus the lifecycle policies in `00_System/`.
+6. Run a deeper workspace hygiene review for large project/content folders and prepare archive/delete proposals.
+7. Review [[00_System/Recurring Operations]] and retire ended rows or stale control-surface references.
 
 ## Quarterly Session (60-90 min)
 1. Review the quarter plan in `09_Planning/Quarterly`.
@@ -52,9 +51,12 @@ Run planning and review loops across horizons so daily execution stays aligned w
 - Monthly due when calendar month changes.
 - Quarterly due when calendar quarter changes.
 - Yearly due when calendar year changes.
-- Workspace hygiene lightweight review runs weekly in `PLAN_ONLY` when file bloat signals are present.
-- Workspace hygiene deep review runs monthly, at project closeout, and after major deliverables.
-- Knowledge lint runs before commits that change canonical Markdown and during monthly hygiene.
+- When multiple reviews are due, run them in order: yearly -> quarterly -> monthly -> weekly.
+
+## Operational Recurrence (Non-negotiable)
+- The canonical source for standing operational reminders is [[00_System/Recurring Operations]].
+- On session start, surface only obligations marked `active` whose valid window includes today.
+- During monthly review and project closeout, retire ended obligations and remove stale hardcoded references from global control files.
 
 ## Copilot Review Prompt (use in session)
 - "Read this weekly plan, the linked daily notes for that week, and `00_System/Planning Memory.md`. Compare planned vs actual, propose 3 process improvements, append improvements to Planning Memory, then draft next week plan aligned to the active quarterly plan."

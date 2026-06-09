@@ -1,0 +1,41 @@
+<section class="slide slide--iceberg" data-slide="{{slide_number}}">
+  <header class="slide__header">
+    <div class="slide__eyebrow">{{eyebrow}}</div>
+    <div class="slide__page-number">{{slide_number}} / {{slide_count}}</div>
+  </header>
+  <h1 class="slide__title">{{title}}</h1>
+  {{subtitle_block}}
+  <div class="slide__body">
+    <div class="iceberg-row">
+      <div class="iceberg-visual">
+        <svg viewBox="0 0 320 360" class="iceberg-svg" preserveAspectRatio="xMidYMid meet">
+          <!-- Above-water peak -->
+          <polygon class="iceberg-svg__top" points="160,30 220,150 100,150" />
+          <!-- Waterline -->
+          <line class="iceberg-svg__waterline" x1="0" y1="155" x2="320" y2="155" />
+          <!-- Below-water mass -->
+          <polygon class="iceberg-svg__bottom" points="100,160 220,160 290,260 250,340 70,340 30,260" />
+          <text x="160" y="155" class="iceberg-svg__waterlabel" text-anchor="middle">WATERLINE</text>
+        </svg>
+      </div>
+      <div class="iceberg-content">
+        <div class="iceberg-band iceberg-band--top">
+          <div class="iceberg-band__label">{{visible_label}}</div>
+          <div class="iceberg-band__headline">{{visible_headline}}</div>
+          <div class="iceberg-band__body">{{visible_body_md}}</div>
+        </div>
+        <div class="iceberg-band iceberg-band--bottom">
+          <div class="iceberg-band__label">{{hidden_label}}</div>
+          <div class="iceberg-band__headline">{{hidden_headline}}</div>
+          <div class="iceberg-band__body">{{hidden_body_md}}</div>
+        </div>
+      </div>
+    </div>
+    {{kicker_block}}
+  </div>
+  <footer class="slide__footer">
+    <div>{{footer_left}}</div>
+    <div>{{footer_right}}</div>
+  </footer>
+  <div class="notes">{{notes}}</div>
+</section>

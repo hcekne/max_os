@@ -1,0 +1,38 @@
+<section class="slide slide--framework-2x2" data-slide="{{slide_number}}">
+  <header class="slide__header">
+    <div class="slide__eyebrow">{{eyebrow}}</div>
+    <div class="slide__page-number">{{slide_number}} / {{slide_count}}</div>
+  </header>
+  <h1 class="slide__title">{{title}}</h1>
+  {{subtitle_block}}
+  <div class="slide__body">
+    <div class="quad-matrix">
+      <div class="quad-y-axis-label">{{y_axis}}</div>
+      <div class="quad-grid">
+        <div class="quad-cell quad-cell--tl">
+          <div class="quad-label">{{q_tl_title}}</div>
+          <div class="quad-body">{{q_tl_body_md}}</div>
+        </div>
+        <div class="quad-cell quad-cell--tr">
+          <div class="quad-label">{{q_tr_title}}</div>
+          <div class="quad-body">{{q_tr_body_md}}</div>
+        </div>
+        <div class="quad-cell quad-cell--bl">
+          <div class="quad-label">{{q_bl_title}}</div>
+          <div class="quad-body">{{q_bl_body_md}}</div>
+        </div>
+        <div class="quad-cell quad-cell--br">
+          <div class="quad-label">{{q_br_title}}</div>
+          <div class="quad-body">{{q_br_body_md}}</div>
+        </div>
+      </div>
+      <div class="quad-x-axis-label">{{x_axis}}</div>
+    </div>
+    {{kicker_block}}
+  </div>
+  <footer class="slide__footer">
+    <div>{{footer_left}}</div>
+    <div>{{footer_right}}</div>
+  </footer>
+  <div class="notes">{{notes}}</div>
+</section>
