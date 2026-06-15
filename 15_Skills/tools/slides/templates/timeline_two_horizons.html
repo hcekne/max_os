@@ -1,0 +1,33 @@
+<section class="slide slide--timeline-horizons" data-slide="{{slide_number}}">
+  <header class="slide__header">
+    <div class="slide__eyebrow">{{eyebrow}}</div>
+    <div class="slide__page-number">{{slide_number}} / {{slide_count}}</div>
+  </header>
+  <h1 class="slide__title">{{title}}</h1>
+  {{subtitle_block}}
+  <div class="slide__body">
+    <div class="horizons-row">
+      <div class="horizon horizon--now">
+        <div class="horizon__label">{{now_label}}</div>
+        <div class="horizon__timeframe">{{now_timeframe}}</div>
+        <div class="horizon__body">{{now_body_md}}</div>
+      </div>
+      <div class="horizon horizon--next">
+        <div class="horizon__label">{{next_label}}</div>
+        <div class="horizon__timeframe">{{next_timeframe}}</div>
+        <div class="horizon__body">{{next_body_md}}</div>
+      </div>
+      <div class="horizon horizon--later">
+        <div class="horizon__label">{{later_label}}</div>
+        <div class="horizon__timeframe">{{later_timeframe}}</div>
+        <div class="horizon__body">{{later_body_md}}</div>
+      </div>
+    </div>
+    {{kicker_block}}
+  </div>
+  <footer class="slide__footer">
+    <div>{{footer_left}}</div>
+    <div>{{footer_right}}</div>
+  </footer>
+  <div class="notes">{{notes}}</div>
+</section>

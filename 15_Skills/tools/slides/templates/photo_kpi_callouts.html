@@ -1,0 +1,35 @@
+<section class="slide slide--photo-kpi" data-slide="{{slide_number}}">
+  <header class="slide__header">
+    <div class="slide__eyebrow">{{eyebrow}}</div>
+    <div class="slide__page-number">{{slide_number}} / {{slide_count}}</div>
+  </header>
+  <h1 class="slide__title">{{title}}</h1>
+  {{subtitle_block}}
+  <div class="slide__body">
+    <div class="photo-kpi-row">
+      <div class="photo-kpi__image" style="background-image: url('{{photo_image}}');">
+        <div class="photo-kpi__caption">{{photo_caption}}</div>
+      </div>
+      <div class="photo-kpi__numbers">
+        <div class="photo-kpi__number">
+          <div class="photo-kpi__number-value">{{kpi_1_value}}</div>
+          <div class="photo-kpi__number-label">{{kpi_1_label}}</div>
+        </div>
+        <div class="photo-kpi__number">
+          <div class="photo-kpi__number-value">{{kpi_2_value}}</div>
+          <div class="photo-kpi__number-label">{{kpi_2_label}}</div>
+        </div>
+        <div class="photo-kpi__number">
+          <div class="photo-kpi__number-value">{{kpi_3_value}}</div>
+          <div class="photo-kpi__number-label">{{kpi_3_label}}</div>
+        </div>
+      </div>
+    </div>
+    {{kicker_block}}
+  </div>
+  <footer class="slide__footer">
+    <div>{{footer_left}}</div>
+    <div>{{footer_right}}</div>
+  </footer>
+  <div class="notes">{{notes}}</div>
+</section>

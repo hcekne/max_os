@@ -1,0 +1,32 @@
+<section class="slide slide--venn" data-slide="{{slide_number}}">
+  <header class="slide__header">
+    <div class="slide__eyebrow">{{eyebrow}}</div>
+    <div class="slide__page-number">{{slide_number}} / {{slide_count}}</div>
+  </header>
+  <h1 class="slide__title">{{title}}</h1>
+  {{subtitle_block}}
+  <div class="slide__body">
+    <div class="venn-stage">
+      <div class="venn-diagram">
+        <div class="venn-circle venn-circle--left">
+          <div class="venn-circle__title">{{left_title}}</div>
+          <div class="venn-circle__body">{{left_body_md}}</div>
+        </div>
+        <div class="venn-circle venn-circle--right">
+          <div class="venn-circle__title">{{right_title}}</div>
+          <div class="venn-circle__body">{{right_body_md}}</div>
+        </div>
+        <div class="venn-intersection">
+          <div class="venn-intersection__title">{{sweet_spot_title}}</div>
+          <div class="venn-intersection__body">{{sweet_spot_body_md}}</div>
+        </div>
+      </div>
+    </div>
+    {{kicker_block}}
+  </div>
+  <footer class="slide__footer">
+    <div>{{footer_left}}</div>
+    <div>{{footer_right}}</div>
+  </footer>
+  <div class="notes">{{notes}}</div>
+</section>

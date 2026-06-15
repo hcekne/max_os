@@ -1,0 +1,48 @@
+<section class="slide slide--storyboard" data-slide="{{slide_number}}">
+  <header class="slide__header">
+    <div class="slide__eyebrow">{{eyebrow}}</div>
+    <div class="slide__page-number">{{slide_number}} / {{slide_count}}</div>
+  </header>
+  <h1 class="slide__title">{{title}}</h1>
+  {{subtitle_block}}
+  <div class="slide__body">
+    <div class="storyboard">
+      <div class="storyboard-panel">
+        <div class="storyboard-panel__frame" style="background-image: url('{{p1_image}}');">
+          <div class="storyboard-panel__num">01</div>
+        </div>
+        <div class="storyboard-panel__caption">{{p1_caption_md}}</div>
+      </div>
+      <div class="storyboard-panel">
+        <div class="storyboard-panel__frame" style="background-image: url('{{p2_image}}');">
+          <div class="storyboard-panel__num">02</div>
+        </div>
+        <div class="storyboard-panel__caption">{{p2_caption_md}}</div>
+      </div>
+      <div class="storyboard-panel">
+        <div class="storyboard-panel__frame" style="background-image: url('{{p3_image}}');">
+          <div class="storyboard-panel__num">03</div>
+        </div>
+        <div class="storyboard-panel__caption">{{p3_caption_md}}</div>
+      </div>
+      <div class="storyboard-panel">
+        <div class="storyboard-panel__frame" style="background-image: url('{{p4_image}}');">
+          <div class="storyboard-panel__num">04</div>
+        </div>
+        <div class="storyboard-panel__caption">{{p4_caption_md}}</div>
+      </div>
+      <div class="storyboard-panel">
+        <div class="storyboard-panel__frame" style="background-image: url('{{p5_image}}');">
+          <div class="storyboard-panel__num">05</div>
+        </div>
+        <div class="storyboard-panel__caption">{{p5_caption_md}}</div>
+      </div>
+    </div>
+    {{kicker_block}}
+  </div>
+  <footer class="slide__footer">
+    <div>{{footer_left}}</div>
+    <div>{{footer_right}}</div>
+  </footer>
+  <div class="notes">{{notes}}</div>
+</section>

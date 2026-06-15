@@ -1,35 +1,38 @@
 # LLM Operating Manual
 
-This file is the primary instruction set for any AI working inside Max OS.
+This file is the primary instruction set for any AI working inside Max OS — whether operating **on behalf of** a human owner or **as** a pure-AI owner.
 
-## Audience
-- LLMs only.
-- Human users should start in `README.md`.
+## Audience & Owner Mode
+- Written for the AI operating in this vault. Humans can read it too; for orientation start in `README.md`.
+- Max OS is owner-neutral. Check `actor_type` in [[00_System/Actor Profile]] before acting:
+  - **`human`** — the workspace is a cooperation between a human mind and an LLM. The human is principal and holds final authority; you recall, draft, structure, and execute against these notes. Surface options and defer decisions that are the human's to make.
+  - **`ai`** — you (or the agent you serve) are the principal owner. Act within the autonomy level and escalation rules recorded in the Actor Profile, and use the vault as your persistent memory.
+
+## Identity & Memory
+The control surfaces in `00_System/` are this actor's persistent memory across sessions — see [[00_System/AI Actor & Memory Model]] for the full model. In short: `Actor Profile` is identity, `System State` is working memory, `Session Log` is episodic memory, `Planning Memory` is learned memory. Read them at session start to recover state; write them to persist it.
 
 ## Mandatory Read Set (in order)
 0. Run `sh 15_Skills/tools/ensure_local_setup.sh`
-1. [[00_System/System State]]
-2. [[00_System/Planning Cadence]]
-3. [[00_System/Planning Memory]]
-4. [[00_System/Indexes]]
-5. Active goals in `13_Goals/` (if any)
+1. [[00_System/Actor Profile]] — confirm owner type and operating mode
+2. [[00_System/System State]]
+3. [[00_System/Planning Cadence]]
+4. [[00_System/Planning Memory]]
+5. [[00_System/Indexes]]
+6. Active goals in `13_Goals/` (if any)
 
 ## Session Start Algorithm
 1. Run `sh 15_Skills/tools/ensure_local_setup.sh`.
 2. If local setup fails, report the blocker before editing files.
 3. Read `System State`.
 4. Resolve today's local date.
-5. If `last_interaction_date` is not today, update it and append a session log line.
-6. Compute due reviews from canonical last-review dates:
-   - Weekly due if 7+ days since `last_weekly_review_date`
-   - Monthly due if month changed since `last_monthly_review_date`
-   - Quarterly due if quarter changed since `last_quarterly_review_date`
-   - Yearly due if year changed since `last_yearly_review_date`
-7. Run due items in order: yearly -> quarterly -> monthly -> weekly.
-8. If `10_Inbox/` has pending captures, process them.
-9. Align today's daily plan with active goals in `13_Goals/`.
-10. Surface workspace hygiene review when weekly/monthly cadence or visible file bloat signals call for it.
-11. Propose next 1-3 concrete actions.
+5. Check recurring obligations using [[00_System/Recurring Operations]]. Surface only active rows whose valid window includes today.
+6. If `last_interaction_date` is not today, update it in [[00_System/System State]] and append a dated bullet to [[00_System/Session Log]].
+7. Compute due reviews using the trigger rules in [[00_System/Planning Cadence]].
+8. Run due reviews in the order defined in [[00_System/Planning Cadence]].
+9. If `10_Inbox/` has pending captures, process them.
+10. Align today's daily plan with active goals in `13_Goals/`.
+11. Pull due items from `08_Todos/` and place today's must-do subset in the daily note.
+12. Propose next 1-3 concrete actions.
 
 ## Local Setup Protocol
 Purpose: ensure each clone has the local Git hook and quality-gate tooling active before agents work in it.
@@ -44,6 +47,58 @@ At the start of work:
 
 The script is safe to run repeatedly. It checks `python3`, verifies required files, installs or repairs `core.hooksPath=.githooks`, ensures `.githooks/pre-commit` is executable, and writes the ignored local status file.
 
+## Note Lifecycle and Archive Protocol
+Purpose: keep `11_Notes/` high-signal and reduce redundancy for both humans and AI.
+
+When to run:
+- During monthly review cycles, or when multiple notes cover the same topic.
+
+Archive trigger conditions (any):
+- A newer canonical note supersedes older notes.
+- A note is mostly duplicated by another active note.
+- A draft/synthesis is no longer needed as an active working note.
+
+Archive process:
+1. Pick one canonical active note to keep in `11_Notes/` root.
+2. Move historically useful superseded notes to `16_Cleaning/Archive/11_Notes/`.
+3. Move clearly stale or low-value superseded notes to `16_Cleaning/Rubbish Bin/11_Notes/`.
+4. Set lifecycle metadata in moved notes.
+5. Add a short "Archive status" pointer to the canonical note when useful.
+6. Remove moved notes from active index lists.
+7. Update major goals/projects to reference the canonical note only.
+
+Guardrails:
+- Preserve history, but keep active strategy surfaces minimal.
+- Prefer archiving over deletion unless explicitly requested.
+- Avoid creating extra system files for each cleanup; update existing indexes/manuals instead.
+
+## Workspace Hygiene and File Lifecycle Protocol
+Purpose: keep the full Max OS workspace clean, not only `11_Notes/`.
+
+When to run:
+- Weekly in `PLAN_ONLY` mode for recent files and high-bloat folders.
+- Monthly for deeper project/content cleanup proposals.
+- At project closeout, before major deliverables, and after major milestones.
+
+Primary instructions:
+- [[Skill - Workspace Hygiene and File Lifecycle Review]]
+- [[Workflow - Weekly Workspace Hygiene Review]]
+- [[00_System/Document Lifecycle Policy]]
+- [[00_System/Archive Policy]]
+- [[00_System/Rubbish Bin Policy]]
+- [[00_System/Git Preservation Policy]]
+
+Guardrails:
+- Do not delete files outside the narrow rubbish-bin purge path.
+- Check Git status before moves, deletes, or bulk metadata changes.
+- Prefer updating canonical files over creating uncontrolled versions.
+- Flag root-level markdown files outside the allowed control-file set as hygiene candidates, especially empty files and numbered folder-mirror files.
+- Use `16_Cleaning/Archive/` for historically useful material.
+- Use `16_Cleaning/Rubbish Bin/` for clearly stale, superseded, or low-value material that should be purged quickly.
+- Use Git history as the full preservation layer.
+- Classify uncertain files as `NEEDS_HUMAN_REVIEW`.
+- Treat final deliverables, contracts, submitted documents, invoices, legal/commercial documents, and client-provided materials as high-retention.
+
 ## Inbox Processing Algorithm
 1. Scan `10_Inbox/` newest-to-oldest, using direct directory listings before relying on globbed search.
 2. Route each item to one destination: people, organization, client, project, interaction, content, or todo.
@@ -51,9 +106,38 @@ The script is safe to run repeatedly. It checks `python3`, verifies required fil
 4. Merge factual updates into canonical notes.
 5. Extract explicit tasks into `08_Todos/` or today's daily note.
 6. Add cross-links between touched notes.
-7. Move processed raw captures out of active inbox roots.
-8. Use `16_Cleaning/Rubbish Bin/10_Inbox/` as the default destination for low-retention processed captures; use `16_Cleaning/Archive/10_Inbox/` when the raw source has historical value.
-9. Do not leave already-routed article drafts, transcripts, or processed captures beside active inbox items.
+7. Move each processed inbox item out of the active root of `10_Inbox/` and into `16_Cleaning/Rubbish Bin/10_Inbox/...`, mirroring the original source path after `10_Inbox/`. Do not recreate retired processed-staging folders inside the inbox.
+
+## Knowledge System Lint Protocol
+Purpose: catch broken Markdown structure before files enter the knowledge system.
+
+Default strict command:
+
+```bash
+python3 15_Skills/tools/knowledge_lint.py --root . --changed-only --fail-on error
+```
+
+Use `python3 15_Skills/tools/check_vault.py` for broader warn-only private-vault drift checks.
+
+Checks:
+- Frontmatter opens and closes correctly.
+- Known lifecycle metadata values are within policy sets.
+- Markdown heading structure is navigable.
+- `[[wiki-links]]` resolve to note files.
+- Local Markdown links resolve to existing files and anchors where practical.
+
+## Commit Quality Gate Protocol
+Purpose: make commit readiness deterministic for Max OS changes.
+
+Before committing substantial changes:
+1. Run `git status --short --branch`.
+2. Run `sh 15_Skills/tools/ensure_local_setup.sh`.
+3. Confirm `.maxos/local_setup_status.yaml` says `ready: true`.
+4. Run `python3 15_Skills/tools/maxos_quality_gate.py --root .` when preparing a review.
+5. Run `python3 15_Skills/tools/check_vault.py` for warn-only private-vault drift review.
+6. Review untracked files explicitly.
+7. Fix failures or document accepted exceptions.
+8. Do not push without explicit human approval.
 
 ## Interaction Update Algorithm
 When given an interaction note:
@@ -168,10 +252,6 @@ The local hook is stored in `.githooks/pre-commit` because `.git/hooks/` is not 
 - Treat `last_*_review_date` fields as canonical truth.
 - Keep `20_Modules/` optional unless explicitly activated in `System State`.
 - Keep one canonical active note per strategy topic when possible; archive redundant variants.
-- Use Git as the preservation layer; do not keep every intermediate draft active merely as history.
-- Run knowledge lint on changed Markdown files before committing structural knowledge-system changes.
-- Run the Max OS quality gate before committing public-template or system changes.
-- Never delete, push, or rewrite history without explicit human approval.
 
 ## Required Session Output
 1. Due reviews summary and reason.
@@ -179,3 +259,4 @@ The local hook is stored in `.githooks/pre-commit` because `.git/hooks/` is not 
 3. Inbox processing summary (if inbox had pending captures).
 4. Updated links to active plan/review notes.
 5. `System State` updates after completed review steps.
+6. Operational reminders due today from [[00_System/Recurring Operations]] (if any).

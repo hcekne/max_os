@@ -1,0 +1,28 @@
+<section class="slide slide--next-lanes" data-slide="{{slide_number}}">
+  <header class="slide__header">
+    <div class="slide__eyebrow">{{eyebrow}}</div>
+    <div class="slide__page-number">{{slide_number}} / {{slide_count}}</div>
+  </header>
+  <h1 class="slide__title">{{title}}</h1>
+  {{subtitle_block}}
+  <div class="slide__body">
+    <div class="lanes-row">
+      <div class="lane lane--this-week">
+        <div class="lane__label">{{lane_1_label}}</div>
+        <div class="lane__timeframe">{{lane_1_timeframe}}</div>
+        <div class="lane__body">{{lane_1_body_md}}</div>
+      </div>
+      <div class="lane lane--in-14">
+        <div class="lane__label">{{lane_2_label}}</div>
+        <div class="lane__timeframe">{{lane_2_timeframe}}</div>
+        <div class="lane__body">{{lane_2_body_md}}</div>
+      </div>
+    </div>
+    {{kicker_block}}
+  </div>
+  <footer class="slide__footer">
+    <div>{{footer_left}}</div>
+    <div>{{footer_right}}</div>
+  </footer>
+  <div class="notes">{{notes}}</div>
+</section>

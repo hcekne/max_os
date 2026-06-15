@@ -1,0 +1,35 @@
+<section class="slide slide--takeaway-kpis" data-slide="{{slide_number}}">
+  <header class="slide__header">
+    <div class="slide__eyebrow">{{eyebrow}}</div>
+    <div class="slide__page-number">{{slide_number}} / {{slide_count}}</div>
+  </header>
+  <div class="exhibit-label">{{exhibit_label}}</div>
+  <h1 class="slide__title">{{title}}</h1>
+  <p class="takeaway">{{subtitle}}</p>
+  <div class="slide__body">
+    <div class="kpi3-row">
+      <div class="kpi3-card">
+        <div class="kpi3-card__num">{{k1_value}}</div>
+        <div class="kpi3-card__label">{{k1_label}}</div>
+        <div class="kpi3-card__delta">{{k1_delta}}</div>
+      </div>
+      <div class="kpi3-card">
+        <div class="kpi3-card__num">{{k2_value}}</div>
+        <div class="kpi3-card__label">{{k2_label}}</div>
+        <div class="kpi3-card__delta">{{k2_delta}}</div>
+      </div>
+      <div class="kpi3-card">
+        <div class="kpi3-card__num">{{k3_value}}</div>
+        <div class="kpi3-card__label">{{k3_label}}</div>
+        <div class="kpi3-card__delta">{{k3_delta}}</div>
+      </div>
+    </div>
+    {{body}}
+  </div>
+  <div class="source-note">{{source}}</div>
+  <footer class="slide__footer">
+    <div>{{footer_left}}</div>
+    <div>{{footer_right}}</div>
+  </footer>
+  <div class="notes">{{notes}}</div>
+</section>

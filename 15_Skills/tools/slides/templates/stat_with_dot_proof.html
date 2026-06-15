@@ -1,0 +1,40 @@
+<section class="slide slide--stat-dots" data-slide="{{slide_number}}">
+  <header class="slide__header">
+    <div class="slide__eyebrow">{{eyebrow}}</div>
+    <div class="slide__page-number">{{slide_number}} / {{slide_count}}</div>
+  </header>
+  <h1 class="slide__title">{{title}}</h1>
+  {{subtitle_block}}
+  <div class="slide__body">
+    <div class="stat-dots">
+      <div class="stat-dots__stat">
+        <div class="stat-dots__num">{{stat_number}}</div>
+        <div class="stat-dots__label">{{stat_label}}</div>
+        <div class="stat-dots__caption">{{stat_caption}}</div>
+      </div>
+      <div class="stat-dots__grid" data-highlighted="{{highlighted_count}}" data-total="{{total_count}}">
+        <!-- Dots populated by an inline script below -->
+      </div>
+    </div>
+    {{kicker_block}}
+  </div>
+  <footer class="slide__footer">
+    <div>{{footer_left}}</div>
+    <div>{{footer_right}}</div>
+  </footer>
+  <div class="notes">{{notes}}</div>
+  <script>
+    (function() {
+      const grids = document.querySelectorAll('.slide[data-slide="{{slide_number}}"] .stat-dots__grid');
+      grids.forEach(grid => {
+        const total = parseInt(grid.dataset.total, 10) || 100;
+        const hi = parseInt(grid.dataset.highlighted, 10) || 0;
+        for (let i = 0; i < total; i++) {
+          const d = document.createElement('div');
+          d.className = 'stat-dots__dot' + (i < hi ? ' stat-dots__dot--on' : '');
+          grid.appendChild(d);
+        }
+      });
+    })();
+  </script>
+</section>

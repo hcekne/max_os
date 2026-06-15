@@ -4,26 +4,19 @@ Use this folder for repeatable step-by-step work processes that are **human-led*
 
 For **agent-executable** capabilities (things the AI can run autonomously), see `15_Skills/` and `SKILLS.md`.
 
-A workflow is useful when:
+## Use This Folder When
 - the same task happens often
 - you want consistent quality
-- a human drives the process with AI assisting specific steps
+- a human drives the process and AI assists selected steps
 
-Each workflow note should include:
+## Workflow Note Shape
 1. Goal
 2. Inputs
 3. Steps
 4. Outputs
 5. Quality checklist
 
-## Current workflows
-- [[Workflow - Build AI GTM Deck from Ideas or Articles]]
-- [[Workflow - Content Waterfall from Pillar Article]]
-- [[Workflow - Create a Video]]
-- [[Workflow - Meeting Prep Assistant]]
-- [[Workflow - Thought Leadership Article Lifecycle]]
-- [[Workflow - Write an Article]]
-- [[Workflow - Backport Private Learnings to Public Repo via Pull Request]]
-- [[Workflow - HTML Artifact Review]]
-- [[Workflow - Weekly Review as HTML Worklet]]
-- [[Workflow - Weekly Workspace Hygiene Review]]
+## Guidance
+- Use `99_Templates/TPL - Workflow.md` when creating a new workflow.
+- Use the folder listing as the source of truth instead of maintaining a second workflow catalog here.
+- If a workflow is promoted into a skill, mark that in the workflow note itself.

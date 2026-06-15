@@ -16,24 +16,23 @@ Use this skill when the user wants to strengthen an article with credible data p
 This skill complements [[Skill - Executive Thought Leadership Rewriter with Review Loops]] when the article structure is already strong and the missing layer is evidence, credibility, or urgency.
 
 ## Inputs
-
 ### Required
 - full article draft
 
 ### Optional
-- stakeholder or editor feedback
+- stakeholder feedback
 - intended publisher, sponsor, client, or firm context
 - preferred geographies, sectors, or source types
 - excluded organizations, competitors, or source categories
 - publication style benchmark
-- preferred limit on number of inserted data points (default: two to three)
+- preferred limit on number of inserted data points (default: 2-3)
 
 ## Start Gate
 - Do not begin evidence selection until the article draft is provided.
 - If optional inputs are missing, proceed without them.
 - Before research begins, ask whether the piece is being written for a specific firm, client, or publication and whether any organizations or source categories should be excluded.
-- Treat the named "operating lenses" below as perspectives for the same agent unless the user explicitly asks for delegated agents.
-- Default to two to three inserted proof points unless the user explicitly requests a different limit.
+- Treat the named "swarm roles" below as operating lenses, not mandatory spawned agents.
+- Default to 2-3 inserted proof points unless the user explicitly requests a different limit.
 
 ## Output Package
 1. argument map
@@ -48,18 +47,18 @@ This skill complements [[Skill - Executive Thought Leadership Rewriter with Revi
 10. short editor's note explaining how the evidence improved the article
 
 ## Operating Lenses
-- Argument Mapper: identify the thesis, core claims, and strongest insertion opportunities.
-- Research Miner: gather a broad bank of high-credibility evidence candidates.
-- Evidence Evaluator: rank candidates and select only the strongest few.
-- Narrative Integrator: rewrite the article so evidence feels native to the prose.
-- Source Validator: corroborate every chosen point directly in the original source.
-- Executive Reader: ensure the final piece still reads like premium thought leadership.
+- Argument Mapper: identify the thesis, the core claims, and the strongest insertion opportunities
+- Research Miner: gather a broad bank of high-credibility evidence candidates
+- Evidence Evaluator: rank candidates and select only the strongest few
+- Narrative Integrator: rewrite the article so evidence feels native to the prose
+- Source Validator: corroborate every chosen point directly in the original source
+- Executive Reader: ensure the final piece still reads like premium thought leadership
 
 ## Strict Rules
 - Do not overload the article with statistics.
 - Do not insert evidence just because it is interesting.
 - Every inserted data point must strengthen a core claim already present in the article.
-- Prefer evidence that is credible, recent enough to feel current, easy to explain in one sentence, commercially meaningful, and relevant to the article's target audience.
+- Prefer evidence that is highly credible, recent enough to feel current, easy to explain in one sentence, commercially meaningful, and relevant to the article's target audience.
 - Avoid evidence that is too niche, hard to interpret, loosely related, or impressive but strategically irrelevant.
 - Rewrite surrounding sentences so the data feels embedded in the narrative, not bolted on.
 - Never rely heavily on weak, noisy, or low-credibility sources.
@@ -83,18 +82,30 @@ Prefer primary sources when available. If a secondary source reports a number, t
    - the main supporting arguments
    - the most important commercial implications
    - where evidence would materially strengthen credibility
-2. Output a short argument map and a ranked list of the five to eight strongest candidate insertion points.
+2. Output:
+   - a short argument map
+   - a ranked list of the 5-8 strongest candidate insertion points
 
 ### Phase 2 - Research Expansion
 1. Search broadly for evidence that could support the article.
 2. For each strong insertion point, gather multiple possible data points rather than stopping at the first usable number.
-3. Record source, date, exact metric, geography, and why it matters for each candidate.
-4. Build an evidence bank with at least ten possible data points where possible.
-5. Tag each candidate by relevance, credibility, recency, ease of integration, and strategic value.
+3. Record for each candidate:
+   - source
+   - date
+   - exact metric
+   - geography
+   - why it matters
+4. Build an evidence bank with at least 10 possible data points where possible.
+5. Tag each candidate by:
+   - relevance
+   - credibility
+   - recency
+   - ease of integration
+   - strategic value
 
 ### Phase 3 - Evidence Selection
 1. Rank the evidence bank against the article's core claims.
-2. Select only the best two to three data points by default.
+2. Select only the best 2-3 data points by default.
 3. Use these criteria:
    - directly supports a core claim
    - highly credible source
@@ -106,7 +117,11 @@ Prefer primary sources when available. If a secondary source reports a number, t
 
 ### Phase 4 - Integration Planning
 1. For each chosen data point, identify the best paragraph or sentence for insertion.
-2. Decide whether it should prove a claim, sharpen a commercial implication, make a sector example concrete, or increase urgency.
+2. Decide whether it should:
+   - prove a claim
+   - sharpen a commercial implication
+   - make a sector example more concrete
+   - increase urgency
 3. Decide whether surrounding text needs a light or moderate rewrite.
 
 ### Phase 5 - Narrative Integration
@@ -119,8 +134,8 @@ Prefer primary sources when available. If a secondary source reports a number, t
 1. Re-open every chosen source and corroborate the exact metric, date, geography, and context directly in the original source.
 2. If any chosen data point cannot be corroborated exactly as used in the article, discard it, replace it, and repeat validation.
 3. Continue the reselection and revalidation loop until every chosen proof point is source-verified.
-4. Review the evidence-enhanced article and confirm that:
-   - inserted data points feel natural
+4. Review the evidence-enhanced article and confirm:
+   - the inserted data points feel natural
    - the article is more credible
    - the narrative still flows
    - no paragraph feels overloaded
@@ -141,9 +156,9 @@ Prefer primary sources when available. If a secondary source reports a number, t
 ## Quality Checks
 - [ ] Article draft was provided before evidence work started
 - [ ] Argument map was completed
-- [ ] Five to eight insertion opportunities were ranked
-- [ ] Evidence bank contains ten or more candidates where possible
-- [ ] Only two to three proof points were selected unless the user requested otherwise
+- [ ] 5-8 insertion opportunities were ranked
+- [ ] Evidence bank contains 10+ candidates where possible
+- [ ] Only 2-3 proof points were selected unless the user requested otherwise
 - [ ] Every chosen proof point was corroborated in the original source
 - [ ] Any unverified point was rejected and replaced before finalization
 - [ ] Rejected candidates were explained

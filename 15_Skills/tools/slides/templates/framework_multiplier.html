@@ -1,0 +1,35 @@
+<section class="slide slide--framework-multiplier" data-slide="{{slide_number}}">
+  <header class="slide__header">
+    <div class="slide__eyebrow">{{eyebrow}}</div>
+    <div class="slide__page-number">{{slide_number}} / {{slide_count}}</div>
+  </header>
+  <h1 class="slide__title">{{title}}</h1>
+  {{subtitle_block}}
+  <div class="slide__body">
+    <div class="multiplier-row">
+      <div class="mult-factor">
+        <div class="mult-factor__label">{{factor_a_label}}</div>
+        <div class="mult-factor__value">{{factor_a_value}}</div>
+        <div class="mult-factor__note">{{factor_a_note}}</div>
+      </div>
+      <div class="mult-operator">×</div>
+      <div class="mult-factor">
+        <div class="mult-factor__label">{{factor_b_label}}</div>
+        <div class="mult-factor__value">{{factor_b_value}}</div>
+        <div class="mult-factor__note">{{factor_b_note}}</div>
+      </div>
+      <div class="mult-operator">=</div>
+      <div class="mult-result">
+        <div class="mult-result__label">{{result_label}}</div>
+        <div class="mult-result__value">{{result_value}}</div>
+        <div class="mult-result__note">{{result_note}}</div>
+      </div>
+    </div>
+    {{kicker_block}}
+  </div>
+  <footer class="slide__footer">
+    <div>{{footer_left}}</div>
+    <div>{{footer_right}}</div>
+  </footer>
+  <div class="notes">{{notes}}</div>
+</section>

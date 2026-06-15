@@ -1,0 +1,33 @@
+<section class="slide slide--matrix-bubble" data-slide="{{slide_number}}">
+  <header class="slide__header">
+    <div class="slide__eyebrow">{{eyebrow}}</div>
+    <div class="slide__page-number">{{slide_number}} / {{slide_count}}</div>
+  </header>
+  <h1 class="slide__title">{{title}}</h1>
+  <p class="takeaway">{{subtitle}}</p>
+  <div class="slide__body">
+    <div class="bubble-matrix">
+      <div class="bubble-y-axis">
+        <span class="bubble-axis-end">{{y_high}}</span>
+        <span class="bubble-axis-end">{{y_low}}</span>
+      </div>
+      <div class="bubble-plot-wrap">
+        <div class="bubble-plot">
+          <span class="bubble-cross bubble-cross--v"></span>
+          <span class="bubble-cross bubble-cross--h"></span>
+          {{body}}
+        </div>
+        <div class="bubble-x-axis">
+          <span class="bubble-axis-end">{{x_low}}</span>
+          <span class="bubble-axis-end">{{x_high}}</span>
+        </div>
+      </div>
+    </div>
+    <div class="source-note">{{source}}</div>
+  </div>
+  <footer class="slide__footer">
+    <div>{{footer_left}}</div>
+    <div>{{footer_right}}</div>
+  </footer>
+  <div class="notes">{{notes}}</div>
+</section>

@@ -28,12 +28,6 @@ tags: [archive, index]
 |---|---|---|---|
 |  |  | keep |  |
 
-## Generated Outputs Preserved
-
-| File | Source / build input | Current? | Final/submitted? | Notes |
-|---|---|---|---|---|
-|  |  | no | no |  |
-
 ## Delete Candidates Tracked Separately
 
 | File | Reason | Approval status | Related proposal |

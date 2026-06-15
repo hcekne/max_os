@@ -1,0 +1,21 @@
+---
+template: annotated_diagram
+eyebrow: "TEMPLATE: annotated_diagram"
+title: "The six surfaces the FY27 transformation actually touches"
+subtitle: "Each numbered surface maps to a workstream; the centre holds them together"
+centre_label_top: "Operating"
+centre_label_bottom: "Model"
+a1_title: "Identity layer"
+a1_body: "DMG ID connected to Permutive — the unblock everything else depends on."
+a2_title: "Subscription engine"
+a2_body: "Golden Metric v2 live; funnel intervention engine shipping interventions."
+a3_title: "AI portfolio"
+a3_body: "Four pilots through their day-90 gates; survivors embedded in routines."
+a4_title: "Ad activation"
+a4_body: "Tier-3 geo-targeting live; PMP growth as a named commercial lever."
+a5_title: "Content backbone"
+a5_body: "Metadata + rights infrastructure modernised; foundation for everything else."
+a6_title: "Decision rights"
+a6_body: "Single DRI per surface; sponsor tie-breaker named for the cross-cutting calls."
+kicker: "**Why a diagram, not a list.** The board sees the six pieces AND how they sit around one operating-model spine. That's the half a list never tells."
+---

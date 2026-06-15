@@ -1,0 +1,53 @@
+/* theme-dmg.css — DMG media palette for the template gallery.
+ *
+ * This is a palette-and-fonts-only copy of the production DMG theme. It does
+ * NOT include the deck-specific slide selectors from the Friday read-out deck
+ * (e.g. .slide[data-slide="5"] table.quick-wins), since the gallery shows
+ * generic examples, not that deck's specific slides.
+ *
+ * Palette:
+ *   #9A4E9E  mid-purple       -> accent
+ *   #5C2F7E  deep purple      -> (reserved)
+ *   #252525  near-black       -> body text AND cover background
+ *   #9f81d0  lavender         -> cover accent
+ *   #b3b3b3  faint grey       -> page numbers
+ *   #cecece  mid grey         -> rules
+ *   #efefef  off-white        -> accent-soft
+ */
+
+@import url("https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@400;600;700;800&family=Barlow:wght@300;400;500;600;700&display=swap");
+
+:root {
+  --color-text: #252525;
+  --color-muted: #555555;
+  --color-faint: #b3b3b3;
+  --color-rule: #cecece;
+  --color-accent: #9A4E9E;
+  --color-accent-soft: #efefef;
+  --color-bg: #ffffff;
+  --color-cover-bg: #252525;
+  --color-cover-text: #ffffff;
+  --color-cover-accent: #9f81d0;
+
+  --font-sans: "Barlow", "Nunito Sans", -apple-system, "Helvetica Neue", "Inter", "Segoe UI", Helvetica, Arial, sans-serif;
+}
+
+/* Display type uses Nunito Sans so titles read like dmg's brand. */
+.slide__title,
+.title-headline,
+.section-title,
+.closing-headline,
+.slide__eyebrow,
+.title-eyebrow,
+.section-eyebrow {
+  font-family: "Nunito Sans", "Barlow", -apple-system, "Helvetica Neue", sans-serif;
+}
+
+.title-headline { line-height: 1.02; }
+
+/* Table header band: DMG-purple rule (overrides the deck.css default). */
+.slide__body th {
+  background: #efefef;
+  color: var(--color-accent);
+  border-bottom: 2px solid var(--color-accent);
+}

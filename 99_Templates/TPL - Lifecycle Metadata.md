@@ -5,6 +5,7 @@ status:
 project:
 created:
 last_reviewed:
+version_family:
 valid_until:
 review_after:
 archive_after:
@@ -24,6 +25,7 @@ Use this template as a frontmatter reference for files that need explicit lifecy
 ## Field Notes
 - `status`: draft, active, canonical, superseded, expired, archived, final
 - `lifecycle`: evergreen, active, temporary, expired, superseded, archive, delete_candidate
+- `version_family`: shared family stem for versioned files or folders
 - `canonical`: true/false
 - `supersedes`: file(s) this replaces
 - `superseded_by`: file that replaces this one

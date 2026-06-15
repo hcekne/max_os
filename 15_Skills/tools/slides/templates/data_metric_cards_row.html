@@ -1,0 +1,39 @@
+<section class="slide slide--data-metric-row" data-slide="{{slide_number}}">
+  <header class="slide__header">
+    <div class="slide__eyebrow">{{eyebrow}}</div>
+    <div class="slide__page-number">{{slide_number}} / {{slide_count}}</div>
+  </header>
+  <h1 class="slide__title">{{title}}</h1>
+  {{subtitle_block}}
+  <div class="slide__body">
+    <div class="metric-cards-row">
+      <div class="metric-card-v2">
+        <div class="metric-card-v2__value">{{m1_value}}</div>
+        <div class="metric-card-v2__label">{{m1_label}}</div>
+        <div class="metric-card-v2__note">{{m1_note}}</div>
+      </div>
+      <div class="metric-card-v2">
+        <div class="metric-card-v2__value">{{m2_value}}</div>
+        <div class="metric-card-v2__label">{{m2_label}}</div>
+        <div class="metric-card-v2__note">{{m2_note}}</div>
+      </div>
+      <div class="metric-card-v2">
+        <div class="metric-card-v2__value">{{m3_value}}</div>
+        <div class="metric-card-v2__label">{{m3_label}}</div>
+        <div class="metric-card-v2__note">{{m3_note}}</div>
+      </div>
+      <div class="metric-card-v2 metric-card-v2--optional">
+        <div class="metric-card-v2__value">{{m4_value}}</div>
+        <div class="metric-card-v2__label">{{m4_label}}</div>
+        <div class="metric-card-v2__note">{{m4_note}}</div>
+      </div>
+    </div>
+    <div class="metric-cards-context">{{context_md}}</div>
+    {{kicker_block}}
+  </div>
+  <footer class="slide__footer">
+    <div>{{footer_left}}</div>
+    <div>{{footer_right}}</div>
+  </footer>
+  <div class="notes">{{notes}}</div>
+</section>

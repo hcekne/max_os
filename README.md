@@ -1,20 +1,15 @@
 # Max OS
 
-Max OS is the system I use to run my work.
+Max OS is a plain-Markdown operating system for work.
 
-It plans across years, quarters, weeks, and days.
-It remembers people, projects, and decisions.
-It executes work as jobs.
-It never changes truth without your approval.
+It keeps plans, people, projects, notes, and inbox capture in one editable workspace.
+The rules are simple: keep canonical notes clear, keep raw capture temporary, and keep the system easy to change.
 
-Max OS is not just an assistant.
-It is an operating system.
+**The owner can be a human or an AI.** Max OS is owner-neutral:
+- A **human working with an LLM** — the system is a cooperation between a human mind and an LLM (human directs and decides; LLM recalls, drafts, and executes).
+- A **pure-AI actor** — e.g. a chief-of-staff agent booted from the public template, which uses the vault as its own persistent memory.
 
-And it is yours to edit.
-You can change the folders, templates, prompts, and rules at any time.
-This repo is a starting point, not a cage.
-
-If you can write text, you can run Max OS.
+The owner type is declared in `00_System/Actor Profile.md`, and `00_System/AI Actor & Memory Model.md` explains how the vault serves as memory across sessions.
 
 ---
 
@@ -31,107 +26,47 @@ sh 15_Skills/tools/ensure_local_setup.sh
 
 "Use this workspace as Max OS. Read `00_System/LLM Operating Manual.md`. Check `00_System/System State.md` and tell me what I should do today. Then process anything in `10_Inbox/` and give me my top 3 actions."
 
+## Core Surfaces
+- `00_System/Actor Profile.md` — who owns this workspace (human or AI) and how it operates.
+- `00_System/AI Actor & Memory Model.md` — how the vault works as the owner's persistent memory.
+- `00_System/LLM Operating Manual.md` — the canonical AI operating rules.
+- `00_System/System State.md` — current dates, active plans, and review checkpoints.
+- `00_System/Indexes.md` — where each kind of note belongs.
+- `10_Inbox/` — raw capture waiting to be processed.
+- `07_Daily/`, `08_Todos/`, `09_Planning/` — day-to-day execution and planning.
+
 ## Use with AI tools
+The canonical agent entry-point is `AGENTS.md`. Tool-specific files exist as thin wrappers so each tool finds something at its expected filename:
+- VS Code Copilot reads `.github/copilot-instructions.md`.
+- Claude Code reads `CLAUDE.md` (one-line pointer to `AGENTS.md`).
+- OpenAI Codex and other agents read `AGENTS.md` directly.
+- Setup guides live in `14_Guides/`.
 
-Most AI tools auto-discover this workspace with zero setup:
-- **VS Code Copilot** reads `.github/copilot-instructions.md` automatically.
-- **Claude Code** reads `CLAUDE.md` automatically.
-- **OpenAI Codex** reads `AGENTS.md` automatically.
-
-Or choose a setup guide for manual configuration:
-- `14_Guides/Guide - VS Code Chat.md`
-- `14_Guides/Guide - Codex CLI.md`
-- `14_Guides/Guide - Claude Code.md`
-
-## Make it yours
-- Edit any Markdown file to fit how you think and work.
-- Keep what helps, remove what doesn't.
-- Start simple, then evolve the system as your work grows.
-
-## Daily loop
-1. Capture notes during the day.
-2. Drop rough notes in `10_Inbox/` when needed.
-3. Ask AI to process inbox and propose priorities.
-4. Ask AI to update `00_System/System State.md` at the end of the session.
-
-## Workspace hygiene
-Max OS treats the active workspace as the current operating surface, archives as historical context, and Git as the full preservation layer.
-
-- Run `12_Workflows/Workflow - Weekly Workspace Hygiene Review.md` weekly or after heavy project work.
-- Use `15_Skills/Skill - Workspace Hygiene and File Lifecycle Review.md` to classify drafts, generated files, expired prep, superseded versions, canonical notes, archive candidates, and delete candidates.
-- Default to `PLAN_ONLY`; archive moves and deletions require explicit approval.
-- Keep final deliverables and canonical Markdown easy to find, while moving stale working files out of active folders.
-- Use `16_Cleaning/Archive/` for historically useful retired material and `16_Cleaning/Rubbish Bin/` for short-retention deletion candidates.
-- Use lifecycle metadata from `99_Templates/TPL - Lifecycle Metadata.md` for temporary, event-specific, superseded, and generated material when useful.
-
-## Knowledge linting
-Before committing substantial Markdown changes, run the knowledge-system lint skill to check frontmatter, headings, wiki-links, and local Markdown links:
-
-```bash
-python3 15_Skills/tools/knowledge_lint.py --root . --changed-only --fail-on error
-```
-
-For a full pre-commit quality gate:
-
-```bash
-python3 15_Skills/tools/maxos_quality_gate.py --root .
-```
-
-To make that gate run automatically before every local commit, install the versioned Git hook once per clone:
-
-```bash
-sh 15_Skills/tools/ensure_local_setup.sh
-```
-
-The setup script writes ignored local state to `.maxos/local_setup_status.yaml`. If that file is missing or says `ready: false`, the clone is not fully initialized. The hook uses `git config core.hooksPath .githooks`, so Git runs `.githooks/pre-commit` before creating a commit. A failing hook aborts the commit until the issue is fixed.
-
-For private-to-public template work, create an ignored local denylist:
-
-```bash
-cp 00_System/public_template_denylist.example.txt .maxos/public_template_denylist.txt
-```
-
-Add private names, clients, projects, and terms to that local file. The public-template quality gate uses it automatically.
-
-## Structure at a glance
-
-| Folder | Purpose |
-|--------|--------|
-| `00_System/` | AI operating rules and system state (read first) |
-| `01_People/` | One note per person (`First Last.md`) |
-| `02_Organizations/` | Company and org notes |
-| `03_Clients/` | Client folders with `Client - Name.md` |
-| `04_Projects/` | `Project - Name.md` |
-| `05_Content/` | Written content (pillar + derivatives) |
-| `06_Interactions/` | Date-first interaction notes |
-| `07_Daily/` | Daily notes |
-| `08_Todos/` | Task backlog |
-| `09_Planning/` | Weekly, Monthly, Quarterly, Two-Year plans |
-| `10_Inbox/` | Raw captures — process daily |
-| `11_Notes/` | General notes; keep active/canonical notes only |
-| `12_Workflows/` | Repeatable human-led processes |
-| `13_Goals/` | One note per major goal |
-| `14_Guides/` | Setup and usage guides |
-| `15_Skills/` | Agent-executable capabilities |
-| `16_Cleaning/` | Central archive and rubbish bin |
-| `20_Modules/` | Optional capability packs (disabled by default) |
-| `99_Templates/` | Templates for new notes |
-
-Full folder map: `00_System/Indexes.md`.
-Agent capability manifest: `SKILLS.md`.
-
-## Notes and linking
-- Max OS is plain Markdown files.
+## Working Style
+- Keep everything editable as plain Markdown.
 - Link notes with `[[Note Name]]`.
-- It works especially well in Obsidian (backlinks and graph view).
+- Keep one canonical active note per topic when practical.
+- Move stale or superseded material into `16_Cleaning/` instead of leaving it in active folders.
 
-## Markdown-first, multi-format aware
-- Markdown is the source of truth for memory, plans, people, projects, goals, workflows, skills, and system state.
-- HTML artifacts and worklets are supported for rich human-facing views, but they do not replace canonical Markdown.
-- JSON can be used for structured worklet state when needed.
-- Future harnesses can render artifacts and worklets in a middle-pane interface while keeping Max OS usable as plain files.
+## Quality Gates
+- Local setup status is written to `.maxos/local_setup_status.yaml` and ignored by Git.
+- The pre-commit hook runs `python3 15_Skills/tools/maxos_quality_gate.py --root .` before each commit after setup is installed.
+- Use `python3 15_Skills/tools/check_vault.py` for broader warn-only vault drift checks.
+- Use `.maxos/public_template_denylist.txt` for private terms that must not appear in public-template work.
 
-## Private personal copy (recommended)
-Use this repo as a public starter and keep your real notes in a private repo.
-Setup + sync instructions are in the guides:
-- `14_Guides/README.md`
+## System Dependencies
+Some skills and tools rely on software beyond Python's standard library (pandoc, WeasyPrint, Pillow, Node + Playwright). The canonical reference is `14_Guides/Guide - System Dependencies.md`, which lists every external dependency, what it is used for, the install command, and the failure mode if missing.
+
+To check what is installed and what is missing on your machine:
+
+```bash
+python3 15_Skills/tools/check_dependencies.py
+```
+
+Read `14_Guides/Guide - System Dependencies.md` before running any skill for the first time on a new machine.
+
+## More Help
+- Full folder map: `00_System/Indexes.md`
+- Skills manifest: `SKILLS.md`
+- Setup guides: `14_Guides/README.md`
+- System dependencies (mandatory pre-read on a fresh clone): `14_Guides/Guide - System Dependencies.md`

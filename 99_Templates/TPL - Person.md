@@ -1,16 +1,16 @@
 ---
 type: person
 status: active
-organization: 
-client: 
+organization:
+client:
 projects: []
-role: 
-location: 
-email: 
-phone: 
+role:
+location:
+email:
+phone:
 tags: [people]
-last_interaction: 
-next_follow_up: 
+last_interaction:
+next_follow_up:
 ---
 
 # {{title}}
@@ -19,16 +19,19 @@ next_follow_up:
 - Organization: [[]]
 - Client: [[]]
 - Role:
-- Relationship strength: 
+- Relationship strength:
 
 ## What I Know
-- 
+-
 
 ## Current Topics
-- 
+-
+
+## How I Can Add Value
+-
 
 ## Open Loops
-- [ ] 
+- [ ]
 
 ## Linked People
 - [[]]
@@ -37,4 +40,4 @@ next_follow_up:
 - See: [[06_Interactions/]]
 
 ## Next Actions
-- [ ] 
+- [ ]

@@ -1,0 +1,33 @@
+<section class="slide slide--benefits-risks" data-slide="{{slide_number}}">
+  <header class="slide__header">
+    <div class="slide__eyebrow">{{eyebrow}}</div>
+    <div class="slide__page-number">{{slide_number}} / {{slide_count}}</div>
+  </header>
+  <div class="exhibit-label">{{exhibit_label}}</div>
+  <h1 class="slide__title">{{title}}</h1>
+  <p class="takeaway">{{subtitle}}</p>
+  <div class="slide__body">
+    <div class="br-grid">
+      <div class="br-col br-col--benefits">
+        <h3 class="br-head">
+          <span class="br-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M20 6L9 17l-5-5"/></svg></span>
+          {{benefits_label}}
+        </h3>
+        {{body}}
+      </div>
+      <div class="br-col br-col--risks">
+        <h3 class="br-head">
+          <span class="br-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M12 9v4M12 17h.01"/><path d="M10.3 3.9 1.8 18a2 2 0 0 0 1.7 3h17a2 2 0 0 0 1.7-3L13.7 3.9a2 2 0 0 0-3.4 0z"/></svg></span>
+          {{risks_label}}
+        </h3>
+        {{risks_body_md}}
+      </div>
+    </div>
+  </div>
+  <div class="source-note">{{source}}</div>
+  <footer class="slide__footer">
+    <div>{{footer_left}}</div>
+    <div>{{footer_right}}</div>
+  </footer>
+  <div class="notes">{{notes}}</div>
+</section>

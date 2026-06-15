@@ -1,0 +1,46 @@
+<section class="slide slide--mountain" data-slide="{{slide_number}}">
+  <header class="slide__header">
+    <div class="slide__eyebrow">{{eyebrow}}</div>
+    <div class="slide__page-number">{{slide_number}} / {{slide_count}}</div>
+  </header>
+  <h1 class="slide__title">{{title}}</h1>
+  {{subtitle_block}}
+  <div class="slide__body">
+    <div class="mountain-row">
+      <div class="mountain-visual">
+        <svg viewBox="0 0 480 280" class="mountain-svg" preserveAspectRatio="xMidYMid meet">
+          <!-- Background distant mountains (faint) -->
+          <polygon class="mountain-svg__far" points="0,220 90,140 160,200 240,90 320,180 400,130 480,220 480,260 0,260" />
+          <!-- Main mountain silhouette -->
+          <polygon class="mountain-svg__main" points="40,260 240,40 440,260" />
+          <!-- Snow cap -->
+          <polygon class="mountain-svg__snow" points="200,90 240,40 280,90 264,108 240,86 216,108" />
+          <!-- Winding path -->
+          <path class="mountain-svg__path" d="M 70,260 Q 130,210 170,200 Q 220,190 200,150 Q 180,120 220,90 Q 240,60 240,40" fill="none" />
+          <!-- Path nodes -->
+          <circle class="mountain-svg__node" cx="70" cy="260" r="9" />
+          <text class="mountain-svg__node-label" x="70" y="265" text-anchor="middle">1</text>
+          <circle class="mountain-svg__node" cx="170" cy="200" r="9" />
+          <text class="mountain-svg__node-label" x="170" y="205" text-anchor="middle">2</text>
+          <circle class="mountain-svg__node" cx="200" cy="150" r="9" />
+          <text class="mountain-svg__node-label" x="200" y="155" text-anchor="middle">3</text>
+          <circle class="mountain-svg__node" cx="220" cy="90" r="9" />
+          <text class="mountain-svg__node-label" x="220" y="95" text-anchor="middle">4</text>
+          <!-- Summit flag -->
+          <line class="mountain-svg__flagpole" x1="240" y1="40" x2="240" y2="14" />
+          <polygon class="mountain-svg__flag" points="240,14 268,20 240,28" />
+          <text class="mountain-svg__summit-label" x="240" y="6" text-anchor="middle">{{summit_label}}</text>
+        </svg>
+      </div>
+      <div class="mountain-milestones">
+        {{body}}
+      </div>
+    </div>
+    {{kicker_block}}
+  </div>
+  <footer class="slide__footer">
+    <div>{{footer_left}}</div>
+    <div>{{footer_right}}</div>
+  </footer>
+  <div class="notes">{{notes}}</div>
+</section>

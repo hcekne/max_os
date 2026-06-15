@@ -87,12 +87,15 @@ def tracked_runtime_byproducts(root: Path) -> list[str]:
 
 
 def untracked_runtime_byproducts(root: Path) -> list[str]:
+    code, output = run(["git", "ls-files", "--others", "--exclude-standard"], root)
+    if code != 0:
+        return []
+
     bad = []
-    for path in root.rglob("*"):
-        if ".git" in path.parts:
-            continue
+    for line in output.splitlines():
+        path = Path(line)
         if path.name == "__pycache__" or path.suffix in {".pyc", ".pyo", ".pyd"}:
-            bad.append(path.relative_to(root).as_posix())
+            bad.append(path.as_posix())
     return sorted(bad)
 
 
@@ -165,7 +168,7 @@ def main() -> int:
     failures = 0
 
     if not args.skip_diff_check:
-        code, output = run(["git", "diff", "--check", "HEAD"], root)
+        code, output = run(["git", "diff", "--check", "--ignore-cr-at-eol", "HEAD"], root)
         print_section("git diff whitespace check", code == 0, output)
         failures += int(code != 0)
 

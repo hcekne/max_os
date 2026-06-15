@@ -1,0 +1,45 @@
+<section class="slide slide--framework-architecture" data-slide="{{slide_number}}">
+  <header class="slide__header">
+    <div class="slide__eyebrow">{{eyebrow}}</div>
+    <div class="slide__page-number">{{slide_number}} / {{slide_count}}</div>
+  </header>
+  <h1 class="slide__title">{{title}}</h1>
+  {{subtitle_block}}
+  <div class="slide__body">
+    <div class="arch-flow">
+      <div class="arch-flow__zone arch-flow__zone--left">
+        <div class="arch-flow__zone-label">{{left_zone_label}}</div>
+        <div class="arch-flow__box">
+          <span class="arch-flow__num">1</span>{{box_1_title}}
+        </div>
+        <div class="arch-flow__box">
+          <span class="arch-flow__num">2</span>{{box_2_title}}
+        </div>
+      </div>
+      <div class="arch-flow__zone arch-flow__zone--middle">
+        <div class="arch-flow__pipe-label">{{middle_zone_label}}</div>
+        <div class="arch-flow__pipe">
+          <span class="arch-flow__num arch-flow__num--inline">3</span>{{box_3_title}}
+        </div>
+        <div class="arch-flow__pipe">
+          <span class="arch-flow__num arch-flow__num--inline">4</span>{{box_4_title}}
+        </div>
+      </div>
+      <div class="arch-flow__zone arch-flow__zone--right">
+        <div class="arch-flow__zone-label">{{right_zone_label}}</div>
+        <div class="arch-flow__box">
+          <span class="arch-flow__num">5</span>{{box_5_title}}
+        </div>
+        <div class="arch-flow__box">
+          <span class="arch-flow__num">6</span>{{box_6_title}}
+        </div>
+      </div>
+    </div>
+    {{kicker_block}}
+  </div>
+  <footer class="slide__footer">
+    <div>{{footer_left}}</div>
+    <div>{{footer_right}}</div>
+  </footer>
+  <div class="notes">{{notes}}</div>
+</section>

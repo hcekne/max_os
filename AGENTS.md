@@ -1,130 +1,42 @@
 # Agents
 
-This workspace is **Max OS** — a personal operating system for knowledge workers built on plain Markdown. AI agents operating here should follow the instructions below.
+This workspace is **Max OS** — a plain-Markdown operating system for work. This file is the canonical entry-point for any AI agent (tool-neutral).
 
-## Quick Start
-1. Run `sh 15_Skills/tools/ensure_local_setup.sh` to verify clone-local setup.
-2. Read `00_System/LLM Operating Manual.md` for full algorithms and rules.
-3. Read `00_System/System State.md` for current dates and active plans.
-4. Read `SKILLS.md` for a manifest of executable capabilities.
+Max OS is **owner-neutral**: you may be operating **on behalf of** a human owner or **as** a pure-AI owner. Read `00_System/Actor Profile.md` first to learn which — in `human` mode the system is a cooperation between a human mind and an LLM (the human decides); in `ai` mode you are the principal and the vault is your persistent memory.
 
-## Vault Structure
+## Bootstrap (read in order)
+1. Run `sh 15_Skills/tools/ensure_local_setup.sh` — verify clone-local setup and hooks.
+2. `00_System/Actor Profile.md` — owner type and operating mode.
+3. `00_System/LLM Operating Manual.md` — primary instruction set and algorithms.
+4. `00_System/AI Actor & Memory Model.md` — how the vault works as your persistent memory.
+5. `00_System/System State.md` — canonical review dates and active surfaces.
+6. `00_System/Indexes.md` — folder and placement map.
+7. `00_System/Session Log.md` — append a dated bullet at the end of the session.
+8. `SKILLS.md` — manifest of agent-executable capabilities (read when the task needs one).
 
-| Folder | Purpose | Key Pattern |
-|--------|---------|-------------|
-| `00_System/` | AI operating rules and system state | Read first every session |
-| `01_People/` | One note per person | `First Last.md` |
-| `02_Organizations/` | Company and org notes | `Org Name.md` |
-| `03_Clients/` | Client folders | `Client - Name.md` in each folder |
-| `04_Projects/` | Active projects | `Project - Name.md` |
-| `05_Content/` | Written content | Pillar + derivative model |
-| `05_Content/Artifacts/` | Generated HTML artifacts | Source-linked, non-canonical |
-| `06_Interactions/` | Meeting/call/event notes | Date-first filenames |
-| `07_Daily/` | Daily notes | `YYYY-MM-DD.md` |
-| `08_Todos/` | Task backlog | Markdown tasks with due dates |
-| `09_Planning/` | Plans by cadence | `Weekly/`, `Monthly/`, `Quarterly/`, `Two-Year/` |
-| `10_Inbox/` | Raw captures | Process daily, route to canonical locations |
-| `11_Notes/` | General notes | Keep active/canonical notes only |
-| `12_Workflows/` | Human-led repeatable processes | Step-by-step with quality checks |
-| `13_Goals/` | Major goals | One note per goal |
-| `14_Guides/` | Setup and usage guides | For human onboarding |
-| `15_Skills/` | Agent-executable capabilities | Structured skill cards |
-| `16_Cleaning/` | Archive and rubbish bin | Mirror original source paths |
-| `17_Outbox/` | Materials staged for delivery to other actors or recipients | Symmetric to `10_Inbox/`; archive after pickup |
-| `20_Modules/` | Optional capability packs | Disabled by default |
-| `20_Modules/Worklets/` | Optional HTML worklets | Interactive, non-canonical |
-| `99_Templates/` | Templates for new notes | Used by Inbox Processing and skills |
+Per-folder rules live in each numbered folder's `.instructions.md`.
 
-## Operational Loops
-
-### Session Start
-Follow the Session Start Algorithm in `00_System/LLM Operating Manual.md`:
-1. Verify local setup with `sh 15_Skills/tools/ensure_local_setup.sh`.
-2. Read System State → resolve date → check recurring triggers.
-3. Compute due reviews → run them in order (yearly > quarterly > monthly > weekly).
-4. Process inbox if items pending.
-5. Align daily plan with active goals.
-6. Propose next 1–3 concrete actions.
-
-### Local Setup
-Max OS has clone-local setup requirements in `00_System/local_setup_requirements.yaml`.
-
-- Run `sh 15_Skills/tools/ensure_local_setup.sh` at the start of work in a clone.
-- The script installs or repairs the local Git hook configuration when needed.
-- It writes ignored local state to `.maxos/local_setup_status.yaml`.
-- If `.maxos/local_setup_status.yaml` is missing or `ready: false`, treat setup as incomplete.
-- Do not commit `.maxos/`; it is local runtime state.
-
-### Inbox Processing
-Route items from `10_Inbox/` to canonical note locations. Create missing notes from templates in `99_Templates/`. Extract tasks to `08_Todos/` or today's daily note. Cross-link everything.
-
-### Interaction Processing
-When given an interaction note: ensure all mentioned people/orgs/clients have notes, update them with key facts and dates, return a changelog.
-
-### Review Cadence
-Reviews are driven by `last_*_review_date` fields in System State. Cadence rules are in `00_System/Planning Cadence.md`. Never skip ahead — run each due review in order.
-
-### Workspace Hygiene
-Use `15_Skills/Skill - Workspace Hygiene and File Lifecycle Review.md` and `12_Workflows/Workflow - Weekly Workspace Hygiene Review.md` to keep active folders focused.
-
-- Prefer updating canonical files over creating endless new versions.
-- Mark temporary, event-specific, draft, superseded, and generated files with lifecycle metadata when useful.
-- Put scratch or generated material in scratch, artifact, proposal, or processed folders rather than active project roots.
-- Identify expiry or review dates for event-specific prep and temporary research.
-- Move historically useful stale material to `16_Cleaning/Archive/`.
-- Move clearly stale, superseded, low-retention material to `16_Cleaning/Rubbish Bin/` only when it fits `00_System/Rubbish Bin Policy.md`.
-- Archive superseded drafts after review; do not delete outside the rubbish-bin purge policy without explicit approval.
-- Treat Git as the preservation layer and active folders as the current operating surface.
-- Run `15_Skills/Skill - Knowledge System Lint and Link Check.md` on changed Markdown files before committing substantial knowledge-system changes.
-- Do not push public repo changes without explicit approval.
-- Extract reusable, non-private improvements back to the public Max OS template when appropriate.
-
-### Commit Quality Gate
-Before committing or proposing public-template changes, run `15_Skills/Skill - Pre-Commit Knowledge Quality Gate.md`.
-
-- Run `python3 15_Skills/tools/maxos_quality_gate.py --root .` for changed-file checks.
-- Run `sh 15_Skills/tools/ensure_local_setup.sh` to install or repair the local hook automatically.
-- Use `--full --public-template` before public repo commits or pull requests.
-- Use `.maxos/public_template_denylist.txt` for private terms that must not enter public-template changes.
-- Fix failures before commit unless the user explicitly accepts a documented exception.
-- Review untracked files explicitly; `git diff` does not show them.
-- Do not commit runtime byproducts such as `__pycache__/` or `*.pyc`.
-
-## Access Patterns for External Agents
-
-If you are an external agent (e.g., OpenClaw, custom bot) with partial access:
-
-- **Read first:** `00_System/`, `SKILLS.md`, `AGENTS.md`
-- **Task sources:** `08_Todos/` and `10_Inbox/` for pending work
-- **Reference data:** `01_People/`, `02_Organizations/`, `03_Clients/`, `04_Projects/`
-- **Output locations:** `07_Daily/`, `06_Interactions/`, `05_Content/`
-- **Delivery surface (for downstream actors or recipients):** `17_Outbox/`
-- **Modify with care:** `00_System/System State.md`, `13_Goals/` — only update after completing the corresponding review or action
-
-## HTML Artifacts and Worklets
-
-Max OS follows the principle: Markdown memory. HTML worklets. JSON state. Git history. Harness runtime.
-
-- Markdown remains canonical truth for memory, notes, people, projects, goals, plans, daily notes, interactions, workflows, skills, and system state.
-- HTML can be generated for rich visual artifacts and optional interactive worklets.
-- Store static HTML artifacts in `05_Content/Artifacts/`.
-- Store interactive HTML worklets in `20_Modules/Worklets/`.
-- Do not silently overwrite canonical Markdown based on generated HTML.
-- HTML artifacts should include metadata identifying source files, generated date, generator, and approval status.
-- Treat generated HTML as untrusted until reviewed.
-- Do not include secrets, tokens, credentials, hidden prompts, or private operational data in HTML.
-- Prefer self-contained HTML for portable artifacts.
-- Use sandboxed rendering when HTML is viewed in a harness.
-- Use JSON for structured runtime state; do not use HTML as the state source of truth.
-- Keep edits minimal, factual, linked, and reversible.
-
-## Rules
+## Core Rules
 - Keep edits minimal, factual, and linked.
 - Do not invent names, dates, commitments, or outcomes.
-- Use `[[Note Name]]` wiki-links.
-- Treat `last_*_review_date` fields as canonical truth.
-- One canonical note per strategy topic; archive redundant variants.
-- Avoid uncontrolled file bloat; use lifecycle metadata, proposals, archives, and Git history to retire stale working files.
-- Use `16_Cleaning/` as the central cleaning surface; do not rely on untracked empty folders.
-- Validate frontmatter, headings, wiki-links, and local Markdown links when adding or changing canonical files.
-- Run the Max OS quality gate before committing structural or public-template changes.
+- Use `[[Note Name]]` wiki-links when referencing other notes.
+- Treat `last_*_review_date` fields in `00_System/System State.md` as canonical truth.
+- Route `10_Inbox/` items into canonical notes; keep active folders focused on current work.
+- Move stale or superseded material into `16_Cleaning/` rather than deleting it.
+
+## Validation
+- Run `sh 15_Skills/tools/ensure_local_setup.sh` at session start. Missing or false `.maxos/local_setup_status.yaml` means setup is incomplete.
+- Run `python3 15_Skills/tools/check_vault.py` to surface frontmatter, wiki-link, naming, hygiene, and system-state drift. Warn-only; exits 0.
+- Run `python3 15_Skills/tools/maxos_quality_gate.py --root .` before commits or structural changes.
+- The local Git hook in `.githooks/pre-commit` runs the quality gate before every commit once setup is installed.
+- Do not commit runtime byproducts such as `__pycache__/` or `*.pyc`.
+
+## System dependencies
+Several skills need external software beyond Python's standard library (pandoc, WeasyPrint, Node + Playwright + Chromium, Pillow). Before running any skill from `SKILLS.md` on a new machine, read `14_Guides/Guide - System Dependencies.md` and run `python3 15_Skills/tools/check_dependencies.py` to verify the toolchain is in place. Do not silently degrade to a fallback path; install the missing dependency and re-run.
+
+## External Agent Access Pattern
+- Task sources: `10_Inbox/`, `08_Todos/`
+- Reference data: `01_People/`, `02_Organizations/`, `03_Clients/`, `04_Projects/`
+- Typical outputs: `07_Daily/`, `06_Interactions/`, `05_Content/`
+- Delivery surface (for downstream actors or recipients): `17_Outbox/`
+- Only modify `00_System/System State.md` and `13_Goals/` when the corresponding review or action has actually been completed.

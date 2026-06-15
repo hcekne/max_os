@@ -1,7 +1,7 @@
 ---
 type: workflow
 status: active
-owner: 
+owner:
 review_cycle: monthly
 tags: [workflow, content, article, thought-leadership]
 ---
@@ -17,10 +17,10 @@ Create high-quality thought leadership articles faster, with structured review r
 - desired outcome
 - references, examples, data points
 
-## Related Skills and Notes
+## Related Skill
 - For agent-led executive rewrites with mandatory critique loops, use [[Skill - Executive Thought Leadership Rewriter with Review Loops]].
-- For a dedicated evidence pass, use [[Skill - Evidence Finding and Narrative Integration with Validation Loops]].
-- For reusable editorial principles, see [[Note - Executive Thought Leadership Generation Principles]].
+
+## Related Notes
 
 ## Steps
 1. Create article note from `TPL - Content Pillar Article`.
@@ -60,4 +60,3 @@ Then AI should output:
 - AI-generated "accepted vs rejected" feedback table
 - AI-generated repurposing brief after final draft
 - Agent-led full rewrite using [[Skill - Executive Thought Leadership Rewriter with Review Loops]]
-- Agent-led evidence integration using [[Skill - Evidence Finding and Narrative Integration with Validation Loops]]

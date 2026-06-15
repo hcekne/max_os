@@ -7,31 +7,32 @@ review_cadence:
 
 default_actions:
   expired_event_prep: archive
-  superseded_draft: archive_or_delete_after_review
-  superseded_generated_export: archive_or_delete_after_review
-  versioned_deliverable_pack: preserve_final_archive_old_versions
+  superseded_draft: rubbish_bin
+  superseded_generated_export: rubbish_bin
+  versioned_deliverable_pack: preserve_final_rubbish_bin_old_versions
   final_deliverable: keep
   client_source_material: keep
   legal_or_commercial_document: keep
   evergreen_reference: keep
   completed_interview_summary: keep_or_archive_by_project_phase
-  raw_transcript_after_processing: move_to_processed_or_archive
-  generated_html_pdf_docx: keep_if_current_or_final_else_archive
+  raw_transcript_after_processing: move_to_rubbish_bin_after_processing
+  generated_html_pdf_docx: keep_if_current_or_final_else_rubbish_bin
   python_bytecode: do_not_track
-  generated_scratch: delete_after_review
+  generated_scratch: rubbish_bin
   unclear_value: needs_human_review
 
 archive_paths:
   default: "16_Cleaning/Archive"
-  existing_archive_ok: true
+  mirror_source_path: true
+  existing_archive_ok: false
+  rubbish_bin: "16_Cleaning/Rubbish Bin"
   scratch: "99_Scratch"
   proposals: "00_System/Proposals"
-  rubbish_bin: "16_Cleaning/Rubbish Bin"
-  inbox_processed: "16_Cleaning/Rubbish Bin/10_Inbox"
   general_notes: "16_Cleaning/Archive/11_Notes"
 
 approval_required:
   delete: true
+  delete_from_rubbish_bin_after_retention: false
   move_final_deliverable: true
   move_legal_or_commercial: true
   move_client_source_material: true
@@ -57,7 +58,10 @@ version_bloat:
     - submitted
     - client_source_material
     - legal_or_commercial
-  archive_old_versions: true
+  archive_old_versions: false
+  move_old_versions_to_rubbish_bin: true
+  canonical_rule: keep_latest_only_unless_historical_value_is_explicit
+  version_family_field: true
 
 generated_artifacts:
   generated_extensions:
@@ -71,6 +75,21 @@ generated_artifacts:
   never_track:
     - "__pycache__"
     - "*.pyc"
+
+classification_defaults:
+  confidence_threshold_for_safe_archive: high
+  uncertain_classification: NEEDS_HUMAN_REVIEW
+  deletion_requires_separate_approval: true
+  rubbish_bin_retention_days: 30
+  rubbish_bin_auto_purge: true
+  migrate_legacy_archives_incrementally: true
+
+public_extraction:
+  allow_generic_patterns: true
+  include_private_names: false
+  include_client_details: false
+  include_confidential_numbers: false
+  default_confidentiality: public_template_safe
 
 quality_gates:
   local_setup:
@@ -100,16 +119,17 @@ quality_gates:
       - wiki_links
       - local_markdown_links
       - lifecycle_metadata_values
+  private_vault_warn_only:
+    command: "python3 15_Skills/tools/check_vault.py"
+    exits_nonzero: false
   full_lint_cadence: monthly_or_before_large_commit
 
-classification_defaults:
-  confidence_threshold_for_safe_archive: high
-  uncertain_classification: NEEDS_HUMAN_REVIEW
-  deletion_requires_separate_approval: true
-
-public_extraction:
-  allow_generic_patterns: true
-  include_private_names: false
-  include_client_details: false
-  include_confidential_numbers: false
-  default_confidentiality: public_template_safe
+root_surface:
+  allowed_markdown_files:
+    - "README.md"
+    - "AGENTS.md"
+    - "CLAUDE.md"
+    - "SKILLS.md"
+  flag_root_markdown_outside_allowlist: true
+  disallow_numbered_folder_mirror_markdown: true
+  empty_root_markdown_default: delete_candidate

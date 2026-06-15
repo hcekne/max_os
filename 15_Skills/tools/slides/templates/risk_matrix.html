@@ -1,0 +1,37 @@
+<section class="slide slide--risk-matrix" data-slide="{{slide_number}}">
+  <header class="slide__header">
+    <div class="slide__eyebrow">{{eyebrow}}</div>
+    <div class="slide__page-number">{{slide_number}} / {{slide_count}}</div>
+  </header>
+  <h1 class="slide__title">{{title}}</h1>
+  {{subtitle_block}}
+  <div class="slide__body">
+    <div class="risk-row">
+      <div class="risk-matrix-box">
+        <div class="risk-matrix-box__y-label">{{y_axis}}</div>
+        <div class="risk-matrix-box__grid">
+          <div class="risk-cell risk-cell--low-low">{{cell_ll}}</div>
+          <div class="risk-cell risk-cell--mid-low">{{cell_ml}}</div>
+          <div class="risk-cell risk-cell--high-low">{{cell_hl}}</div>
+          <div class="risk-cell risk-cell--low-mid">{{cell_lm}}</div>
+          <div class="risk-cell risk-cell--mid-mid">{{cell_mm}}</div>
+          <div class="risk-cell risk-cell--high-mid">{{cell_hm}}</div>
+          <div class="risk-cell risk-cell--low-high">{{cell_lh}}</div>
+          <div class="risk-cell risk-cell--mid-high">{{cell_mh}}</div>
+          <div class="risk-cell risk-cell--high-high">{{cell_hh}}</div>
+        </div>
+        <div class="risk-matrix-box__x-label">{{x_axis}}</div>
+      </div>
+      <div class="risk-legend">
+        <div class="risk-legend__label">{{legend_label}}</div>
+        <div class="risk-legend__body">{{legend_body_md}}</div>
+      </div>
+    </div>
+    {{kicker_block}}
+  </div>
+  <footer class="slide__footer">
+    <div>{{footer_left}}</div>
+    <div>{{footer_right}}</div>
+  </footer>
+  <div class="notes">{{notes}}</div>
+</section>

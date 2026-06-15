@@ -1,0 +1,27 @@
+<section class="slide slide--data-paired" data-slide="{{slide_number}}">
+  <header class="slide__header">
+    <div class="slide__eyebrow">{{eyebrow}}</div>
+    <div class="slide__page-number">{{slide_number}} / {{slide_count}}</div>
+  </header>
+  <h1 class="slide__title">{{title}}</h1>
+  {{subtitle_block}}
+  <div class="slide__body">
+    <div class="paired-row">
+      <div class="paired-pane">
+        <div class="paired-pane__label">{{left_label}}</div>
+        <div class="paired-pane__chart">{{left_body_md}}</div>
+      </div>
+      <div class="paired-divider"></div>
+      <div class="paired-pane">
+        <div class="paired-pane__label">{{right_label}}</div>
+        <div class="paired-pane__chart">{{right_body_md}}</div>
+      </div>
+    </div>
+    {{kicker_block}}
+  </div>
+  <footer class="slide__footer">
+    <div>{{footer_left}}</div>
+    <div>{{footer_right}}</div>
+  </footer>
+  <div class="notes">{{notes}}</div>
+</section>

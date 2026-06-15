@@ -1,0 +1,29 @@
+/* theme-default.css — neutral executive palette for the template gallery.
+ *
+ * Re-declares the same defaults baked into deck.css so this file is a safe
+ * "reset" — switching back to it from theme-dmg.css restores the baseline look.
+ *
+ * Palette:
+ *   #1f4287  deep navy        -> accent (bullets, table headers, accent rules)
+ *   #0d1b3a  midnight navy    -> cover background
+ *   #c9a96e  warm gold        -> cover accent (eyebrow on cover)
+ *   #111111  near-black       -> body text
+ *   #d8d8d8  mid grey         -> rules
+ *   #888888  faint grey       -> page numbers
+ *   #e7ecf6  pale blue        -> accent-soft (table-header tint, callout fill)
+ */
+
+:root {
+  --color-text: #111111;
+  --color-muted: #555555;
+  --color-faint: #888888;
+  --color-rule: #d8d8d8;
+  --color-accent: #1f4287;
+  --color-accent-soft: #e7ecf6;
+  --color-bg: #ffffff;
+  --color-cover-bg: #0d1b3a;
+  --color-cover-text: #ffffff;
+  --color-cover-accent: #c9a96e;
+
+  --font-sans: -apple-system, "Helvetica Neue", "Inter", "Segoe UI", Helvetica, Arial, sans-serif;
+}

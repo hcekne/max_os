@@ -1,0 +1,28 @@
+<section class="slide slide--relevance-matrix" data-slide="{{slide_number}}">
+  <header class="slide__header">
+    <div class="slide__eyebrow">{{eyebrow}}</div>
+    <div class="slide__page-number">{{slide_number}} / {{slide_count}}</div>
+  </header>
+  <div class="matrix-titlebar">
+    <div class="matrix-titlebar__heading">
+      <h1 class="slide__title">{{title}}</h1>
+      {{subtitle_block}}
+    </div>
+    <div class="matrix-legend">
+      <span class="matrix-legend__label">{{legend_low}}</span>
+      <span class="matrix-legend__scale" aria-hidden="true">
+        <i class="r0"></i><i class="r1"></i><i class="r2"></i><i class="r3"></i><i class="r4"></i>
+      </span>
+      <span class="matrix-legend__label">{{legend_high}}</span>
+    </div>
+  </div>
+  <div class="slide__body">
+    {{body}}
+  </div>
+  <div class="source-note">{{source}}</div>
+  <footer class="slide__footer">
+    <div>{{footer_left}}</div>
+    <div>{{footer_right}}</div>
+  </footer>
+  <div class="notes">{{notes}}</div>
+</section>
