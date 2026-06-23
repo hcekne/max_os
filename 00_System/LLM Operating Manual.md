@@ -11,6 +11,28 @@ This file is the primary instruction set for any AI working inside Max OS — wh
 ## Identity & Memory
 The control surfaces in `00_System/` are this actor's persistent memory across sessions — see [[00_System/AI Actor & Memory Model]] for the full model. In short: `Actor Profile` is identity, `System State` is working memory, `Session Log` is episodic memory, `Planning Memory` is learned memory. Read them at session start to recover state; write them to persist it.
 
+## Scoped Resources In MaxOS Online
+When this workspace is opened through MaxOS Online, the harness may attach
+additional scoped resources to the agent run:
+
+- personal workspace folders;
+- organization projects shared with the owner;
+- organization skills or instructions;
+- code repositories explicitly selected for the chat or workflow.
+
+Scope is an allowlist, not a search target. Work only with the resources the
+owner has made available. Do not infer access to other organizations, projects,
+repositories, or private notes. Treat shared organization projects and code
+repositories as runtime resources; only write to them when the user has clearly
+asked and the scope allows it.
+
+When useful, summarize durable findings from shared projects or code repos back
+into canonical Markdown in this workspace, but do not bulk-copy shared or client
+material into personal notes.
+
+For the full model, read
+[[14_Guides/Guide - MaxOS Online Scope and Shared Resources]].
+
 ## Mandatory Read Set (in order)
 0. Run `sh 15_Skills/tools/ensure_local_setup.sh`
 1. [[00_System/Actor Profile]] — confirm owner type and operating mode

@@ -13,6 +13,10 @@
 ## Organization Index
 - Store all organization notes in `02_Organizations`.
 - Use one note per organization unless a subfolder is clearly needed.
+- In MaxOS Online, organizations may also exist as shared runtime containers
+  outside this personal workspace. Those organization projects and skills can be
+  added to an agent's chat/workflow scope without being copied into
+  `02_Organizations/`.
 
 ## Client Index
 - One folder per client inside `03_Clients` if needed for sub-notes.
@@ -23,6 +27,9 @@
 - Suggested filename: `Project - Name.md`.
 - Keep one canonical project note in the root.
 - Add a matching project folder only when the project has meaningful supporting material.
+- Organization projects in MaxOS Online are shared workspaces outside the
+  owner's private `04_Projects/` folder. If they are added to scope, treat them
+  as authorized shared resources, not as personal notes to silently copy.
 
 ## Content Index
 - Store written content in `05_Content`.
@@ -45,7 +52,9 @@
 
 ## Workflow Index
 - Store repeatable human-led processes in `12_Workflows`.
+- Store executable Workflow Builder recipes in `12_Workflows/Automations/`.
 - Use workflow notes for step-by-step execution with checkpoints and quality checks.
+- Use `type: maxos-workflow` frontmatter to identify executable automations.
 - Use the folder listing as the source of truth instead of maintaining a second workflow catalog here.
 
 ## Guides Index
@@ -105,6 +114,7 @@
 - Machine-readable hygiene rules: `00_System/workspace_hygiene_rules.yaml`.
 - Local clone setup requirements: `00_System/local_setup_requirements.yaml`.
 - Public-template denylist example: `00_System/public_template_denylist.example.txt`.
+- Harness-era scope guidance: `14_Guides/Guide - MaxOS Online Scope and Shared Resources.md`.
 
 ## Planning Templates
 - Templates live in `99_Templates/`.

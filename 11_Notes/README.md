@@ -21,5 +21,6 @@ If a note becomes important, you can later move or link it into the right folder
 ## Suggested reading
 - [[Note - Patterns Learned from Real Usage]]
 - [[Note - Executive Thought Leadership Generation Principles]]
+- [[Visual Style Guide]]
 
 Archived notes are kept in `16_Cleaning/Archive/11_Notes/`.

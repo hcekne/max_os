@@ -37,10 +37,31 @@ A proposal is a suggested change that has not yet become canonical.
 
 Use proposals for generated edits, review recommendations, draft plans, extracted tasks, or candidate updates to notes. A proposal can be Markdown, HTML, or JSON, but it is not truth until a human or approved workflow applies it to the relevant canonical Markdown note.
 
+### Executable Workflow Recipe
+An executable workflow recipe is Markdown with machine-readable YAML
+frontmatter.
+
+Use workflow recipes for repeatable MaxOS Online automations created in the
+Workflow Builder. The frontmatter contains `type: maxos-workflow`, trigger
+configuration, steps, document nodes, loops, judges, and layout metadata. The
+Markdown body remains the human-readable description.
+
+Store executable recipes in `12_Workflows/Automations/`. Do not store run
+outputs beside the recipes except under `12_Workflows/Automations/artifacts/`.
+
 ### State
 State is structured machine-readable data.
 
 Use JSON for runtime or worklet state that needs strict structure. Use YAML frontmatter for lightweight note metadata. Avoid using HTML as a state store. Treat Git history as the durable record of how canonical files changed over time.
+
+### Scoped Code Repository
+A scoped code repository is a Git repository added to a MaxOS Online chat or
+workflow run.
+
+Use code repositories for source code, tests, and engineering work. They are
+not canonical Markdown memory by default. If a durable project lesson or
+decision should persist in Max OS, summarize it into an appropriate Markdown
+note and link to the repository or commit.
 
 ## Format Rules
 
@@ -48,6 +69,7 @@ Use JSON for runtime or worklet state that needs strict structure. Use YAML fron
 - the file is canonical memory
 - the content should be easy to inspect, diff, link, and edit
 - the content belongs in core folders such as `01_People/`, `04_Projects/`, `07_Daily/`, `09_Planning/`, `12_Workflows/`, `13_Goals/`, or `15_Skills/`
+- the file is an executable workflow recipe whose YAML frontmatter is the recipe contract and whose body is a human description
 
 ### Use HTML when
 - the output is a rich human-facing view

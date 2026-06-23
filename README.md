@@ -42,6 +42,19 @@ The canonical agent entry-point is `AGENTS.md`. Tool-specific files exist as thi
 - OpenAI Codex and other agents read `AGENTS.md` directly.
 - Setup guides live in `14_Guides/`.
 
+## Use with MaxOS Online
+Most users will interact with this template through MaxOS Online. In that mode,
+an agent may be given a scoped view that includes this private workspace plus
+organization projects, shared skills, or code repositories selected by the
+owner.
+
+- Personal Markdown memory remains the canonical private workspace.
+- Organization projects are shared scoped resources, not folders to silently
+  copy into the private workspace.
+- Code repositories can be added to scope for engineering work; summarize
+  durable learnings back into Markdown when useful.
+- Executable Workflow Builder recipes live in `12_Workflows/Automations/`.
+
 ## Working Style
 - Keep everything editable as plain Markdown.
 - Link notes with `[[Note Name]]`.
