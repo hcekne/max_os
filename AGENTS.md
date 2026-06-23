@@ -13,6 +13,9 @@ Max OS is **owner-neutral**: you may be operating **on behalf of** a human owner
 6. `00_System/Indexes.md` — folder and placement map.
 7. `00_System/Session Log.md` — append a dated bullet at the end of the session.
 8. `SKILLS.md` — manifest of agent-executable capabilities (read when the task needs one).
+9. `14_Guides/Guide - MaxOS Online Scope and Shared Resources.md` — read when
+   the session includes organization projects, shared skills, code repositories,
+   or Workflow Builder automations.
 
 Per-folder rules live in each numbered folder's `.instructions.md`.
 
@@ -40,3 +43,18 @@ Several skills need external software beyond Python's standard library (pandoc, 
 - Typical outputs: `07_Daily/`, `06_Interactions/`, `05_Content/`
 - Delivery surface (for downstream actors or recipients): `17_Outbox/`
 - Only modify `00_System/System State.md` and `13_Goals/` when the corresponding review or action has actually been completed.
+
+## MaxOS Online Scope Pattern
+When running through MaxOS Online, the visible working context may include more
+than this private workspace:
+
+- the owner's personal Max OS workspace;
+- organization projects shared with the owner;
+- organization-level skills or instructions;
+- code repositories explicitly added to chat/workflow scope.
+
+Treat scope as an allowlist. If a folder or repository is not in scope, do not
+assume it exists or try to reach it. Treat organization projects and code
+repositories as shared/runtime resources, not as private workspace folders to
+silently copy. For details, read
+`14_Guides/Guide - MaxOS Online Scope and Shared Resources.md`.

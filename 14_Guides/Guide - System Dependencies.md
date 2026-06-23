@@ -59,8 +59,8 @@ Quality-gate-side baseline:
 | **Slide deck generation** (`Skill - Slide Deck Generation`, `15_Skills/tools/slides/build_deck.py`) | `pandoc` | `brew install pandoc` | Falls back to the inline Markdown subset parser. Most slides still render, but features like advanced tables and pipe-table-with-formatting can degrade. Visually inspect every slide. |
 | **Slide deck logo safety check** (`build_deck.py` pre-build pass) | `pillow` (Python) | `pip3 install --user --break-system-packages pillow` (or `brew install pillow`) | Logo-vs-slide-background mismatch warnings are silently skipped. A white-bg logo on a dark slide (or vice versa) will ship without warning. |
 | **Slide deck visual QA** (`15_Skills/tools/slides/check_deck_visual.mjs`) | `node` ≥ 18, `playwright` ≥ 1.40 with the Chromium browser | `brew install node` then `cd .maxos/visual-check && npm install playwright && npx playwright install chromium` | The visual QA cannot run. Without it, the agent has no way to verify the rendered slides before reporting completion. **This is a hard requirement for the slide-deck skill**, not an optional extra. |
-| **Memo pack build** (`04_Projects/DMG Media Lead/.../build_pack.py`) | `pandoc`, `weasyprint` | `brew install pandoc weasyprint` | Pack HTML and PDF cannot be regenerated. The previously generated `99_full_pack.pdf` remains on disk but stale. |
-| **Interview-guide PDF rendering** (the ad-hoc `pandoc \| weasyprint` chain used in `04_Projects/DMG Media Lead/interviews/interview pdf/`) | `pandoc`, `weasyprint` | `brew install pandoc weasyprint` | Cannot rebuild interview-prep PDFs. |
+| **Project-specific HTML/PDF pack builds** (`04_Projects/<project>/.../build_pack.py`) | `pandoc`, `weasyprint` | `brew install pandoc weasyprint` | Pack HTML and PDF cannot be regenerated. Previously generated PDFs may remain on disk but stale. |
+| **Project-specific PDF rendering** (ad-hoc `pandoc \| weasyprint` chains for guides or handouts) | `pandoc`, `weasyprint` | `brew install pandoc weasyprint` | Cannot rebuild project PDFs for sharing or printing. |
 | **Word document export** (`Skill - Export Markdown to Word Document`, `15_Skills/tools/md_to_docx.py`) | Python standard library only — writes the DOCX OOXML directly. No `python-docx` install needed. | — | None. Self-contained. |
 | **Vault validator** (`15_Skills/tools/check_vault.py`) | Python standard library only | — | None. |
 | **Knowledge lint and quality gate** (`15_Skills/tools/maxos_quality_gate.py`, `knowledge_lint.py`) | Python standard library only | — | None. Hook fails commit if quality gate detects issues. |
@@ -98,20 +98,24 @@ Before building or modifying any deck:
 
 After building a deck, **always** run `node 15_Skills/tools/slides/check_deck_visual.mjs <deck.html>` and **read every screenshot as image bytes**, not just the report JSON. See `Skill - Slide Deck Generation.md` for the mandatory visual QA flow.
 
-### Memo Pack Build (DMG project)
+### Project-Specific Pack Builds
 
-The memo pack builder lives inside the DMG project and is non-portable today. It needs `pandoc` and `weasyprint`. The pack builds end-to-end with `python3 04_Projects/DMG Media Lead/interim_cdo_mandate_refactor/v4_clause_3_1_ordered_pack/build_pack.py`.
+Some projects include custom HTML/PDF pack builders. These are project-local
+and may be non-portable. They usually need `pandoc` and `weasyprint`. Read the
+project's own README or script header before running them.
 
-### Interview-Guide PDF Render
+### Project PDF Render
 
-Used ad-hoc when interview prep needs a PDF for sharing or printing. The pipeline:
+Used ad hoc when a project note, interview guide, or handout needs a PDF for
+sharing or printing. A typical pipeline:
 
 ```bash
 pandoc <guide.md> -f markdown+pipe_tables+smart -t html5 --standalone --css /tmp/interview_guide.css -o /tmp/guide.html
 weasyprint /tmp/guide.html "<output>.pdf"
 ```
 
-Stylesheet pattern in `04_Projects/DMG Media Lead/interviews/` (the `interview pdf/` folder).
+Keep any project-specific stylesheet beside the project source material and
+document the command in the project note or README.
 
 ### Word Document Export
 
