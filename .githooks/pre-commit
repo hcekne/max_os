@@ -9,4 +9,4 @@ fi
 ROOT="$(git rev-parse --show-toplevel)"
 cd "$ROOT"
 
-python3 15_Skills/tools/maxos_quality_gate.py --root .
+python3 AUTOMATE/Skills/tools/maxos_quality_gate.py --root .

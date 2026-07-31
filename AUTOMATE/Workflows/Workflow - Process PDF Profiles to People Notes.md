@@ -1,0 +1,26 @@
+---
+type: workflow
+status: superseded
+superseded_by: "[[AUTOMATE/Skills/Skill - Process PDF Profiles to People Notes]]"
+owner:
+trigger_phrase: process my PDF profiles
+tags: [workflow, profiles, linkedin, extraction, people-notes]
+---
+
+# Workflow - Process PDF Profiles to People Notes
+
+> **Superseded.** This workflow has been promoted to a skill. Use `AUTOMATE/Skills/Skill - Process PDF Profiles to People Notes.md` instead.
+>
+> Profile PDFs now go directly into Agent Inbox; no dedicated staging subtree
+> is required. See `SYSTEM/Guides/Guide - Export LinkedIn Profiles as PDF.md` for
+> export instructions.
+
+## Status
+This workflow is retained only as a historical pointer.
+
+- Use `AUTOMATE/Skills/Skill - Process PDF Profiles to People Notes.md` for all live behavior.
+- Pass selected PDF paths from `ACTION CENTER/Agent Inbox/` to the skill.
+- Do not recreate retired profile-staging or extraction folders.
+- The skill keeps extraction in runtime scratch space and moves successfully
+  processed source PDFs to the matching Agent Inbox path below
+  `SYSTEM/Cleaning/Rubbish Bin/`.

@@ -1,0 +1,18 @@
+# Optional Modules
+
+This folder contains optional capability packs that extend Max OS beyond the core work operating system.
+
+## Design principle
+- Keep the five core workspace areas lightweight and work-first.
+- Add modules only when needed.
+- Modules should not break daily core workflows if unused.
+
+## Current modules
+- `Finance-Subscriptions/` - recurring payments, utilities, billing reminders.
+- `Lifestyle-Training/` - health/training planning and readiness-aware scheduling.
+- `Agent Registry/` - optional catalog of specialized agents/tools with risk and approval rules.
+
+## Enablement rule
+A module is considered active only when:
+1. Its `STATUS.md` says `active`, and
+2. `SYSTEM/System State.md` references it in notes or fields.
