@@ -11,12 +11,16 @@ tags: [workflow, profiles, linkedin, extraction, people-notes]
 
 > **Superseded.** This workflow has been promoted to a skill. Use `15_Skills/Skill - Process PDF Profiles to People Notes.md` instead.
 >
-> The folder structure has moved from `pdf_profiles/` to `10_Inbox/PDF_Profiles/`. See `14_Guides/Guide - Export LinkedIn Profiles as PDF.md` for export instructions.
+> Profile PDFs now go directly into Agent Inbox; no dedicated staging subtree
+> is required. See `14_Guides/Guide - Export LinkedIn Profiles as PDF.md` for
+> export instructions.
 
 ## Status
 This workflow is retained only as a historical pointer.
 
 - Use `15_Skills/Skill - Process PDF Profiles to People Notes.md` for all live behavior.
-- Do not recreate retired processed-staging folders.
-- The live folder contract is `10_Inbox/PDF_Profiles/Unprocessed/` plus `10_Inbox/PDF_Profiles/Extracted_Text/`.
-- Successfully processed PDFs move directly to `16_Cleaning/Rubbish Bin/10_Inbox/PDF_Profiles/`.
+- Pass selected PDF paths from `10_Action_Center/Agent_Inbox/` to the skill.
+- Do not recreate retired profile-staging or extraction folders.
+- The skill keeps extraction in runtime scratch space and moves successfully
+  processed source PDFs to the matching Agent Inbox path below
+  `16_Cleaning/Rubbish Bin/`.

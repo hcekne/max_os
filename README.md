@@ -24,7 +24,7 @@ sh 15_Skills/tools/ensure_local_setup.sh
 3. Start chat with your AI tool.
 4. Paste this prompt:
 
-"Use this workspace as Max OS. Read `00_System/LLM Operating Manual.md`. Check `00_System/System State.md` and tell me what I should do today. Then process anything in `10_Inbox/` and give me my top 3 actions."
+"Use this workspace as Max OS. Read `00_System/LLM Operating Manual.md`. Check `00_System/System State.md` and tell me what I should do today. Then process anything in `10_Action_Center/Agent_Inbox/` and give me my top 3 actions."
 
 ## Core Surfaces
 - `00_System/Actor Profile.md` — who owns this workspace (human or AI) and how it operates.
@@ -32,7 +32,8 @@ sh 15_Skills/tools/ensure_local_setup.sh
 - `00_System/LLM Operating Manual.md` — the canonical AI operating rules.
 - `00_System/System State.md` — current dates, active plans, and review checkpoints.
 - `00_System/Indexes.md` — where each kind of note belongs.
-- `10_Inbox/` — raw capture waiting to be processed.
+- `10_Action_Center/` — My Inbox for owner review, Agent Inbox for Max OS work,
+  and Outbox for externally ready deliveries.
 - `07_Daily/`, `08_Todos/`, `09_Planning/` — day-to-day execution and planning.
 
 ## Use with AI tools

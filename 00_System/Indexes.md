@@ -75,24 +75,27 @@
 - Keep one task per note for larger initiatives.
 - Start from template: `99_Templates/TPL - Todo.md`.
 
-## Inbox Index
-- Store raw and unprocessed captures in `10_Inbox`.
-- Process inbox items daily into canonical folders.
+## Action Center Index
+- Store raw inputs and requests for Max OS in `10_Action_Center/Agent_Inbox/`.
+- Store agent results and updates awaiting the owner in
+  `10_Action_Center/My_Inbox/`.
+- Process both inboxes regularly into canonical folders.
 
 ## Outbox Index
-- Store materials staged for delivery to another actor, agent, or external recipient in `17_Outbox`.
-- Symmetric to `10_Inbox/`: inbox is what arrives, outbox is what leaves.
+- Store materials staged for delivery to another actor, agent, or external recipient in `10_Action_Center/Outbox`.
+- Use My Inbox, not Outbox, when the owner still needs to review or approve an
+  item.
 - Treat the outbox as transient; archive or rubbish-bin items after pickup.
 - Use `<recipient>/` subfolders to group deliveries to multiple downstream destinations.
 - Cross-link each outbox item back to the canonical source note(s) that produced it.
-- Move delivered items to `16_Cleaning/Archive/17_Outbox/` (historical value) or `16_Cleaning/Rubbish Bin/17_Outbox/` (low retention).
+- Move delivered items to `16_Cleaning/Archive/10_Action_Center/Outbox/` (historical value) or `16_Cleaning/Rubbish Bin/10_Action_Center/Outbox/` (low retention).
 
 ## Skills Index
 - Store agent-executable skill definitions in `15_Skills`.
 - Each skill should define Purpose, Trigger, Inputs, Steps, Outputs, and Quality Checks.
 - The master manifest is `SKILLS.md` at the vault root.
 - Skills differ from workflows: skills are agent-autonomous, workflows are human-led.
-- Keep `10_Inbox` transient; avoid long-term storage there.
+- Keep `10_Action_Center/Agent_Inbox` transient; avoid long-term storage there.
 
 ## Planning Index
 - Store horizon plans and reviews in `09_Planning`.

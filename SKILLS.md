@@ -4,7 +4,9 @@ Manifest of agent-executable capabilities in Max OS. Each entry is a pointer to 
 
 - **Skills** (agent-autonomous): defined in `15_Skills/`. Differ from workflows in that agents can run them end-to-end without human steering.
 - **Workflows** (human-led, step-by-step with checkpoints): defined in `12_Workflows/`.
-- **Core algorithms** (Session Start, Inbox Processing, Interaction Processing, Note Lifecycle): defined inline in `00_System/LLM Operating Manual.md`.
+- **Core algorithms** (Session Start, My Inbox Review, Agent Inbox Processing,
+  Interaction Processing, Note Lifecycle): defined inline in
+  `00_System/LLM Operating Manual.md`.
 
 When adding or removing a skill or workflow, update the relevant list below.
 

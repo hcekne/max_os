@@ -9,7 +9,7 @@ status: active
 One sentence describing what this skill does.
 
 ## Trigger
-When should this skill be invoked? (e.g., "User requests meeting prep", "New PDF in 10_Inbox/PDF_Profiles/Unprocessed/")
+When should this skill be invoked? (e.g., "User requests meeting prep", "A selected PDF arrives in Agent Inbox")
 
 ## Inputs
 - Input 1: description

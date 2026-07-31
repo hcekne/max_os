@@ -3,7 +3,7 @@
 This folder contains optional capability packs that extend Max OS beyond the core work operating system.
 
 ## Design principle
-- Keep the core (`00_System` to `10_Inbox`) lightweight and work-first.
+- Keep the core numbered workspace surfaces lightweight and work-first.
 - Add modules only when needed.
 - Modules should not break daily core workflows if unused.
 

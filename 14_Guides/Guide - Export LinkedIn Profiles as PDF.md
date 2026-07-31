@@ -36,7 +36,7 @@ Use the person's name as the filename:
 ### 5. Drop into the inbox
 Move or save the PDF directly into:
 ```
-10_Inbox/PDF_Profiles/Unprocessed/
+10_Action_Center/Agent_Inbox/
 ```
 
 ### 6. Process

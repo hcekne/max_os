@@ -21,12 +21,6 @@ Thumbs.db
 __pycache__/
 *.py[cod]
 
-# Old pdf_profiles root folder (deprecated — use 10_Inbox/PDF_Profiles/ instead)
+# Deprecated local profile-processing scratch (current skill uses runtime temp space)
 pdf_profiles/
-
-# PDF profile contents (PDFs are user data, not tracked; structure is tracked via .gitkeep)
-10_Inbox/PDF_Profiles/Unprocessed/*.pdf
-10_Inbox/PDF_Profiles/Extracted_Text/*.txt
-16_Cleaning/Rubbish Bin/10_Inbox/PDF_Profiles/*.pdf
-
 .venv-pdf/

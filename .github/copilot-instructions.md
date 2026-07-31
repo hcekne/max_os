@@ -14,7 +14,7 @@ This workspace is **Max OS**, a personal operating system for knowledge workers 
 - Do not invent names, dates, or commitments.
 - Treat `last_*_review_date` fields in System State as canonical truth.
 - Use `[[Note Name]]` wiki-links when referencing other notes.
-- Process `10_Inbox/` when asked or when items are pending.
+- Process `10_Action_Center/Agent_Inbox/` when asked or when items are pending.
 - Prefer updating canonical files over creating endless new versions.
 - Use lifecycle metadata for temporary, event-specific, draft, superseded, and generated files when useful.
 - Archive superseded drafts after review; do not delete without explicit approval.
@@ -45,7 +45,7 @@ This workspace is **Max OS**, a personal operating system for knowledge workers 
 | `07_Daily/` | Daily notes |
 | `08_Todos/` | Task backlog |
 | `09_Planning/` | Weekly, Monthly, Quarterly, Two-Year plans |
-| `10_Inbox/` | Raw captures, process daily |
+| `10_Action_Center/` | My Inbox, Agent Inbox, and externally ready Outbox |
 | `11_Notes/` | General notes; archive superseded to `11_Notes/Archive/` |
 | `12_Workflows/` | Repeatable human-led processes |
 | `13_Goals/` | One note per major goal |

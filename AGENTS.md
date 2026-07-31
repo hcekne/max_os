@@ -24,7 +24,7 @@ Per-folder rules live in each numbered folder's `.instructions.md`.
 - Do not invent names, dates, commitments, or outcomes.
 - Use `[[Note Name]]` wiki-links when referencing other notes.
 - Treat `last_*_review_date` fields in `00_System/System State.md` as canonical truth.
-- Route `10_Inbox/` items into canonical notes; keep active folders focused on current work.
+- Route `10_Action_Center/Agent_Inbox/` items into canonical notes; keep active folders focused on current work.
 - Move stale or superseded material into `16_Cleaning/` rather than deleting it.
 
 ## Validation
@@ -38,10 +38,11 @@ Per-folder rules live in each numbered folder's `.instructions.md`.
 Several skills need external software beyond Python's standard library (pandoc, WeasyPrint, Node + Playwright + Chromium, Pillow). Before running any skill from `SKILLS.md` on a new machine, read `14_Guides/Guide - System Dependencies.md` and run `python3 15_Skills/tools/check_dependencies.py` to verify the toolchain is in place. Do not silently degrade to a fallback path; install the missing dependency and re-run.
 
 ## External Agent Access Pattern
-- Task sources: `10_Inbox/`, `08_Todos/`
+- Task sources: `10_Action_Center/Agent_Inbox/`, `08_Todos/`
 - Reference data: `01_People/`, `02_Organizations/`, `03_Clients/`, `04_Projects/`
 - Typical outputs: `07_Daily/`, `06_Interactions/`, `05_Content/`
-- Delivery surface (for downstream actors or recipients): `17_Outbox/`
+- Owner-review delivery: `10_Action_Center/My_Inbox/`
+- Externally ready delivery: `10_Action_Center/Outbox/`
 - Only modify `00_System/System State.md` and `13_Goals/` when the corresponding review or action has actually been completed.
 
 ## MaxOS Online Scope Pattern

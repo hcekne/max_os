@@ -51,10 +51,12 @@ For the full model, read
 6. If `last_interaction_date` is not today, update it in [[00_System/System State]] and append a dated bullet to [[00_System/Session Log]].
 7. Compute due reviews using the trigger rules in [[00_System/Planning Cadence]].
 8. Run due reviews in the order defined in [[00_System/Planning Cadence]].
-9. If `10_Inbox/` has pending captures, process them.
-10. Align today's daily plan with active goals in `13_Goals/`.
-11. Pull due items from `08_Todos/` and place today's must-do subset in the daily note.
-12. Propose next 1-3 concrete actions.
+9. If `10_Action_Center/My_Inbox/` has pending results, surface the review queue
+   to the owner.
+10. If `10_Action_Center/Agent_Inbox/` has pending captures, process them.
+11. Align today's daily plan with active goals in `13_Goals/`.
+12. Pull due items from `08_Todos/` and place today's must-do subset in the daily note.
+13. Propose next 1-3 concrete actions.
 
 ## Local Setup Protocol
 Purpose: ensure each clone has the local Git hook and quality-gate tooling active before agents work in it.
@@ -121,14 +123,23 @@ Guardrails:
 - Classify uncertain files as `NEEDS_HUMAN_REVIEW`.
 - Treat final deliverables, contracts, submitted documents, invoices, legal/commercial documents, and client-provided materials as high-retention.
 
-## Inbox Processing Algorithm
-1. Scan `10_Inbox/` newest-to-oldest, using direct directory listings before relying on globbed search.
+## My Inbox Review Algorithm
+1. List `10_Action_Center/My_Inbox/` directly.
+2. Summarize what each item is, where it came from, and what decision or action
+   the owner needs to take.
+3. Do not treat delivery to My Inbox as approval.
+4. After the owner reviews an item, route durable material to its canonical
+   folder and move the transient copy to Archive or Rubbish Bin according to
+   retention value.
+
+## Agent Inbox Processing Algorithm
+1. Scan `10_Action_Center/Agent_Inbox/` newest-to-oldest, using direct directory listings before relying on globbed search.
 2. Route each item to one destination: people, organization, client, project, interaction, content, or todo.
 3. Create missing notes from templates in `99_Templates/`.
 4. Merge factual updates into canonical notes.
 5. Extract explicit tasks into `08_Todos/` or today's daily note.
 6. Add cross-links between touched notes.
-7. Move each processed inbox item out of the active root of `10_Inbox/` and into `16_Cleaning/Rubbish Bin/10_Inbox/...`, mirroring the original source path after `10_Inbox/`. Do not recreate retired processed-staging folders inside the inbox.
+7. Move each processed inbox item out of the active root of `10_Action_Center/Agent_Inbox/` and into `16_Cleaning/Rubbish Bin/10_Action_Center/Agent_Inbox/...`, mirroring the original source path after `10_Action_Center/Agent_Inbox/`. Do not recreate retired processed-staging folders inside the inbox.
 
 ## Knowledge System Lint Protocol
 Purpose: catch broken Markdown structure before files enter the knowledge system.
@@ -278,7 +289,8 @@ The local hook is stored in `.githooks/pre-commit` because `.git/hooks/` is not 
 ## Required Session Output
 1. Due reviews summary and reason.
 2. Ordered checklist for this session.
-3. Inbox processing summary (if inbox had pending captures).
+3. My Inbox review summary and Agent Inbox processing summary (when either had
+   pending items).
 4. Updated links to active plan/review notes.
 5. `System State` updates after completed review steps.
 6. Operational reminders due today from [[00_System/Recurring Operations]] (if any).

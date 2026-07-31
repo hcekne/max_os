@@ -8,115 +8,111 @@ tags: [skill, profiles, linkedin, extraction, people-notes]
 # Skill - Process PDF Profiles to People Notes
 
 ## Purpose
-Process LinkedIn profile PDFs end-to-end: extract text, create or update person notes in `01_People/`, and move files through the processing pipeline automatically.
+Turn one or more LinkedIn profile PDFs into accurate, linked person notes in
+`01_People/` without requiring a special profile-staging folder.
 
 ## Trigger
-Use this skill when the user says **"process my PDF profiles"** or when new PDFs appear in `10_Inbox/PDF_Profiles/Unprocessed/`.
-
-## Folder Contract
-All PDF profile processing uses this folder structure inside `10_Inbox/PDF_Profiles/`:
-
-```
-10_Inbox/PDF_Profiles/
-├── Unprocessed/         ← Drop LinkedIn profile PDFs here
-├── Extracted_Text/      ← Intermediate text files (auto-managed)
-```
-
-Successfully processed PDFs move to `16_Cleaning/Rubbish Bin/10_Inbox/PDF_Profiles/`, mirroring the original source path after `10_Inbox/`.
-Do not recreate a local processed-staging folder.
-
-For instructions on how to create LinkedIn profile PDFs, see `14_Guides/Guide - Export LinkedIn Profiles as PDF.md`.
+Run when the user asks to process LinkedIn profile PDFs, selects a profile PDF,
+or a file-arrival workflow passes a profile PDF from Agent Inbox.
 
 ## Inputs
-- One or more `.pdf` files in `10_Inbox/PDF_Profiles/Unprocessed/`
+- Preferred: one or more explicit `.pdf` paths in
+  `10_Action_Center/Agent_Inbox/`, including an event-provided file path.
+- If no paths were supplied: directly list PDF files at the root of Agent Inbox
+  and process only files the user identified as profiles or whose extracted
+  contents clearly identify them as LinkedIn profiles.
+- During migration, explicitly selected PDFs in a preserved legacy
+  `PDF_Profiles/` subtree are also valid inputs. Never require that subtree for
+  new work.
 
-## End-State Definition
-After a successful run:
-- `10_Inbox/PDF_Profiles/Unprocessed/` is empty (except failures)
-- `10_Inbox/PDF_Profiles/Extracted_Text/` is empty (except ambiguities)
-- PDFs have been moved to `16_Cleaning/Rubbish Bin/10_Inbox/PDF_Profiles/`
-- All corresponding person notes in `01_People/` are updated or created
+For instructions on exporting profiles, see
+`14_Guides/Guide - Export LinkedIn Profiles as PDF.md`.
 
----
+## Guardrails
+- Process one person at a time. Do not bulk-write person notes.
+- Do not move a source PDF until its person note is safely written and checked.
+- Never overwrite an existing file when moving a processed PDF; deduplicate the
+  destination name.
+- Leave failed or ambiguous inputs in Agent Inbox and report them.
+- Keep extracted text in runtime scratch space, never in the Markdown workspace.
 
-## Phase 1 — Intake and Extraction
+## Steps
 
-1. Scan `10_Inbox/PDF_Profiles/Unprocessed/` with a direct folder listing for `.pdf` files.
-2. Treat the direct folder listing as the source of truth.
-3. If a search tool, glob search, or secondary scan disagrees with the direct folder listing, trust the direct folder listing and process every visible PDF.
-4. For each PDF, run primary extraction with `pdftotext -layout`.
-5. If `pdftotext -layout` is unavailable or produces empty output, use fallback parser chain: `pypdf → pymupdf → pdfplumber`.
-6. Save extracted text as one file per person in `10_Inbox/PDF_Profiles/Extracted_Text/`.
-7. If extraction fails, keep PDF in `10_Inbox/PDF_Profiles/Unprocessed/` and flag it in the run summary. **Do not move the PDF yet — the move happens only after the person note is successfully written in Phase 2.**
+### 1. Establish the input set
 
-### Extraction method details
-- Default command per file:
-  ```
-  pdftotext -layout "10_Inbox/PDF_Profiles/Unprocessed/<file>.pdf" "10_Inbox/PDF_Profiles/Extracted_Text/<file>.txt"
-  ```
-- Consider extraction successful only when output text is non-empty and contains usable profile fields.
-- Use parser-chain fallback only when default extraction fails due to missing binary, runtime error, or empty/garbled output.
-- Record fallback usage in the run summary when it is used.
+1. Resolve each explicit path inside the workspace and reject path escapes.
+2. If no paths were supplied, list `10_Action_Center/Agent_Inbox/` directly;
+   do not rely only on glob search.
+3. Record the exact input count and original relative paths.
 
-## Phase 2 — One-by-One Person Processing
+### 2. Create temporary extraction space
 
-Process each file in `10_Inbox/PDF_Profiles/Extracted_Text/` sequentially, one at a time:
+Create one run-scoped temporary directory outside the workspace and guarantee
+cleanup when the run ends. For a shell-capable runner:
 
-1. Derive person name from the extracted text (top-of-profile "Name" line), not just the filename — LinkedIn often exports as `Profile.pdf` / `Profile-2.pdf` etc.
-2. Search for corresponding note in `01_People/`.
-3. If note exists: update and enrich that specific note.
-4. If note does not exist: create a new note using `99_Templates/TPL - Person.md`.
-5. **After the note is successfully written** (file exists on disk, has valid frontmatter, has the LinkedIn Profile Snapshot section), perform cleanup in this exact order:
-   a. Move the source PDF from `10_Inbox/PDF_Profiles/Unprocessed/` to `16_Cleaning/Rubbish Bin/10_Inbox/PDF_Profiles/`.
-   b. Delete the intermediate text file from `10_Inbox/PDF_Profiles/Extracted_Text/`.
-6. If note write fails, keep both the source PDF and the text file in place and flag the failure in the run summary.
+```bash
+scratch="$(mktemp -d "${TMPDIR:-/tmp}/maxos-profile-XXXXXX")"
+trap 'rm -rf "$scratch"' EXIT
+```
 
-## Phase 3 — Final Hygiene Sweep
+Do not commit, index, or link to scratch files.
 
-After all profiles have been processed:
+### 3. Extract and validate one profile
 
-1. Verify `10_Inbox/PDF_Profiles/Unprocessed/` is empty (except `.gitkeep` and any explicit failures).
-2. Verify `10_Inbox/PDF_Profiles/Extracted_Text/` is empty (except `.gitkeep` and any explicit ambiguities).
-3. Remove any stray `.DS_Store` files that macOS may have created in the affected directories: `find 10_Inbox 16_Cleaning -name '.DS_Store' -delete`.
-4. Run `python3 15_Skills/tools/check_vault.py` and confirm the report shows no new findings.
+For each source PDF:
 
----
+1. Run `pdftotext -layout "<source.pdf>" "$scratch/<unique-name>.txt"`.
+2. If extraction fails or is empty, try an installed supported parser in this
+   order: `pypdf`, `pymupdf`, then `pdfplumber`.
+3. Treat extraction as successful only when the text contains usable identity
+   and profile sections. Do not treat a generic PDF as a LinkedIn profile.
+4. If no supported extractor succeeds, leave the PDF untouched and record a
+   failure. Do not silently invent profile fields.
 
-## Mandatory Data-Quality Rules (strict)
+### 4. Create or update the person note
 
-These rules are required for every profile and override any weak extraction artifacts.
+1. Derive the person's name from the extracted profile, not only the filename.
+   LinkedIn exports may use names such as `Profile.pdf`.
+2. Search `01_People/` for one clear corresponding note.
+3. If one note matches, update that note. If none matches, create one from
+   `99_Templates/TPL - Person.md`.
+4. If multiple notes plausibly match, do not merge. Leave the PDF in Agent
+   Inbox and ask for confirmation.
+5. Add `## LinkedIn Profile Snapshot (YYYY-MM-DD)` with the original source
+   filename and factual profile details.
 
-### A) Employment vs Education Separation
-- Never use `Education` section as source for current role or current organization.
-- Never map school names (e.g., MIT, Harvard, Imperial) into current employer fields unless the profile clearly shows active employment there.
-- Current organization and role must come from:
-  1. Headline, and/or
-  2. Most recent `Experience` item with `Present`.
+### 5. Validate and clean up
 
-### B) Frontmatter must be coherent
-Ensure frontmatter is fully aligned with extracted current-employment signals:
-- `organization:` current employer (wiki-link if applicable)
-- `role:` current role/title
-- `location:` current location from profile header
-- `last_interaction:` only update if a real interaction occurred
-- `next_follow_up:` set only when an actual follow-up date exists
+Only after the note exists on disk and passes the checks below:
 
-### C) Snapshot must mirror frontmatter
-In `## Snapshot`, ensure:
-- Organization matches frontmatter organization.
-- Role matches frontmatter role.
-- Location matches frontmatter location.
-- No blank role field.
+1. Move the source PDF to the matching path below
+   `16_Cleaning/Rubbish Bin/10_Action_Center/Agent_Inbox/`.
+2. Use a deduplicated destination name if the target already exists.
+3. Delete the corresponding scratch text; the final trap removes the remaining
+   run directory.
+4. Run `python3 15_Skills/tools/check_vault.py` and confirm this run introduced
+   no new structural findings.
 
-### D) Employment history quality
-When updating history sections:
-- Prioritize `Experience` chronology for current/previous roles.
-- Keep role progression coherent (avoid mixing different entries into one broken title).
-- Do not import noisy UI fragments (e.g., "Show all", "More", "Contact info", ads, recommendations).
+## Data-quality rules
 
-### E) New profile minimum standard
-A newly created note must include:
-- Valid frontmatter (`organization`, `role`, `location` populated when available)
+### Current employment
+- Take current organization and role first from the latest Experience entry
+  marked Present, then from the headline, then from the profile header.
+- Never infer a current employer from Education.
+- Keep role progression chronological; do not combine unrelated entries into a
+  fabricated title.
+
+### Person-note coherence
+- Align frontmatter `organization`, `role`, and `location` with the evidence.
+- Update `last_interaction` only for a real interaction.
+- Set `next_follow_up` only when an actual follow-up date exists.
+- Ensure `## Snapshot` matches frontmatter and has no blank role when a role is
+  available.
+- Exclude LinkedIn interface fragments such as “Show all”, “More”, ads, and
+  recommendations.
+
+### Minimum standard for a new note
+- Valid frontmatter with available organization, role, and location facts.
 - `## Snapshot`
 - `## What I Know`
 - `## Current Topics`
@@ -124,50 +120,26 @@ A newly created note must include:
 - `## Open Loops`
 - `## Interactions`
 - `## Next Actions`
-- `## LinkedIn Profile Snapshot (YYYY-MM-DD)` with source file reference
+- `## LinkedIn Profile Snapshot (YYYY-MM-DD)` with source reference.
 
-## Field Mapping Priority (for role/organization correctness)
-Use this precedence when conflicts occur:
-1. Experience entry with `Present` (highest confidence)
-2. Headline
-3. Top profile organization line near name
-4. Historical experience
-5. Education (never for current employment fields)
+## Completion checks
 
----
+- Input count equals processed + failed + ambiguous count.
+- Every processed PDF has one corresponding updated or created person note.
+- No processed source remains in Agent Inbox.
+- Every failed or ambiguous source remains untouched in Agent Inbox.
+- No extraction text remains in the workspace or runtime scratch directory.
+- Touched notes have coherent current-employment fields and valid links.
 
-## Validation Checklist (run at end)
-1. **Coverage check:**
-   - Count input PDFs seen in the direct folder listing.
-   - Count text files processed.
-   - Confirm no files remain in Unprocessed/ or Extracted_Text/ (except explicit failures or ambiguities).
-2. **Note completeness check for touched people:**
-   - No blank `role` in frontmatter.
-   - No blank `- Role:` in Snapshot.
-3. **Contamination check:**
-   - Flag if `organization` appears to be an education institution while current role indicates another employer.
-4. **Report:**
-   - Updated notes list
-   - Created notes list
-   - Extraction failures list
-   - Ambiguous matches requiring manual confirmation
+## Output summary
 
-## Ambiguity Handling
-If two existing person notes are plausible matches for one text profile:
-- Do not merge automatically.
-- Mark as ambiguous and request confirmation.
-- Keep text file in `10_Inbox/PDF_Profiles/Extracted_Text/` until resolved.
-
-## Output Summary Format (for each run)
-```
-PDFs found in Unprocessed/:       N
-Text files extracted:             N
+```text
+PDFs selected:                    N
 Person notes updated:             N
 Person notes created:             N
-PDFs moved to Rubbish Bin/:      N
-Text files cleaned up:            N
-Failures/ambiguities:             N + list
+PDFs moved to Rubbish Bin:        N
+Extraction failures:              N + list
+Ambiguous matches:                N + list
 ```
 
-## Operating Principle
-Precision over speed. One profile at a time. No bulk profile writing.
+Precision over speed. Process and validate one profile at a time.

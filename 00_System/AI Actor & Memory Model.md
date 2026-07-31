@@ -13,7 +13,7 @@ An AI agent keeps nothing between runs except what is written to disk. The contr
 | Episodic memory | [[00_System/Session Log]] | Append-only narrative of past sessions. |
 | Learned memory | [[00_System/Planning Memory]] | Lessons and patterns distilled from past planning cycles. |
 | Intentions | `13_Goals/`, `09_Planning/` | Durable objectives and horizon plans. |
-| Perception / action | `10_Inbox/` ↔ `17_Outbox/` | What arrives for the actor, and what it sends to other actors. |
+| Perception / action | `10_Action_Center/` | Agent Inbox holds work for Max OS; My Inbox holds work for the owner; Outbox holds externally ready deliveries. |
 
 ## Read/write contract
 - **At session start:** read Identity → Working memory → Episodic (recent) → Learned, following the Session Start Algorithm in [[00_System/LLM Operating Manual]]. Do not duplicate that algorithm here.
