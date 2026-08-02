@@ -42,7 +42,10 @@ ACTION CENTER/Agent Inbox/
 ### 6. Process
 Ask your AI assistant: **"process my PDF profiles"**
 
-The skill will extract text, create or update person notes, and move files through the pipeline automatically.
+The skill extracts text in temporary runtime storage outside the workspace,
+creates or updates person notes, and moves successfully processed PDFs out of
+Agent Inbox automatically. Only failed or ambiguous PDFs remain there for
+follow-up.
 
 ## Tips for Better Quality
 - **Expand everything first.** Click every "Show more", "Show all N experiences", "Show all education" link before printing. LinkedIn lazy-loads content.

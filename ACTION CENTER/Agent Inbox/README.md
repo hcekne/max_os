@@ -27,4 +27,6 @@ ordinary workspace uploads here.
 
 LinkedIn profile PDFs can be placed directly here and processed with
 `AUTOMATE/Skills/Skill - Process PDF Profiles to People Notes.md`; no special staging
-subfolder is required.
+subfolder is required. Extraction uses temporary runtime storage outside the
+workspace. After a person note is validated, the processed PDF is moved out of
+Agent Inbox; only failed or ambiguous inputs remain for attention.

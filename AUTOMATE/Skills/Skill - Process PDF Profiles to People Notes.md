@@ -23,7 +23,8 @@ or a file-arrival workflow passes a profile PDF from Agent Inbox.
   contents clearly identify them as LinkedIn profiles.
 - During migration, explicitly selected PDFs in a preserved legacy
   `PDF_Profiles/` subtree are also valid inputs. Never require that subtree for
-  new work.
+  new work. After its last user file is resolved, remove its obsolete README and
+  placeholder files, then remove the empty legacy directories.
 
 For instructions on exporting profiles, see
 `SYSTEM/Guides/Guide - Export LinkedIn Profiles as PDF.md`.
@@ -92,6 +93,10 @@ Only after the note exists on disk and passes the checks below:
    run directory.
 4. Run `python3 AUTOMATE/Skills/tools/check_vault.py` and confirm this run introduced
    no new structural findings.
+5. If an input came from a legacy `PDF_Profiles/` subtree and no unresolved user
+   files remain there, remove only its obsolete `README.md` and `.gitkeep`
+   placeholders, then remove the empty directories. Never delete a non-empty
+   directory or an unrecognized file.
 
 ## Data-quality rules
 
@@ -129,6 +134,8 @@ Only after the note exists on disk and passes the checks below:
 - No processed source remains in Agent Inbox.
 - Every failed or ambiguous source remains untouched in Agent Inbox.
 - No extraction text remains in the workspace or runtime scratch directory.
+- No persistent profile-staging folder is created. A legacy `PDF_Profiles/`
+  subtree remains only when it still contains unresolved user files.
 - Touched notes have coherent current-employment fields and valid links.
 
 ## Output summary
