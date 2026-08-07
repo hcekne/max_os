@@ -84,7 +84,13 @@ def check_playwright_workspace() -> Result:
 
 
 def check_playwright_chromium() -> Result:
-    cache = Path(os.path.expanduser("~/Library/Caches/ms-playwright"))
+    # Playwright caches per-OS: macOS under ~/Library/Caches, Linux under
+    # ~/.cache. Check both so containers and laptops report correctly.
+    candidates = [
+        Path(os.path.expanduser("~/Library/Caches/ms-playwright")),
+        Path(os.path.expanduser("~/.cache/ms-playwright")),
+    ]
+    cache = next((c for c in candidates if c.exists()), candidates[0])
     if not cache.exists():
         return Result(
             "playwright chromium",
