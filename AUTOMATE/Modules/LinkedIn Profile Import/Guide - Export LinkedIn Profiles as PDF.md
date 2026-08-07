@@ -1,7 +1,7 @@
 # Guide - Export LinkedIn Profiles as PDF
 
 ## Purpose
-Capture high-quality snapshots of LinkedIn profiles as PDFs so they can be processed into `KNOWLEDGE/People/` notes using the skill `AUTOMATE/Skills/Skill - Process PDF Profiles to People Notes.md`.
+Capture high-quality snapshots of LinkedIn profiles as PDFs so they can be processed into `KNOWLEDGE/People/` notes using the skill `AUTOMATE/Modules/LinkedIn Profile Import/Skill - Process PDF Profiles to People Notes.md`.
 
 ## Why PDF?
 LinkedIn does not offer a structured export of other people's profiles. The best method is to print the full profile page to PDF from your browser. This captures the name, headline, experience, education, skills, and about section in a format that text extraction tools can parse.
@@ -66,6 +66,6 @@ The skill reads these fields from the PDF text:
 Fields are mapped to person notes in `KNOWLEDGE/People/` following the data-quality rules in the skill definition.
 
 ## See Also
-- `AUTOMATE/Skills/Skill - Process PDF Profiles to People Notes.md` — the agent skill that processes these PDFs
+- `AUTOMATE/Modules/LinkedIn Profile Import/Skill - Process PDF Profiles to People Notes.md` — the agent skill that processes these PDFs
 - `KNOWLEDGE/People/` — where person notes are created/updated
 - `SYSTEM/Templates/TPL - Person.md` — template for new person notes

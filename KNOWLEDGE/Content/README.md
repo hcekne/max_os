@@ -29,12 +29,10 @@ This keeps everything in one place so AI can scan titles/headings quickly.
 - `SYSTEM/Templates/TPL - Content Pillar Article.md`
 - `SYSTEM/Templates/TPL - Content Review Round.md`
 - `SYSTEM/Templates/TPL - Content Derivative Asset.md`
-- `SYSTEM/Templates/TPL - Presentation AI GTM.md`
 
 ## Related workflows
 - `AUTOMATE/Workflows/Workflow - Thought Leadership Article Lifecycle.md`
 - `AUTOMATE/Workflows/Workflow - Content Waterfall from Pillar Article.md`
-- `AUTOMATE/Workflows/Workflow - Build AI GTM Deck from Ideas or Articles.md`
 
 ## Simple naming pattern
 - Pillar article: `Article - Topic - v01.md`

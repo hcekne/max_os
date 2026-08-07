@@ -27,7 +27,7 @@ or a file-arrival workflow passes a profile PDF from Agent Inbox.
   placeholder files, then remove the empty legacy directories.
 
 For instructions on exporting profiles, see
-`SYSTEM/Guides/Guide - Export LinkedIn Profiles as PDF.md`.
+`AUTOMATE/Modules/LinkedIn Profile Import/Guide - Export LinkedIn Profiles as PDF.md`.
 
 ## Guardrails
 - Process one person at a time. Do not bulk-write person notes.
