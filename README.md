@@ -43,8 +43,9 @@ talk to it — agents read `AGENTS.md` and your folder instructions
 automatically. Build automations in the Workflow Builder; they run on
 schedules or events without a browser open.
 
-**Standalone:** clone the repo, then follow `SYSTEM/Standalone.md` (one setup
-script, one dependency check, start your AI tool in the folder).
+**Standalone:** clone the repo, then follow
+`AUTOMATE/Skills/Skill - Set Up Standalone MaxOS.md` (one setup script, one
+dependency check, start your AI tool in the folder).
 
 ## Working style
 

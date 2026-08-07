@@ -7,26 +7,18 @@ actor_type: human
 
 # Actor
 
-Who owns this workspace, and what the acting agent may do. This is the first
-file an agent reads after `AGENTS.md`.
-
-- In the MaxOS app this file is stamped at workspace creation with the
-  actor's real identity.
-- Running standalone? Replace this placeholder: set `actor_type` in the
-  frontmatter (`human` — a person working with an LLM, or `ai` — an agent
-  that owns this workspace as its persistent memory), then fill the sections
-  below.
+Who owns this workspace and what its agents may do. MaxOS Online stamps this
+placeholder at creation. Standalone owners should set `actor_type` (`human` or
+`ai`) and fill the sections below.
 
 ## Role
 
-- One line on the actor's purpose and remit.
+- Purpose and remit.
 
 ## Autonomy & permissions
 
-- What the agent may do unsupervised.
-- What requires an owner checkpoint or escalation.
+- Unsupervised actions and required checkpoints.
 
 ## Operating notes
 
-- Standing preferences, constraints, and escalation rules to honour in every
-  session.
+- Standing preferences, constraints, and escalation rules.

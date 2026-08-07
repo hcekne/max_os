@@ -118,7 +118,7 @@ Git history is the preservation layer; active folders stay clean.
   `SKILLS.md` (enforced by `check_vault.py`). No domain mirror files at the
   root.
 - **Template-owned** (updated from the upstream template): `AGENTS.md`,
-  `SYSTEM/Policy.md`, `SYSTEM/Standalone.md`, `SYSTEM/.instructions.md`,
+  `SYSTEM/Policy.md`, `SYSTEM/.instructions.md`,
   `SYSTEM/Templates/`, every folder `.instructions.md`,
   `.github/copilot-instructions.md`.
 - **User-owned** (shipped once, never modified by the upstream template

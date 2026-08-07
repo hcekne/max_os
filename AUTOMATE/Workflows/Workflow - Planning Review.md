@@ -6,15 +6,16 @@ tags: [planning, review, routine]
 
 # Workflow - Planning Review
 
-Run the owner's planning loop on request, or on a schedule via the Workflow
-Builder. This replaces the retired always-on session-start ritual: reviews
-happen when invoked, not before every piece of work.
+Run the owner's planning loop on request. To schedule it, create an executable
+Workflow Builder recipe from this card; this Markdown card is guidance, not a
+schedulable recipe. Reviews happen when invoked, not before every piece of
+work.
 
 ## Trigger
 
 - The owner asks for a daily plan, a weekly/quarterly review, or "what
   should I do today".
-- Or: a Workflow Builder schedule (e.g. Friday afternoon weekly review).
+- Or: an executable Workflow Builder recipe created from this card.
 
 ## Steps
 

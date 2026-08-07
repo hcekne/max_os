@@ -8,7 +8,10 @@ Log.md` / `Planning Memory.md` / `Actor Profile.md` next to the new kernel
 documents (Operating Manual, Indexes, the old policies) that only survived
 because the workspace had modified them.
 
-This script finishes the migration without losing a byte of user state:
+This script finishes the migration without losing user material. Every retired
+source file is moved byte-for-byte into
+`SYSTEM/Cleaning/Archive/System Kernel Migration/Standalone/` before its old
+path disappears; recognized state is also carried into the active kernel.
 
 1. Carry `Session Log.md` entries into `Log.md`.
 2. Carry `System State.md` frontmatter values into `State.md`.
@@ -17,8 +20,7 @@ This script finishes the migration without losing a byte of user state:
 5. Fold `Actor Profile.md` into `Actor.md` when Actor.md is still the shipped
    placeholder; otherwise keep Actor.md and archive the old file's content
    loss-free by appending it.
-6. Delete surviving dissolved doctrine files (their content lives in the
-   kernel now; the user's copies were doctrine, not data).
+6. Archive surviving dissolved doctrine and guides for owner review.
 7. Rewrite references to renamed/dissolved documents across all Markdown.
 
 Dry-run by default; pass --apply to write. Run from the workspace root:
@@ -35,8 +37,9 @@ from pathlib import Path
 
 SYSTEM = Path("SYSTEM")
 
-# Dissolved doctrine: safe to delete after the carry steps. Content owned by
-# the kernel documents now; user copies of these were instructions, not data.
+# Retired doctrine. Preserve every surviving copy before removing its old path;
+# owner-specific rules may have been added even when the template had a newer
+# canonical destination.
 DOCTRINE = [
     "LLM Operating Manual.md",
     "AI Actor & Memory Model.md",
@@ -50,6 +53,7 @@ DOCTRINE = [
     "Git Preservation Policy.md",
     "Artifact Safety Policy.md",
     "Rendering Policy.md",
+    "Standalone.md",
     "Worklet Conventions.md",
     "workspace_hygiene_rules.yaml",
     "local_setup_requirements.yaml",
@@ -57,7 +61,10 @@ DOCTRINE = [
 
 RENAMES = [
     ("SYSTEM/Guides/Guide - MaxOS Online Scope and Shared Resources", "AGENTS"),
-    ("SYSTEM/Guides/Guide - System Dependencies", "SYSTEM/Standalone"),
+    (
+        "SYSTEM/Guides/Guide - System Dependencies",
+        "AUTOMATE/Skills/Skill - Set Up Standalone MaxOS",
+    ),
     ("SYSTEM/Document Lifecycle Policy", "SYSTEM/Policy"),
     ("SYSTEM/AI Actor & Memory Model", "AGENTS"),
     ("SYSTEM/Git Preservation Policy", "SYSTEM/Policy"),
@@ -73,7 +80,19 @@ RENAMES = [
     ("SYSTEM/Actor Profile", "SYSTEM/Actor"),
     ("SYSTEM/System State", "SYSTEM/State"),
     ("SYSTEM/Session Log", "SYSTEM/Log"),
+    ("SYSTEM/Standalone", "AUTOMATE/Skills/Skill - Set Up Standalone MaxOS"),
     ("SYSTEM/Indexes", "AGENTS"),
+]
+
+TITLE_RENAMES = [
+    ("Actor Profile", "SYSTEM/Actor"),
+    ("System State", "SYSTEM/State"),
+    ("Session Log", "SYSTEM/Log"),
+    ("Planning Memory", "SYSTEM/Memory"),
+    ("Recurring Operations", "SYSTEM/Memory"),
+    ("Planning Cadence", "PLAN/.instructions"),
+    ("LLM Operating Manual", "AGENTS"),
+    ("Standalone", "AUTOMATE/Skills/Skill - Set Up Standalone MaxOS"),
 ]
 
 STATE_FIELDS = [
@@ -86,6 +105,15 @@ STATE_FIELDS = [
 ]
 
 SKIP_DIRS = {".git", ".maxos", "node_modules", ".venv", "venv", "__pycache__", "code"}
+WIKILINK_RE = re.compile(r"\[\[([^\]|#]+)")
+
+PLANNING_MEMORY_DEFAULTS = {
+    "Use this as the persistent memory for how to plan better over time.",
+    "- Keep plans realistic relative to known capacity.",
+    "- Tie weekly commitments to quarterly priorities.",
+    "- Leave buffer for incoming client work and urgent requests.",
+    "- 2026-02-24: Created planning system baseline.",
+}
 
 
 def frontmatter(text: str) -> dict[str, str]:
@@ -145,8 +173,37 @@ class Fixup:
             (self.root / rel).write_text(text, encoding="utf-8")
 
     def remove(self, rel: str) -> None:
-        if self.apply:
-            (self.root / rel).unlink(missing_ok=True)
+        source = self.root / rel
+        if not source.is_file():
+            return
+        archive = self.root / "SYSTEM/Cleaning/Archive/System Kernel Migration/Standalone" / rel
+        self.act(f"Preserved exact source at {archive.relative_to(self.root)}")
+        if not self.apply:
+            return
+        archive.parent.mkdir(parents=True, exist_ok=True)
+        if archive.exists():
+            if archive.read_bytes() == source.read_bytes():
+                source.unlink()
+                return
+            counter = 1
+            candidate = archive
+            while candidate.exists():
+                candidate = archive.with_name(f"{archive.stem} ({counter}){archive.suffix}")
+                counter += 1
+            archive = candidate
+        source.replace(archive)
+
+    def links_exist(self, value: str) -> bool:
+        for target in WIKILINK_RE.findall(value):
+            relative = Path(target.strip().removesuffix(".md") + ".md")
+            candidate = (self.root / relative).resolve(strict=False)
+            try:
+                candidate.relative_to(self.root)
+            except ValueError:
+                return False
+            if not candidate.is_file():
+                return False
+        return True
 
     # -- carry steps ------------------------------------------------------
     def carry_log(self) -> None:
@@ -171,11 +228,11 @@ class Fixup:
         carried = 0
         for field in STATE_FIELDS:
             value = old_fm.get(field, "")
-            if not value or value in ("[]", ""):
+            if not value or value == "[]" or not self.links_exist(value):
                 continue
-            pattern = re.compile(rf"^({re.escape(field)}:)\s*.*$", re.MULTILINE)
+            pattern = re.compile(rf"^({re.escape(field)}:)[ \t]*[^\r\n]*$", re.MULTILINE)
             if pattern.search(new):
-                new = pattern.sub(rf"\1 {value}", new, count=1)
+                new = pattern.sub(lambda match: f"{match.group(1)} {value}", new, count=1)
                 carried += 1
         self.write("SYSTEM/State.md", new)
         self.act(f"State: carried {carried} field values; removed System State.md")
@@ -190,7 +247,10 @@ class Fixup:
         if pm is not None:
             body = pm.split("# Planning Memory", 1)[-1].strip()
             meaningful = [
-                l for l in body.splitlines() if l.strip() not in ("", "-", "##") and not l.startswith("Use this")
+                line
+                for line in body.splitlines()
+                if line.strip() not in ("", "-", "##")
+                and line.strip() not in PLANNING_MEMORY_DEFAULTS
             ]
             if meaningful:
                 additions.append("\n## Carried from Planning Memory\n\n" + "\n".join(meaningful))
@@ -198,10 +258,20 @@ class Fixup:
             self.remove("SYSTEM/Planning Memory.md")
         ro = self.read("SYSTEM/Recurring Operations.md")
         if ro is not None:
-            rows = [
-                l for l in ro.splitlines() if l.startswith("|") and "active" in l.lower() and "Obligation" not in l
-            ]
-            rows = [r for r in rows if r.replace("|", "").replace("-", "").strip()]
+            active_section = (
+                ro.split("## Active Recurring Obligations", 1)[1].split("\n## ", 1)[0]
+                if "## Active Recurring Obligations" in ro
+                else ""
+            )
+            rows = []
+            for line in active_section.splitlines():
+                if not line.startswith("|"):
+                    continue
+                cells = [cell.strip() for cell in line.strip().strip("|").split("|")]
+                if len(cells) == 6 and cells[2].lower() == "active":
+                    rows.append(
+                        f"| {cells[0]} | {cells[1]} | {cells[3]} | {cells[4]} | {cells[5]} |"
+                    )
             if rows:
                 additions.append("\n## Carried standing obligations\n\n" + "\n".join(rows))
             self.act(f"Memory: carried {len(rows)} recurring-obligation rows; removed Recurring Operations.md")
@@ -217,11 +287,17 @@ class Fixup:
         if new is None:
             self.write("SYSTEM/Actor.md", old)
             self.act("Actor: renamed Actor Profile.md to Actor.md")
-        elif "maxos-actor-placeholder" in new:
-            self.write("SYSTEM/Actor.md", old)
-            self.act("Actor: replaced placeholder Actor.md with the lived-in Actor Profile.md")
         else:
-            merged = new.rstrip() + "\n\n## Carried from Actor Profile.md\n\n" + old + "\n"
+            body = old
+            if body.startswith("---"):
+                end = body.find("\n---", 3)
+                if end >= 0:
+                    body = body[end + 4 :]
+            body = re.sub(r"^# Actor Profile[^\n]*\n?", "", body.lstrip(), count=1).strip()
+            merged = new.rstrip()
+            if body and body not in new:
+                merged += "\n\n## Carried from legacy Actor Profile\n\n" + body
+            merged += "\n"
             self.write("SYSTEM/Actor.md", merged)
             self.act("Actor: appended Actor Profile.md content to Actor.md")
         self.remove("SYSTEM/Actor Profile.md")
@@ -230,15 +306,15 @@ class Fixup:
         for name in DOCTRINE:
             p = SYSTEM / name
             if (self.root / p).is_file():
-                self.act(f"Doctrine: removed {p}")
+                self.act(f"Doctrine: retired {p}")
                 self.remove(str(p))
         guides = self.root / "SYSTEM" / "Guides"
         if guides.is_dir():
             for child in sorted(guides.rglob("*")):
                 if child.is_file():
-                    self.act(f"Doctrine: removed {child.relative_to(self.root)}")
-                    if self.apply:
-                        child.unlink()
+                    relative = child.relative_to(self.root).as_posix()
+                    self.act(f"Guide: retired {relative}")
+                    self.remove(relative)
             if self.apply:
                 for d in sorted(guides.rglob("*"), reverse=True):
                     if d.is_dir():
@@ -251,9 +327,15 @@ class Fixup:
             pairs.append((f"{source}.md", f"{target}.md"))
             pairs.append((f"[[{source}]]", f"[[{target}]]"))
             pairs.append((f"[[{source}|", f"[[{target}|"))
+        for source, target in TITLE_RENAMES:
+            pairs.append((f"[[{source}]]", f"[[{target}]]"))
+            pairs.append((f"[[{source}|", f"[[{target}|"))
         changed = 0
         for path in self.root.rglob("*.md"):
             if any(part in SKIP_DIRS for part in path.parts):
+                continue
+            relative = path.relative_to(self.root).as_posix()
+            if relative.startswith("SYSTEM/Cleaning/Archive/System Kernel Migration/"):
                 continue
             try:
                 text = path.read_text(encoding="utf-8")
@@ -275,6 +357,19 @@ class Fixup:
         self.carry_actor()
         self.drop_doctrine()
         self.rewrite_references()
+        if self.actions:
+            proposal = self.root / "SYSTEM/Proposals/Proposal - Review Standalone Kernel Migration.md"
+            if self.apply and not proposal.exists():
+                proposal.parent.mkdir(parents=True, exist_ok=True)
+                proposal.write_text(
+                    "---\ntype: proposal\nstatus: proposed\n---\n\n"
+                    "# Review standalone SYSTEM kernel migration\n\n"
+                    "Legacy files were preserved byte-for-byte under "
+                    "`SYSTEM/Cleaning/Archive/System Kernel Migration/Standalone/`. "
+                    "Review owner-specific rules there and copy only still-current material "
+                    "into `SYSTEM/Memory.md` or the relevant folder instructions.\n",
+                    encoding="utf-8",
+                )
 
 
 def main() -> int:

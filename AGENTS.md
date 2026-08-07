@@ -1,7 +1,7 @@
 # Agents
 
-This workspace is **Max OS**. This file is the canonical entry point for any
-AI agent, tool-neutral. Read it, then read `SYSTEM/Actor.md` to learn who you
+This workspace is **Max OS**. This is the canonical entry point. Read it,
+then read `SYSTEM/Actor.md` to learn who you
 are working for. Read everything else on demand through the routing table
 below.
 
@@ -50,7 +50,7 @@ are the principal — act within the autonomy recorded there.
 | What should future sessions remember? | `SYSTEM/Memory.md` (curated) |
 | What happened? | `SYSTEM/Log.md` (append-only) |
 | How are files, archives, Git, and generated output handled? | `SYSTEM/Policy.md` |
-| How do I run this workspace without the app? | `SYSTEM/Standalone.md` |
+| How do I run this workspace without the app? | `Skill - Set Up Standalone MaxOS` |
 | How should a particular folder be used? | that folder's `.instructions.md` |
 | How does an agent perform a task? | `AUTOMATE/Skills/` |
 | When should work run automatically? | `AUTOMATE/Workflows/` + schedules |
@@ -62,7 +62,7 @@ If information fits no row, it does not belong in `SYSTEM/`.
 ## Validation
 
 - `sh AUTOMATE/Skills/tools/ensure_local_setup.sh` — once per standalone
-  clone (hosted runs come pre-wired; see `SYSTEM/Standalone.md`).
+  clone (hosted runs come pre-wired; see `Skill - Set Up Standalone MaxOS`).
 - `python3 AUTOMATE/Skills/tools/knowledge_lint.py --root . --changed-only
   --fail-on error` — before committing Markdown changes.
 - `python3 AUTOMATE/Skills/tools/maxos_quality_gate.py --root .` — before
@@ -84,7 +84,7 @@ linking, or telling the user where a file lives:
   Projects, Content, Interactions, Notes, and custom user folders.
 - `PLAN`: Daily notes, Todos, Goals, Weekly, Quarterly, Reviews, and Two-Year plans.
 - `AUTOMATE`: Workflows, Skills, and Modules.
-- `SYSTEM`: operating instructions, Guides, Cleaning, Templates, and Storage References.
+- `SYSTEM`: the operating kernel, Cleaning, Templates, Proposals, and Storage References.
 
 Do not invent or display retired numbered folder names. Root technical folders,
 Git metadata, provider configuration, and `code/` remain at the workspace root.

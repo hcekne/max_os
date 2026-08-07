@@ -18,4 +18,4 @@ Append-only episodic record of what happened in this workspace.
 
 ## Entries
 
-- YYYY-MM-DD: Workspace initialised from the Max OS template.
+_No entries yet._

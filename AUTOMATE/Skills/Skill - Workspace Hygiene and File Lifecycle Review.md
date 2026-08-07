@@ -248,7 +248,6 @@ KNOWLEDGE/Projects/<Project Name>/
   04_Deliverables/
   05_Meetings/
   06_Decisions/
-  99_Scratch/
 ```
 
 Do not impose this globally if a lighter structure is enough.

@@ -17,9 +17,7 @@ this file holds what future sessions should act on.
 
 ## Preferences
 
-- Keep plans realistic relative to known capacity.
-- Tie weekly commitments to quarterly priorities.
-- Leave buffer for incoming and urgent work.
+-
 
 ## Standing obligations
 

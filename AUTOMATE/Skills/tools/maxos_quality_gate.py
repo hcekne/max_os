@@ -33,6 +33,16 @@ TEXT_SUFFIXES = {
 }
 
 SKIP_PARTS = {".git", ".maxos", ".obsidian", "__pycache__", "node_modules", ".venv", "venv"}
+PUBLIC_KERNEL_FILES = {
+    ".instructions.md",
+    "Actor.md",
+    "Log.md",
+    "Memory.md",
+    "Policy.md",
+    "State.md",
+    "public_template_denylist.example.txt",
+}
+PUBLIC_KERNEL_DIRECTORIES = {"Cleaning", "Proposals", "Storage References", "Templates"}
 
 
 def run(command: list[str], root: Path) -> tuple[int, str]:
@@ -143,6 +153,39 @@ def scan_text_files(files: list[Path], root: Path, denylist: list[str]) -> list[
     return findings
 
 
+def check_public_kernel(root: Path) -> list[str]:
+    findings: list[str] = []
+    required = {
+        "AGENTS.md",
+        ".gemini/GEMINI.md",
+        "SYSTEM/Actor.md",
+        "SYSTEM/Log.md",
+        "SYSTEM/Memory.md",
+        "SYSTEM/Policy.md",
+        "SYSTEM/State.md",
+    }
+    for relative in sorted(required):
+        if not (root / relative).is_file():
+            findings.append(f"missing required kernel file: {relative}")
+    system = root / "SYSTEM"
+    if system.is_dir():
+        files = {path.name for path in system.iterdir() if path.is_file()}
+        directories = {path.name for path in system.iterdir() if path.is_dir()}
+        for name in sorted(files - PUBLIC_KERNEL_FILES):
+            findings.append(f"unexpected SYSTEM top-level file: SYSTEM/{name}")
+        for name in sorted(PUBLIC_KERNEL_DIRECTORIES - directories):
+            findings.append(f"missing SYSTEM kernel directory: SYSTEM/{name}/")
+        for name in sorted(directories - PUBLIC_KERNEL_DIRECTORIES):
+            findings.append(f"unexpected SYSTEM top-level directory: SYSTEM/{name}/")
+    agents = root / "AGENTS.md"
+    actor = root / "SYSTEM" / "Actor.md"
+    if agents.is_file() and actor.is_file():
+        words = len((agents.read_text() + " " + actor.read_text()).split())
+        if words > 800:
+            findings.append(f"second-zero read is {words} words; maximum is 800")
+    return findings
+
+
 def print_section(title: str, ok: bool, details: str | list[str] = "") -> None:
     status = "PASS" if ok else "FAIL"
     print(f"[{status}] {title}")
@@ -190,6 +233,9 @@ def main() -> int:
     failures += int(bool(untracked))
 
     if args.public_template:
+        kernel_findings = check_public_kernel(root)
+        print_section("public-template SYSTEM kernel", not kernel_findings, kernel_findings)
+        failures += int(bool(kernel_findings))
         denylist_path = default_denylist_path(root, args.denylist)
         denylist = read_denylist(denylist_path)
         files = changed_or_all_files(root, args.full)
