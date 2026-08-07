@@ -9,10 +9,10 @@ tags: [workflow, html, artifact, safety]
 # Workflow - HTML Artifact Review
 
 ## Goal
-Review an HTML artifact or worklet for usefulness, provenance, and safety before approving, sharing, or using it in a harness.
+Review an HTML artifact for usefulness, provenance, and safety before approving, sharing, or using it in a harness.
 
 ## Inputs
-- HTML artifact or worklet file
+- HTML artifact file
 - Companion manifest, if present
 - Listed canonical source files
 - Intended use case and audience
@@ -22,7 +22,7 @@ Review an HTML artifact or worklet for usefulness, provenance, and safety before
 - [[Skill - Review HTML Artifact Safety]]
 
 ## Steps
-1. Confirm the file is an artifact or worklet, not canonical memory.
+1. Confirm the file is a generated artifact, not canonical memory.
 2. Read the companion manifest or create one from the appropriate template.
 3. Check top-of-file metadata for source files, generated date, generator, and approval status.
 4. Verify the artifact accurately reflects listed Markdown sources.
@@ -32,7 +32,7 @@ Review an HTML artifact or worklet for usefulness, provenance, and safety before
 8. Update the manifest review fields with reviewer, date, decision, and constraints.
 
 ## Outputs
-- Reviewed artifact or worklet
+- Reviewed artifact
 - Updated manifest
 - Safety review notes
 - Optional Markdown proposal for canonical source updates

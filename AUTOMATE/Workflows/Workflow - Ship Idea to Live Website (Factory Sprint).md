@@ -32,7 +32,7 @@ Turn a raw website idea into a live domain quickly and repeatably, while capturi
 - Success signal in first 7 days
 
 ### Phase 1 (20 min): Generate prompt + site variant
-1. Use `Workflow - Generate Website UI Prompts (Antigravity + Gemini)`.
+1. Turn the launch card into a concise implementation brief covering content hierarchy, visual direction, and CTA behavior.
 2. Generate 1-3 variants quickly.
 3. Pick one based on readability and CTA clarity, not visual novelty.
 

@@ -1,19 +1,19 @@
 ---
 type: skill
 status: active
-tags: [skill, html, artifact, worklet, safety, review]
+tags: [skill, html, artifact, safety, review]
 ---
 
 # Skill - Review HTML Artifact Safety
 
 ## Purpose
-Review an HTML artifact or worklet for safety, provenance, and canonical-source integrity before it is approved or shared.
+Review an HTML artifact for safety, provenance, and canonical-source integrity before it is approved or shared.
 
 ## Trigger
-Use this skill when the user asks to review, approve, publish, share, or run an HTML artifact or worklet.
+Use this skill when the user asks to review, approve, publish, share, or run an HTML artifact.
 
 ## Inputs
-- HTML artifact or worklet file
+- HTML artifact file
 - Companion manifest, if present
 - Canonical source files listed in metadata or manifest
 - Intended viewing context, including any harness permissions
