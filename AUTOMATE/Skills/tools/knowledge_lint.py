@@ -7,7 +7,6 @@ import argparse
 import dataclasses
 import re
 import subprocess
-import sys
 import urllib.parse
 from pathlib import Path
 from typing import Iterable
@@ -23,6 +22,7 @@ SKIP_DIRS = {
     ".venv",
     "venv",
 }
+HISTORICAL_ARCHIVE_ROOT = Path("SYSTEM/Cleaning/Archive")
 
 WIKI_LINK_RE = re.compile(r"\[\[([^\]]+)\]\]")
 MD_LINK_RE = re.compile(r"(?<!!)\[[^\]]+\]\(([^)]+)\)")
@@ -179,22 +179,47 @@ def is_template_file(path: Path, root: Path) -> bool:
     return "SYSTEM/Templates" in relative_parts or path.name.startswith("TPL -")
 
 
+def is_historical_archive(path: Path, root: Path) -> bool:
+    """Archived snapshots remain indexable targets but are not active documents."""
+    try:
+        rel(path, root).relative_to(HISTORICAL_ARCHIVE_ROOT)
+    except ValueError:
+        return False
+    return True
+
+
 def lint_frontmatter(path: Path, root: Path, lines: list[str]) -> list[Issue]:
     issues: list[Issue] = []
     closing_line, frontmatter = extract_frontmatter(lines)
     if lines and lines[0].strip() == "---" and closing_line is None:
         issues.append(
-            Issue("error", "FM001", rel(path, root), 1, "frontmatter starts but never closes")
+            Issue(
+                "error",
+                "FM001",
+                rel(path, root),
+                1,
+                "frontmatter starts but never closes",
+            )
         )
         return issues
 
     if not frontmatter:
         return issues
 
-    yaml_error = None if is_template_file(path, root) else validate_yaml_with_optional_dependency(frontmatter)
+    yaml_error = (
+        None
+        if is_template_file(path, root)
+        else validate_yaml_with_optional_dependency(frontmatter)
+    )
     if yaml_error:
         issues.append(
-            Issue("error", "FM002", rel(path, root), 1, f"frontmatter is invalid YAML: {yaml_error}")
+            Issue(
+                "error",
+                "FM002",
+                rel(path, root),
+                1,
+                f"frontmatter is invalid YAML: {yaml_error}",
+            )
         )
 
     seen: dict[str, int] = {}
@@ -300,17 +325,31 @@ def lint_headings(path: Path, root: Path, lines: list[str]) -> list[Issue]:
             headings.append((line_number, len(match.group(1)), match.group(2).strip()))
 
     if not headings:
-        issues.append(Issue("warning", "MD001", rel(path, root), 1, "file has no Markdown headings"))
+        issues.append(
+            Issue(
+                "warning", "MD001", rel(path, root), 1, "file has no Markdown headings"
+            )
+        )
         return issues
 
     if headings[0][1] != 1:
         issues.append(
-            Issue("warning", "MD002", rel(path, root), headings[0][0], "first heading is not H1")
+            Issue(
+                "warning",
+                "MD002",
+                rel(path, root),
+                headings[0][0],
+                "first heading is not H1",
+            )
         )
 
     h1_count = sum(1 for _, level, _ in headings if level == 1)
     if h1_count > 1:
-        issues.append(Issue("warning", "MD003", rel(path, root), 1, "file has multiple H1 headings"))
+        issues.append(
+            Issue(
+                "warning", "MD003", rel(path, root), 1, "file has multiple H1 headings"
+            )
+        )
 
     previous_level = headings[0][1]
     seen_titles: dict[str, int] = {}
@@ -343,7 +382,9 @@ def lint_headings(path: Path, root: Path, lines: list[str]) -> list[Issue]:
     return issues
 
 
-def build_wiki_index(files: list[Path], root: Path) -> tuple[dict[str, list[Path]], dict[str, Path]]:
+def build_wiki_index(
+    files: list[Path], root: Path
+) -> tuple[dict[str, list[Path]], dict[str, Path]]:
     by_stem: dict[str, list[Path]] = {}
     by_path: dict[str, Path] = {}
     for path in files:
@@ -362,7 +403,9 @@ def split_wiki_target(raw_target: str) -> tuple[str, str | None]:
     return target.strip(), None
 
 
-def anchor_exists(target: Path, anchor: str | None, heading_cache: dict[Path, dict[str, set[str]]]) -> bool:
+def anchor_exists(
+    target: Path, anchor: str | None, heading_cache: dict[Path, dict[str, set[str]]]
+) -> bool:
     if not anchor:
         return True
     headings = heading_cache.setdefault(target, collect_headings(target))
@@ -393,7 +436,9 @@ def resolve_wiki(
             suffix = f"/{normalized}"
             seen: set[Path] = set()
             for key, file_path in by_path.items():
-                if (key.endswith(suffix_md) or key.endswith(suffix)) and file_path not in seen:
+                if (
+                    key.endswith(suffix_md) or key.endswith(suffix)
+                ) and file_path not in seen:
                     seen.add(file_path)
                     candidates.append(file_path)
         return candidates, "path"
@@ -419,7 +464,9 @@ def is_external_target(target: str) -> bool:
     )
 
 
-def resolve_local_markdown_target(target: str, current_path: Path, root: Path) -> Path | None:
+def resolve_local_markdown_target(
+    target: str, current_path: Path, root: Path
+) -> Path | None:
     target_without_anchor = target.split("#", 1)[0]
     if not target_without_anchor:
         return current_path
@@ -482,7 +529,9 @@ def lint_links(
                         f"wiki-link target is ambiguous across {len(candidates)} files: [[{target_display}]]",
                     )
                 )
-            if len(candidates) == 1 and not anchor_exists(candidates[0], anchor, heading_cache):
+            if len(candidates) == 1 and not anchor_exists(
+                candidates[0], anchor, heading_cache
+            ):
                 issues.append(
                     Issue(
                         "warning",
@@ -531,7 +580,11 @@ def lint_files(root: Path, files: list[Path]) -> list[Issue]:
     heading_cache: dict[Path, dict[str, set[str]]] = {}
     issues: list[Issue] = []
     for path in files:
-        lines = path.read_text(encoding="utf-8", errors="replace").splitlines(keepends=True)
+        if is_historical_archive(path, root):
+            continue
+        lines = path.read_text(encoding="utf-8", errors="replace").splitlines(
+            keepends=True
+        )
         issues.extend(lint_frontmatter(path, root, lines))
         issues.extend(lint_headings(path, root, lines))
         issues.extend(lint_links(path, root, lines, by_stem, by_path, heading_cache))
@@ -569,20 +622,30 @@ def render_markdown(files: list[Path], issues: list[Issue], max_issues: int) -> 
     ]
     for issue in issues[:max_issues]:
         message = issue.message.replace("|", "\\|")
-        rows.append(f"| {issue.severity} | `{issue.path}` | {issue.line} | `{issue.code}` | {message} |")
+        rows.append(
+            f"| {issue.severity} | `{issue.path}` | {issue.line} | `{issue.code}` | {message} |"
+        )
     if len(issues) > max_issues:
-        rows.append(f"| info |  |  |  | {len(issues) - max_issues} additional issues not shown |")
+        rows.append(
+            f"| info |  |  |  | {len(issues) - max_issues} additional issues not shown |"
+        )
     return "\n".join(rows) + "\n"
 
 
 def main() -> int:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--root", default=".", help="workspace root")
-    parser.add_argument("--changed-only", action="store_true", help="lint changed/untracked Markdown files")
+    parser.add_argument(
+        "--changed-only",
+        action="store_true",
+        help="lint changed/untracked Markdown files",
+    )
     parser.add_argument("--format", choices=["text", "markdown"], default="text")
     parser.add_argument("--output", help="write report to this path")
     parser.add_argument("--max-issues", type=int, default=200)
-    parser.add_argument("--fail-on", choices=["error", "warning", "none"], default="error")
+    parser.add_argument(
+        "--fail-on", choices=["error", "warning", "none"], default="error"
+    )
     args = parser.parse_args()
 
     root = Path(args.root).resolve()

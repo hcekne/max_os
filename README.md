@@ -47,6 +47,12 @@ schedules or events without a browser open.
 `AUTOMATE/Skills/Skill - Set Up Standalone MaxOS.md` (one setup script, one
 dependency check, start your AI tool in the folder).
 
+**Existing workspace:** keep the repository and its history. Follow
+`AUTOMATE/Skills/Skill - Upgrade Existing MaxOS Workspace.md` to migrate an
+older numbered or `WORKSPACE/` layout safely, either through MaxOS Online or in
+a standalone clone. The upgrade preserves user content and customized
+instructions; it does not ask you to start over from a blank template.
+
 ## Working style
 
 - Everything is plain Markdown; link notes with `[[Note Name]]`.

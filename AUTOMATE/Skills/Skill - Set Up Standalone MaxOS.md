@@ -15,6 +15,10 @@ missing tools to be installed inside the runner.
 - The owner has cloned Max OS to their own computer.
 - A standalone agent reports missing setup or tool dependencies.
 
+If the clone is a lived-in older Max OS repository rather than a fresh current
+template, run `Skill - Upgrade Existing MaxOS Workspace` first. Do not replace
+or re-bootstrap it.
+
 ## Steps
 
 1. Run `sh AUTOMATE/Skills/tools/ensure_local_setup.sh`. It installs the
