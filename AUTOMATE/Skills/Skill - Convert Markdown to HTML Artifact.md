@@ -19,7 +19,7 @@ Use this skill when the user asks to render, convert, preview, package, or share
 - Optional companion manifest request
 
 ## Steps
-1. Read [[SYSTEM/Document Model]], [[SYSTEM/Rendering Policy]], and [[SYSTEM/Artifact Safety Policy]].
+1. Read [[SYSTEM/Policy]] (document types and generated-output sections).
 2. Read the source Markdown and preserve factual content without inventing details.
 3. Decide whether the output is a static artifact or an interactive worklet. Use a worklet only when interaction is required.
 4. Create the HTML artifact in `KNOWLEDGE/Content/Artifacts/` using `SYSTEM/Templates/TPL - HTML Artifact.html`.

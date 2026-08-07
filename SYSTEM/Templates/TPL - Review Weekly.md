@@ -4,7 +4,7 @@ week: {{date:GGGG-[W]WW}}
 plan_link: 
 daily_links: []
 quarter_link: 
-memory_link: [[SYSTEM/Planning Memory]]
+memory_link: [[SYSTEM/Memory]]
 tags: [planning, review, weekly]
 ---
 
@@ -26,7 +26,7 @@ tags: [planning, review, weekly]
 ## Improvements (Next Week)
 - [ ] 
 
-## Memory Update (copy into Planning Memory)
+## Memory Update (copy into SYSTEM/Memory.md)
 - 
 
 ## Next Week Draft Priorities

@@ -81,7 +81,7 @@ Known lifecycle fields:
 
 ### Wiki-Links
 - Resolve `[[Note Name]]` links against Markdown note filenames.
-- Resolve path-style links such as `[[SYSTEM/Planning Memory]]`.
+- Resolve path-style links such as `[[SYSTEM/Memory]]`.
 - Warn when a wiki-link is ambiguous across multiple files.
 - Warn when a wiki-link anchor is not found.
 

@@ -15,4 +15,4 @@ This folder contains optional capability packs that extend Max OS beyond the cor
 ## Enablement rule
 A module is considered active only when:
 1. Its `STATUS.md` says `active`, and
-2. `SYSTEM/System State.md` references it in notes or fields.
+2. `SYSTEM/State.md` lists it in `active_modules`.

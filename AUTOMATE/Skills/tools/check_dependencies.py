@@ -11,7 +11,7 @@ For each dependency the script prints:
 The script exits 0 even when items are missing, so it can be wired into a
 non-blocking setup check. Use the printed install commands to fill the gaps.
 
-See `SYSTEM/Guides/Guide - System Dependencies.md` for the canonical reference.
+See `SYSTEM/Standalone.md` for the canonical reference.
 """
 
 from __future__ import annotations

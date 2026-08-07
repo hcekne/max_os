@@ -9,7 +9,7 @@ location:
 email:
 phone:
 tags: [people]
-last_interaction:
+last_interaction_date:
 next_follow_up:
 ---
 

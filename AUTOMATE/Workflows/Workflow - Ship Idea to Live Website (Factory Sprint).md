@@ -87,4 +87,3 @@ Turn a raw website idea into a live domain quickly and repeatably, while capturi
 
 ## Related
 - [[Workflow - Launch Max OS Website in 90 Minutes]]
-- [[Workflow - Generate Website UI Prompts (Antigravity + Gemini)]]

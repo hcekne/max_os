@@ -19,7 +19,7 @@ Use this skill when the user asks to review, approve, publish, share, or run an 
 - Intended viewing context, including any harness permissions
 
 ## Steps
-1. Read [[SYSTEM/Artifact Safety Policy]] and [[SYSTEM/Rendering Policy]].
+1. Read [[SYSTEM/Policy]] (generated-output section).
 2. Inspect the top-of-file HTML metadata and any companion manifest.
 3. Verify source files, generated date, generator, and approval status are present.
 4. Check that the HTML does not contain secrets, tokens, credentials, or unnecessary sensitive data.

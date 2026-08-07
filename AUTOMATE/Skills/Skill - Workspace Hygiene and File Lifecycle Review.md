@@ -61,7 +61,7 @@ Do not delete files.
 ### APPLY_APPROVED
 Only after explicit human approval, apply agreed archive moves, metadata updates, canonical renames, and deletions.
 
-Rubbish-bin purge is the only exception: files already in the central rubbish bin may be deleted once they satisfy [[SYSTEM/Rubbish Bin Policy]].
+Rubbish-bin purge is the only exception: files already in the central rubbish bin may be deleted once they satisfy the Rubbish Bin rules in [[SYSTEM/Policy]].
 
 Default to `PLAN_ONLY` unless the user explicitly requests another mode.
 

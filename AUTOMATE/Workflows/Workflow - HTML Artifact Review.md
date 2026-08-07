@@ -18,9 +18,7 @@ Review an HTML artifact or worklet for usefulness, provenance, and safety before
 - Intended use case and audience
 
 ## Related Policies
-- [[SYSTEM/Document Model]]
-- [[SYSTEM/Rendering Policy]]
-- [[SYSTEM/Artifact Safety Policy]]
+- [[SYSTEM/Policy]] (document types and generated-output sections)
 - [[Skill - Review HTML Artifact Safety]]
 
 ## Steps

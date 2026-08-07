@@ -1,20 +1,20 @@
 ---
 type: rubbish-bin-index
 status: active
-created: 2026-05-18
 scope: vault-wide
-default_retention_days: 30
 ---
 
 # Central Rubbish Bin Index
 
-Use this surface for quick scans of clearly stale material before purge.
+Quick scan of clearly stale material queued for deletion. Rules live in
+`SYSTEM/Policy.md` (Archive and Rubbish Bin section).
 
-## Path Rule
-- Mirror the original source path beneath `SYSTEM/Cleaning/Rubbish Bin/`.
-
-## Purge Rule
-- Files in the rubbish bin are expected to be deleted after their `delete_after` date unless a human rescues them back to an active or archived location.
+- Working standalone, mirror the original source path beneath
+  `SYSTEM/Cleaning/Rubbish Bin/` and set `delete_after` when useful.
+- In the MaxOS app, binned files land flat at this root and the Empty action
+  deletes contents immediately — treat the bin as short-lived and never bin
+  high-retention material.
 
 ## Current Contents
-This public template intentionally ships with an empty rubbish bin. User workspaces should add entries only for stale, superseded, low-retention material.
+
+This template ships with an empty rubbish bin.

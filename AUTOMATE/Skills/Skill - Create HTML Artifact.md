@@ -19,7 +19,7 @@ Use this skill when the user asks for a rich visual artifact, briefing, dashboar
 - Optional approval status
 
 ## Steps
-1. Read [[SYSTEM/Document Model]], [[SYSTEM/Rendering Policy]], and [[SYSTEM/Artifact Safety Policy]].
+1. Read [[SYSTEM/Policy]] (document types and generated-output sections).
 2. Identify the canonical source files and preserve their wiki-links in the artifact metadata.
 3. Confirm the output belongs in `KNOWLEDGE/Content/Artifacts/` and does not replace a Markdown note.
 4. Start from `SYSTEM/Templates/TPL - HTML Artifact.html` unless a better existing artifact is provided.

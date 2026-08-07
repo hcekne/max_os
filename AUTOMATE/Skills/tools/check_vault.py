@@ -68,18 +68,15 @@ WIKILINK_SKIP_FILES = {"README.md", "AGENTS.md", "CLAUDE.md"}
 
 INLINE_CODE_RE = re.compile(r"`[^`\n]*`")
 
-# Canonical fields on System State frontmatter. Empty values are flagged.
-# Yearly cadence is optional — fields commented out below until a yearly review note exists.
+# Canonical fields on SYSTEM/State.md frontmatter. Empty values are allowed —
+# a pristine template ships with no fabricated dates or plans; only unresolved
+# wiki-links in non-empty values are flagged. Review-cadence date fields were
+# retired with the kernel redesign: ceremonies are on-demand or scheduled
+# workflows, not date-triggered session-start duties.
 SYSTEM_STATE_FIELDS = [
     "last_interaction_date",
-    "last_weekly_review_date",
-    "last_monthly_review_date",
-    "last_quarterly_review_date",
-    # "last_yearly_review_date",  # optional until yearly cadence is active
     "active_week_plan",
-    "active_month_note",
     "active_quarter_plan",
-    # "active_year_note",         # optional until yearly cadence is active
     "active_two_year_plan",
 ]
 
@@ -270,20 +267,22 @@ def check_hygiene(root: Path, findings: list) -> None:
                              f"root-level .md not in allowed set {sorted(ALLOWED_ROOT_MD)}"))
 
 def check_system_state(root: Path, index: dict, folders: set, findings: list) -> None:
-    p = root / "SYSTEM" / "System State.md"
+    p = root / "SYSTEM" / "State.md"
     if not p.exists():
-        findings.append(("system-state", "SYSTEM/System State.md", "missing"))
+        findings.append(("system-state", "SYSTEM/State.md", "missing"))
         return
     fm = parse_frontmatter(read_text(p))
     for field in SYSTEM_STATE_FIELDS:
+        if field not in fm:
+            findings.append(("system-state", "State frontmatter", f"`{field}` is missing"))
+            continue
         value = fm.get(field, "").strip()
         if not value:
-            findings.append(("system-state", "System State frontmatter", f"`{field}` is empty"))
-            continue
+            continue  # empty is valid: nothing fabricated ships in the template
         for m in WIKILINK_RE.finditer(value):
             if not resolve_wikilink(m.group(1), root, index, folders):
                 t = strip_wikilink(m.group(1))
-                findings.append(("system-state", "System State frontmatter",
+                findings.append(("system-state", "State frontmatter",
                                  f"`{field}` -> unresolved [[{t}]]"))
 
 

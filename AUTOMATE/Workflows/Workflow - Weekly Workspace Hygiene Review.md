@@ -25,7 +25,7 @@ Make workspace hygiene a recurring Max OS operating loop so active folders stay 
 ### Weekly Hygiene Review
 - Run [[Skill - Workspace Hygiene and File Lifecycle Review]] in `PLAN_ONLY`.
 - Classify recent files.
-- Scan `SYSTEM/` control files for client- or project-specific instructions that should live in project notes, historical logs, or [[SYSTEM/Recurring Operations]] instead.
+- Scan `SYSTEM/` control files for client- or project-specific instructions that should live in project notes, historical logs, or the standing-obligations table in [[SYSTEM/Memory]] instead.
 - Identify expired or superseded material.
 - Propose archive and rubbish-bin actions.
 - Recommend targeted lifecycle metadata updates.
@@ -169,4 +169,4 @@ project_closeout:
   - propose public Max OS improvements
 ```
 
-The harness may only auto-delete files already in `SYSTEM/Cleaning/Rubbish Bin/` when [[SYSTEM/Rubbish Bin Policy]] allows it.
+The harness may only auto-delete files already in `SYSTEM/Cleaning/Rubbish Bin/` when the Rubbish Bin rules in [[SYSTEM/Policy]] allow it.
