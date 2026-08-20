@@ -35,8 +35,13 @@ For reusable agent-executable capabilities that are not whole workflows, see
 - Keep run outputs out of the recipe list. The harness writes intermediate
   outputs to `AUTOMATE/Workflows/Automations/artifacts/` and delivers final outputs to
   the inbox.
-- Prefer editing executable recipes in the Workflow Builder. Hand-edit only when
-  you understand the schema.
+- `AUTOMATE/Workflows/Automations/WORKFLOW-PRIMITIVES.md` is the single, always
+  current description of the recipe format: every node type, its fields, and the
+  Workflow Library categories. MaxOS regenerates it, so do not copy it into
+  another note and do not describe the schema anywhere else.
+- The Workflow Builder is the easiest way to author a recipe. Hand-authoring one
+  from that reference is fully supported; the backend validates a recipe on save
+  and before every run.
 - Document inputs should be picked through the Workflow Builder so they point to
   files the owner can access in the workspace or an authorized organization
   project.
