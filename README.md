@@ -20,6 +20,9 @@ design guarantee, not an accident.
 **[Explore MaxOS](https://www.maxos.online/)** ·
 **[Open MaxOS Online](https://app.maxos.online/)**
 
+Follow MaxOS on [LinkedIn](https://www.linkedin.com/company/maxos-online/) and
+watch product demonstrations on [YouTube](https://www.youtube.com/@MaxOSOnline).
+
 ## Why MaxOS
 
 - **Keep useful context alive.** Your knowledge, plans, decisions, and working
