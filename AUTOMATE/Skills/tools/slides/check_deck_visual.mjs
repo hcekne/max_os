@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 /*
- * Headless visual QA for Max OS HTML slide decks.
+ * Headless visual QA for floThink HTML slide decks.
  *
  * Checks every .slide at native render size, captures per-slide screenshots,
  * detects scroll/bounds/footer overflow, and writes a JSON report plus contact

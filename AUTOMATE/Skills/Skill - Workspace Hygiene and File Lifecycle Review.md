@@ -8,7 +8,7 @@ tags: [skill, workspace-hygiene, lifecycle, archive, git, cleanup]
 # Skill - Workspace Hygiene and File Lifecycle Review
 
 ## Purpose
-Review a Max OS workspace for file bloat, stale material, duplicate drafts, expired prep, unclear canonical files, and lifecycle metadata gaps, then produce or apply a safe cleanup plan.
+Review a floThink workspace for file bloat, stale material, duplicate drafts, expired prep, unclear canonical files, and lifecycle metadata gaps, then produce or apply a safe cleanup plan.
 
 ## When to Use
 Use this skill when:
@@ -40,7 +40,7 @@ Use this skill when:
 - Archive/rubbish-bin/delete/merge candidates
 - Lifecycle metadata recommendations
 - Optional safe archive moves or metadata updates, depending on mode
-- Public Max OS improvement proposal when reusable patterns are found
+- Public floThink improvement proposal when reusable patterns are found
 
 ## Operating Modes
 
@@ -253,7 +253,7 @@ KNOWLEDGE/Projects/<Project Name>/
 Do not impose this globally if a lighter structure is enough.
 
 ## Public-Template Extraction Logic
-When a hygiene run reveals reusable Max OS improvements:
+When a hygiene run reveals reusable floThink improvements:
 1. Extract the generic pattern only.
 2. Remove private names, client details, confidential numbers, and internal-only facts.
 3. Prefer policies, templates, skill improvements, and workflow rules.
@@ -311,5 +311,5 @@ End every run with:
 5. Files modified or moved, if any
 6. Delete candidates awaiting approval
 7. Human-review items
-8. Public Max OS improvements identified
+8. Public floThink improvements identified
 9. Recommended next action

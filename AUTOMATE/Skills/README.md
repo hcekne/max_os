@@ -1,6 +1,6 @@
 # Skills
 
-This folder contains agent-executable skill definitions — structured descriptions of tasks that AI agents can perform autonomously within Max OS.
+This folder contains agent-executable skill definitions — structured descriptions of tasks that AI agents can perform autonomously within floThink.
 
 ## Use This Folder For
 - capabilities an agent can execute autonomously

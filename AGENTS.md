@@ -1,19 +1,19 @@
 # Agents
 
-This workspace is **Max OS**. This is the canonical entry point. Read it,
+This workspace is **floThink**. This is the canonical entry point. Read it,
 then read `SYSTEM/Actor.md` to learn who you
 are working for. Read everything else on demand through the routing table
 below.
 
-> MaxOS is an actor-owned, portable workspace and, when hosted, an
+> floThink is an actor-owned, portable workspace and, when hosted, an
 > application runtime. Markdown files provide canonical workspace context.
-> MaxOS Online additionally provides accounts, scoped resources, storage,
+> floThink additionally provides accounts, scoped resources, storage,
 > scheduled and event-triggered workflows, always-on execution, monitoring
 > and run history. Hosted capabilities are available only when exposed by the
-> current session. MaxOS must not be described as merely a collection of
+> current session. floThink must not be described as merely a collection of
 > Markdown files.
 
-Max OS is owner-neutral. Check `actor_type` in `SYSTEM/Actor.md`: in `human`
+floThink is owner-neutral. Check `actor_type` in `SYSTEM/Actor.md`: in `human`
 mode the workspace is a cooperation between a human mind and an LLM — surface
 options and defer decisions that are the owner's to make; in `ai` mode you
 are the principal — act within the autonomy recorded there.
@@ -30,9 +30,9 @@ are the principal — act within the autonomy recorded there.
 - One canonical note per topic. Route new material by the table below.
 - Move stale material into `SYSTEM/Cleaning/` per `SYSTEM/Policy.md`;
   deletion only through the Rubbish Bin path with owner approval.
-- Git safety: never push a remote named `upstream`. Outside the MaxOS
-  harness, any push requires owner approval; inside hosted runs, follow the
-  injected remotes model.
+- Git safety: never push `upstream`. Outside hosted runs, any push requires
+  owner approval. Lowercase paths, IDs, domains, and variables are compatibility
+  contracts; keep exact identifiers when required and use **floThink** in prose.
 - Scope is an allowlist. If a folder, project, or repository is not in the
   current session's scope, do not assume it exists or try to reach it. Do not
   bulk-copy shared, organization, or client material into this workspace —
@@ -50,7 +50,7 @@ are the principal — act within the autonomy recorded there.
 | What should future sessions remember? | `SYSTEM/Memory.md` (curated) |
 | What happened? | `SYSTEM/Log.md` (append-only) |
 | How are files, archives, Git, and generated output handled? | `SYSTEM/Policy.md` |
-| How do I run this workspace without the app? | `Skill - Set Up Standalone MaxOS` |
+| How do I run this workspace without the app? | `Skill - Set Up Standalone floThink` |
 | How should a particular folder be used? | that folder's `.instructions.md` |
 | How does an agent perform a task? | `AUTOMATE/Skills/` |
 | When should work run automatically? | `AUTOMATE/Workflows/` + schedules |
@@ -62,23 +62,23 @@ If information fits no row, it does not belong in `SYSTEM/`.
 ## Validation
 
 - `sh AUTOMATE/Skills/tools/ensure_local_setup.sh` — once per standalone
-  clone (hosted runs come pre-wired; see `Skill - Set Up Standalone MaxOS`).
+  clone (hosted runs come pre-wired; see `Skill - Set Up Standalone floThink`).
 - `python3 AUTOMATE/Skills/tools/knowledge_lint.py --root . --changed-only
   --fail-on error` — before committing Markdown changes.
-- `python3 AUTOMATE/Skills/tools/maxos_quality_gate.py --root .` — before
+- `python3 AUTOMATE/Skills/tools/flothink_quality_gate.py --root .` — before
   structural commits; add `--full --public-template` for public-template
   work. The pre-commit hook runs the gate automatically once setup is
   installed.
 - Do not commit runtime byproducts such as `__pycache__/` or `*.pyc`.
 
 <!-- maxos-workspace-v2:start -->
-## MaxOS workspace layout
+## floThink workspace layout
 
 Use the physical folder names exactly as written below when reading, writing,
 linking, or telling the user where a file lives:
 
 - `ACTION CENTER/My Inbox`: results and updates for the user to review.
-- `ACTION CENTER/Agent Inbox`: new files and requests for MaxOS to process.
+- `ACTION CENTER/Agent Inbox`: new files and requests for floThink to process.
 - `ACTION CENTER/Outbox`: finished items ready to download, share, or send.
 - `KNOWLEDGE`: long-lived knowledge, including People, Organizations, Clients,
   Projects, Content, Interactions, Notes, and custom user folders.

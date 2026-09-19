@@ -1,4 +1,4 @@
-# MaxOS Visual Style Guide
+# floThink Visual Style Guide
 
 Purpose:
 
@@ -17,12 +17,12 @@ Wordmark:
 
 - `Max` uses the brand gradient.
 - `OS` is white.
-- Use the full `MaxOS` wordmark in footers, empty states, login screens, and product shell moments where brand recall matters.
+- Use the full `floThink` wordmark in footers, empty states, login screens, and product shell moments where brand recall matters.
 - Use the compact `M` mark in tight navigation spaces and browser/favicon contexts.
 
 Avoid:
 
-- Writing user-facing product names as `Max OS`.
+- Writing user-facing product names as `floThink`.
 - Using internal names like `AgentCard` or `Harness`.
 - Placing the full wordmark beside the compact mark in the same header unless there is enough visual need.
 
@@ -53,7 +53,7 @@ Use gradient sparingly:
 - One hero or primary emphasis at a time.
 - Workflow-builder accents.
 
-Do not apply gradient to every important phrase. If the `MaxOS` wordmark is already using the gradient, keep nearby headlines white.
+Do not apply gradient to every important phrase. If the `floThink` wordmark is already using the gradient, keep nearby headlines white.
 
 ## Typography
 
@@ -76,7 +76,7 @@ Keep labels slightly larger than tiny utility text:
 
 ## Layout Language
 
-MaxOS should feel:
+floThink should feel:
 
 - Professional.
 - Technical.
@@ -161,23 +161,23 @@ Use these three concepts consistently:
 - Agents: reasoning, execution, assistants, collaboration.
 - Workflows: repeatable human-agent processes, automation, orchestration.
 
-The product should never feel like a generic chat UI. MaxOS is an operating system for human-agentic work.
+The product should never feel like a generic chat UI. floThink is an operating system for human-agentic work.
 
 ## Copy Principles
 
 Primary positioning:
 
-- MaxOS is the operating system for human-agentic work.
+- floThink is the operating system for human-agentic work.
 
 Supporting message:
 
-- MaxOS combines knowledge, workflows, and AI agents into a single operating system.
+- floThink combines knowledge, workflows, and AI agents into a single operating system.
 - It helps humans and AI agents think, plan, execute, and learn together.
 - Workflows become more powerful as AI models improve.
 
 Knowledge-system framing:
 
-- The MaxOS Knowledge System remains open, portable, markdown-native, and user-owned.
+- The floThink Knowledge System remains open, portable, markdown-native, and user-owned.
 - Knowledge management is a core feature, not the whole product.
 
 Enterprise framing:
@@ -193,7 +193,7 @@ For `app.maxos.online`:
 
 - Match the same dark shell colors.
 - Use the same compact `M` mark in the app chrome.
-- Use the `MaxOS` wordmark on login, onboarding, workspace creation, and empty states.
+- Use the `floThink` wordmark on login, onboarding, workspace creation, and empty states.
 - Keep Knowledge, Agents, and Workflows as first-class navigation concepts.
 - Use the same primary gradient for key actions, but keep routine actions neutral.
 - Avoid introducing a separate color system for the app unless the contrast or interaction state requires it.

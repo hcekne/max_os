@@ -9,7 +9,7 @@ tags: [workflow, workspace-hygiene, lifecycle, archive, git]
 # Workflow - Weekly Workspace Hygiene Review
 
 ## Purpose
-Make workspace hygiene a recurring Max OS operating loop so active folders stay focused and Git preserves full history.
+Make workspace hygiene a recurring floThink operating loop so active folders stay focused and Git preserves full history.
 
 ## Related Skill
 - [[Skill - Workspace Hygiene and File Lifecycle Review]]
@@ -43,7 +43,7 @@ Make workspace hygiene a recurring Max OS operating loop so active folders stay 
 - Archive working drafts.
 - Update project state.
 - Extract reusable lessons.
-- Propose public Max OS improvements.
+- Propose public floThink improvements.
 
 ### Pre-Deliverable Review
 - Confirm canonical draft.
@@ -130,12 +130,12 @@ When a project is reviewed:
 - Add a "Current Operating Surface" section if the project folder is complex.
 - Record unresolved questions and next review date.
 
-## Public Max OS Improvements
+## Public floThink Improvements
 During each monthly or project-closeout review, ask:
-- Is this a reusable Max OS pattern?
+- Is this a reusable floThink pattern?
 - Can it become a skill, workflow, template, policy, or AGENTS.md rule?
 - Can it be generalized without private context?
-- Should it be proposed for the public Max OS repo?
+- Should it be proposed for the public floThink repo?
 
 ## Future Harness Integration
 
@@ -166,7 +166,7 @@ project_closeout:
   - archive working drafts
   - update project state
   - extract reusable lessons
-  - propose public Max OS improvements
+  - propose public floThink improvements
 ```
 
 The harness may only auto-delete files already in `SYSTEM/Cleaning/Rubbish Bin/` when the Rubbish Bin rules in [[SYSTEM/Policy]] allow it.

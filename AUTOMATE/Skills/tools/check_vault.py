@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-Max OS vault validator. Warn-only checks across the workspace.
+floThink vault validator. Warn-only checks across the workspace.
 
 Usage:
     python AUTOMATE/Skills/tools/check_vault.py            # auto-detects vault root
@@ -296,7 +296,7 @@ def locate_root(start: Path) -> Path | None:
 
 
 def main() -> int:
-    ap = argparse.ArgumentParser(description="Max OS vault validator (warn-only)")
+    ap = argparse.ArgumentParser(description="floThink vault validator (warn-only)")
     ap.add_argument("--root", default=None,
                     help="Vault root (default: ascend from CWD until a SYSTEM/ is found)")
     args = ap.parse_args()

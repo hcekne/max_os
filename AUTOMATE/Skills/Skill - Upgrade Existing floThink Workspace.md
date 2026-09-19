@@ -4,17 +4,17 @@ status: active
 tags: [migration, upgrade, git, standalone, hosted]
 ---
 
-# Skill - Upgrade Existing MaxOS Workspace
+# Skill - Upgrade Existing floThink Workspace
 
 ## Purpose
 
-Upgrade a lived-in legacy Max OS repository to the current five-root layout
+Upgrade a lived-in legacy floThink repository to the current five-root layout
 and closed SYSTEM kernel without replacing the workspace or losing user files,
 instructions, state, memory, or history.
 
 ## Trigger
 
-- The owner imports an older personal Max OS repository into MaxOS Online.
+- The owner imports an older personal floThink repository into floThink.
 - A standalone clone still uses numbered folders, `WORKSPACE/`, or the old
   SYSTEM instruction files.
 - The owner asks to update an existing workspace from the public template.
@@ -27,7 +27,7 @@ instructions, state, memory, or history.
 
 ## Hosted steps
 
-1. Use **Import existing Max OS workspace**. Do not bootstrap over the repo;
+1. Use **Import existing floThink workspace**. Do not bootstrap over the repo;
    the import detects its default branch, creates an internal recovery point,
    and preflights the exact imported tree.
 2. If **Migrate workspace** appears, review its preview and apply it. This moves
@@ -46,7 +46,7 @@ blank re-bootstrap as a shortcut for a lived-in repository.
 ## Standalone steps
 
 1. Start from a clean worktree. Record `git status --short --branch`, create a
-   recovery branch, and confirm `upstream` points to the public Max OS template.
+   recovery branch, and confirm `upstream` points to the public floThink template.
    Ensure pushes to `upstream` are disabled.
 2. Run `git fetch upstream main`, then
    `git merge --no-commit --no-ff FETCH_HEAD`.
@@ -68,7 +68,7 @@ blank re-bootstrap as a shortcut for a lived-in repository.
 
 6. Confirm `git diff --name-only --diff-filter=U` is empty. Review `git status`,
    the migration proposal, and the archive; then run
-   `python3 AUTOMATE/Skills/tools/maxos_quality_gate.py --root .`.
+   `python3 AUTOMATE/Skills/tools/flothink_quality_gate.py --root .`.
 7. Stage and commit the migration only after those checks pass. Push only to
    the owner's repository, never to `upstream`.
 
@@ -89,5 +89,5 @@ blank re-bootstrap as a shortcut for a lived-in repository.
 - [ ] No legacy layout root or unresolved Git conflict remains.
 - [ ] Customized `CLAUDE.md` and user workspace content remain present.
 - [ ] Retired SYSTEM material exists byte-for-byte in the migration archive.
-- [ ] The Max OS quality gate passes before commit.
+- [ ] The floThink quality gate passes before commit.
 - [ ] A second fixup run is idempotent and produces no worktree changes.

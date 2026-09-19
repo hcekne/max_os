@@ -1,15 +1,15 @@
-# MaxOS
+# floThink
 
-[**MaxOS**](https://www.maxos.online/) is the AI workflow operating system for
+[**floThink**](https://www.maxos.online/) is the AI workflow operating system for
 knowledge work. It gives people and AI agents one persistent place to remember
 context, organize priorities, complete work, and improve the workflows they use
 again and again.
 
-This repository is the official public MaxOS workspace template. Your plans,
+This repository is the official public floThink workspace template. Your plans,
 people, projects, notes, and inbox live in one plain-Markdown workspace that
 both you and AI agents can read, search, link, and edit.
 
-Most users run it through [**MaxOS Online**](https://www.maxos.online/): the
+Most users run it through [**floThink**](https://www.maxos.online/): the
 hosted product adds chat with agents that work directly in this workspace,
 scheduled and event-triggered workflows via the Workflow Builder, connected
 organization sources, code repositories, large-file storage, monitoring, and
@@ -17,13 +17,13 @@ run history. The workspace itself stays a portable git repository you own — it
 also works entirely standalone with a local AI tool, and that portability is a
 design guarantee, not an accident.
 
-**[Explore MaxOS](https://www.maxos.online/)** ·
-**[Open MaxOS Online](https://app.maxos.online/)**
+**[Explore floThink](https://www.maxos.online/)** ·
+**[Open floThink](https://app.maxos.online/)**
 
-Follow MaxOS on [LinkedIn](https://www.linkedin.com/company/maxos-online/) and
+Follow floThink on [LinkedIn](https://www.linkedin.com/company/maxos-online/) and
 watch product demonstrations on [YouTube](https://www.youtube.com/@MaxOSOnline).
 
-## Why MaxOS
+## Why floThink
 
 - **Keep useful context alive.** Your knowledge, plans, decisions, and working
   history remain available to every authorized agent instead of disappearing
@@ -40,8 +40,8 @@ workspace as its persistent memory. `SYSTEM/Actor.md` declares which.
 
 ## Workspace map
 
-- `ACTION CENTER/` — short-lived work moving between you and MaxOS: My
-  Inbox (for you to review), Agent Inbox (for Max OS to process), Outbox
+- `ACTION CENTER/` — short-lived work moving between you and floThink: My
+  Inbox (for you to review), Agent Inbox (for floThink to process), Outbox
   (ready to send).
 - `KNOWLEDGE/` — long-lived people, organizations, clients, projects,
   content, interactions, and notes.
@@ -59,21 +59,21 @@ entry point is `AGENTS.md`; `CLAUDE.md` and
 something at its expected filename. `CLAUDE.md` is yours to extend — template
 updates never touch it.
 
-## Using MaxOS
+## Using floThink
 
 **Hosted (recommended):** sign in to
-[MaxOS Online](https://app.maxos.online/), open your workspace, and talk to it
+[floThink](https://app.maxos.online/), open your workspace, and talk to it
 — agents read `AGENTS.md` and your folder instructions automatically. Build
 automations in the Workflow Builder; they run on schedules or events without a
 browser open.
 
 **Standalone:** clone the repo, then follow
-`AUTOMATE/Skills/Skill - Set Up Standalone MaxOS.md` (one setup script, one
+`AUTOMATE/Skills/Skill - Set Up Standalone floThink.md` (one setup script, one
 dependency check, start your AI tool in the folder).
 
 **Existing workspace:** keep the repository and its history. Follow
-`AUTOMATE/Skills/Skill - Upgrade Existing MaxOS Workspace.md` to migrate an
-older numbered or `WORKSPACE/` layout safely, either through MaxOS Online or in
+`AUTOMATE/Skills/Skill - Upgrade Existing floThink Workspace.md` to migrate an
+older numbered or `WORKSPACE/` layout safely, either through floThink or in
 a standalone clone. The upgrade preserves user content and customized
 instructions; it does not ask you to start over from a blank template.
 

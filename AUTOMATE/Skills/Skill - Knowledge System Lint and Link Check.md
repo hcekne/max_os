@@ -8,7 +8,7 @@ tags: [skill, lint, validation, markdown, frontmatter, links]
 # Skill - Knowledge System Lint and Link Check
 
 ## Purpose
-Validate Markdown files before they enter or change the Max OS knowledge system, with deterministic checks for frontmatter, heading structure, wiki-links, local Markdown links, and lifecycle metadata values.
+Validate Markdown files before they enter or change the floThink knowledge system, with deterministic checks for frontmatter, heading structure, wiki-links, local Markdown links, and lifecycle metadata values.
 
 ## When to Use
 Use this skill when:
@@ -64,7 +64,7 @@ python3 AUTOMATE/Skills/tools/knowledge_lint.py --root . --changed-only --format
 - If PyYAML is available locally, parse the frontmatter as YAML.
 - Warn on duplicate top-level keys.
 - Warn on frontmatter lines that are not simple keys, list items, comments, or continuations.
-- Warn when known lifecycle fields use values outside Max OS policy sets.
+- Warn when known lifecycle fields use values outside floThink policy sets.
 
 Known lifecycle fields:
 - `status`
@@ -107,7 +107,7 @@ Known lifecycle fields:
 6. If many warnings are expected in an older workspace, create a report and handle them in batches.
 
 ## Quality Gate
-Before committing Max OS structural changes:
+Before committing floThink structural changes:
 - [ ] `knowledge_lint.py --changed-only --fail-on error` passes
 - [ ] broken wiki-links are fixed or intentionally deferred in a report
 - [ ] local Markdown links resolve

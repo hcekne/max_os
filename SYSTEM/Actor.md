@@ -3,11 +3,11 @@ type: actor
 status: draft
 actor_type: human
 ---
-<!-- maxos-actor-placeholder: the MaxOS app replaces this file when the workspace is created -->
+<!-- maxos-actor-placeholder: the floThink app replaces this file when the workspace is created -->
 
 # Actor
 
-Who owns this workspace and what its agents may do. MaxOS Online stamps this
+Who owns this workspace and what its agents may do. floThink stamps this
 placeholder at creation. Standalone owners should set `actor_type` (`human` or
 `ai`) and fill the sections below.
 

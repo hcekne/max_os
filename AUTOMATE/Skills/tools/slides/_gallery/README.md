@@ -1,6 +1,6 @@
 # Slide Template Gallery
 
-A live, themeable showcase of every slide template in the Max OS slide-deck skill. Each slide demonstrates one template filled with plausible (but fictional) consulting content so authors can preview the layout, the frontmatter contract, and the type/colour treatment under a given brand.
+A live, themeable showcase of every slide template in the floThink slide-deck skill. Each slide demonstrates one template filled with plausible (but fictional) consulting content so authors can preview the layout, the frontmatter contract, and the type/colour treatment under a given brand.
 
 ## Build
 

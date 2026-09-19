@@ -1,4 +1,4 @@
-# Max OS — Claude Code
+# floThink — Claude Code
 
 The canonical agent entry point is [AGENTS.md](AGENTS.md) — read it for the
 core rules, the routing table, and validation, then read `SYSTEM/Actor.md`.

@@ -1,6 +1,6 @@
 # Optional Modules
 
-This folder contains optional capability packs that extend Max OS beyond the core work operating system.
+This folder contains optional capability packs that extend floThink beyond the core work operating system.
 
 ## Design principle
 - Keep the five core workspace areas lightweight and work-first.

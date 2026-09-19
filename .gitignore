@@ -8,7 +8,7 @@ Thumbs.db
 # Obsidian (entire folder is local state, not needed in repo)
 .obsidian/
 
-# Max OS local clone state
+# floThink local clone state
 .maxos/
 .venv/
 

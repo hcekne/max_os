@@ -9,7 +9,7 @@ STATUS_FILE="$STATUS_DIR/local_setup_status.yaml"
 HOOK_FILE=".githooks/pre-commit"
 INSTALL_SCRIPT="AUTOMATE/Skills/tools/install_git_hooks.sh"
 SETUP_SCRIPT="AUTOMATE/Skills/tools/ensure_local_setup.sh"
-QUALITY_GATE_SCRIPT="AUTOMATE/Skills/tools/maxos_quality_gate.py"
+QUALITY_GATE_SCRIPT="AUTOMATE/Skills/tools/flothink_quality_gate.py"
 KNOWLEDGE_LINT_SCRIPT="AUTOMATE/Skills/tools/knowledge_lint.py"
 mkdir -p "$STATUS_DIR"
 
@@ -41,32 +41,32 @@ EOF
 }
 
 if ! command -v python3 >/dev/null 2>&1; then
-  write_status false "python3 is required for Max OS quality gates"
-  echo "Max OS local setup failed: python3 is required." >&2
+  write_status false "python3 is required for floThink quality gates"
+  echo "floThink local setup failed: python3 is required." >&2
   exit 1
 fi
 
 if [ ! -f "$HOOK_FILE" ]; then
   write_status false "$HOOK_FILE is missing"
-  echo "Max OS local setup failed: $HOOK_FILE is missing." >&2
+  echo "floThink local setup failed: $HOOK_FILE is missing." >&2
   exit 1
 fi
 
 if [ ! -f "$INSTALL_SCRIPT" ]; then
   write_status false "$INSTALL_SCRIPT is missing"
-  echo "Max OS local setup failed: $INSTALL_SCRIPT is missing." >&2
+  echo "floThink local setup failed: $INSTALL_SCRIPT is missing." >&2
   exit 1
 fi
 
 if [ ! -f "$QUALITY_GATE_SCRIPT" ]; then
   write_status false "quality gate script is missing"
-  echo "Max OS local setup failed: quality gate script is missing." >&2
+  echo "floThink local setup failed: quality gate script is missing." >&2
   exit 1
 fi
 
 if [ ! -f "$KNOWLEDGE_LINT_SCRIPT" ]; then
   write_status false "knowledge lint script is missing"
-  echo "Max OS local setup failed: knowledge lint script is missing." >&2
+  echo "floThink local setup failed: knowledge lint script is missing." >&2
   exit 1
 fi
 
@@ -80,10 +80,10 @@ fi
 current_hooks_path="$(git config --get core.hooksPath || true)"
 if [ "$current_hooks_path" != ".githooks" ] || [ ! -x "$HOOK_FILE" ]; then
   write_status false "git hooks are not installed correctly"
-  echo "Max OS local setup failed: git hooks are not installed correctly." >&2
+  echo "floThink local setup failed: git hooks are not installed correctly." >&2
   exit 1
 fi
 
 write_status true "local setup ready"
-echo "Max OS local setup ready."
+echo "floThink local setup ready."
 echo "Status: $STATUS_FILE"

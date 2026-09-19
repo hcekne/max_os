@@ -147,7 +147,7 @@ class KernelMigrationFixupTest(unittest.TestCase):
             )
             self.assertEqual(
                 (root / "Note.md").read_text(),
-                "See [[SYSTEM/State]], [[AUTOMATE/Skills/Skill - Set Up Standalone MaxOS]], "
+                "See [[SYSTEM/State]], [[AUTOMATE/Skills/Skill - Set Up Standalone floThink]], "
                 "and SYSTEM/Log.md.\n",
             )
             self.assertTrue(

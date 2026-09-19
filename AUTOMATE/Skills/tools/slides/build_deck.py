@@ -194,7 +194,7 @@ def render_table(lines: list[str]) -> str:
 
 
 def fallback_md_to_html(markdown_text: str) -> str:
-    """Render the limited Markdown subset used by Max OS slide decks.
+    """Render the limited Markdown subset used by floThink slide decks.
 
     Pandoc remains preferred when installed. This fallback keeps the slide
     builder usable in lightweight agent environments where pandoc is absent.

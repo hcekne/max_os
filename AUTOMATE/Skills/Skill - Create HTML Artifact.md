@@ -10,7 +10,7 @@ tags: [skill, html, artifact, rendering]
 Create a static, self-contained HTML artifact from canonical Markdown or approved source material without replacing the Markdown source of truth.
 
 ## Trigger
-Use this skill when the user asks for a rich visual artifact, briefing, dashboard, preview, or shareable HTML view based on Max OS content.
+Use this skill when the user asks for a rich visual artifact, briefing, dashboard, preview, or shareable HTML view based on floThink content.
 
 ## Inputs
 - Canonical source Markdown files or explicitly provided source material

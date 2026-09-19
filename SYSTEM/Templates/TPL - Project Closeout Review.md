@@ -48,4 +48,4 @@ tags: [review, project-closeout, lifecycle, archive]
 - [ ] Archive working drafts.
 - [ ] Preserve final deliverables.
 - [ ] Create/update archive index.
-- [ ] Propose public Max OS improvements where useful.
+- [ ] Propose public floThink improvements where useful.
