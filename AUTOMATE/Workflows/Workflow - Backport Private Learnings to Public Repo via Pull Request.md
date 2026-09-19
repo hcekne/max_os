@@ -9,7 +9,7 @@ tags: [workflow, open-source, pull-request, governance, curation]
 # Workflow - Backport Private Learnings to Public Repo via Pull Request
 
 ## Goal
-Turn private Max OS learnings into public, reusable improvements through clean pull requests without leaking sensitive information.
+Turn private floThink learnings into public, reusable improvements through clean pull requests without leaking sensitive information.
 
 ## Inputs
 - One or more private learnings (process, template, rule, checklist, workflow)

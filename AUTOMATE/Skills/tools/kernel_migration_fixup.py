@@ -132,10 +132,10 @@ DOCTRINE = [
 ]
 
 RENAMES = [
-    ("SYSTEM/Guides/Guide - MaxOS Online Scope and Shared Resources", "AGENTS"),
+    ("SYSTEM/Guides/Guide - floThink Scope and Shared Resources", "AGENTS"),
     (
         "SYSTEM/Guides/Guide - System Dependencies",
-        "AUTOMATE/Skills/Skill - Set Up Standalone MaxOS",
+        "AUTOMATE/Skills/Skill - Set Up Standalone floThink",
     ),
     ("SYSTEM/Document Lifecycle Policy", "SYSTEM/Policy"),
     ("SYSTEM/AI Actor & Memory Model", "AGENTS"),
@@ -152,7 +152,7 @@ RENAMES = [
     ("SYSTEM/Actor Profile", "SYSTEM/Actor"),
     ("SYSTEM/System State", "SYSTEM/State"),
     ("SYSTEM/Session Log", "SYSTEM/Log"),
-    ("SYSTEM/Standalone", "AUTOMATE/Skills/Skill - Set Up Standalone MaxOS"),
+    ("SYSTEM/Standalone", "AUTOMATE/Skills/Skill - Set Up Standalone floThink"),
     ("SYSTEM/Indexes", "AGENTS"),
 ]
 
@@ -164,7 +164,7 @@ TITLE_RENAMES = [
     ("Recurring Operations", "SYSTEM/Memory"),
     ("Planning Cadence", "PLAN/.instructions"),
     ("LLM Operating Manual", "AGENTS"),
-    ("Standalone", "AUTOMATE/Skills/Skill - Set Up Standalone MaxOS"),
+    ("Standalone", "AUTOMATE/Skills/Skill - Set Up Standalone floThink"),
 ]
 
 STATE_FIELDS = [
@@ -935,7 +935,7 @@ def main() -> int:
     args = parser.parse_args()
     root = Path(args.root).resolve()
     if not (root / "SYSTEM").is_dir():
-        print(f"error: {root} does not look like a Max OS workspace", file=sys.stderr)
+        print(f"error: {root} does not look like a floThink workspace", file=sys.stderr)
         return 2
     try:
         conflicts = unmerged_index(root)

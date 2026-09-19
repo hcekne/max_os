@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Lint a Max OS Markdown workspace for frontmatter, headings, and links."""
+"""Lint a floThink Markdown workspace for frontmatter, headings, and links."""
 
 from __future__ import annotations
 
@@ -264,7 +264,7 @@ def lint_frontmatter(path: Path, root: Path, lines: list[str]) -> list[Issue]:
                     f"FM_{key.upper()}",
                     rel(path, root),
                     seen.get(key, 1),
-                    f"`{key}` value `{value}` is outside the known Max OS set",
+                    f"`{key}` value `{value}` is outside the known floThink set",
                 )
             )
 

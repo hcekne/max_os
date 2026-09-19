@@ -4,19 +4,19 @@ status: active
 tags: [setup, standalone, tooling]
 ---
 
-# Skill - Set Up Standalone MaxOS
+# Skill - Set Up Standalone floThink
 
-Prepare a local clone to run without the MaxOS app. Hosted runs do not use
+Prepare a local clone to run without the floThink app. Hosted runs do not use
 this skill: their containers already provide the baseline toolchain and allow
 missing tools to be installed inside the runner.
 
 ## Trigger
 
-- The owner has cloned Max OS to their own computer.
+- The owner has cloned floThink to their own computer.
 - A standalone agent reports missing setup or tool dependencies.
 
-If the clone is a lived-in older Max OS repository rather than a fresh current
-template, run `Skill - Upgrade Existing MaxOS Workspace` first. Do not replace
+If the clone is a lived-in older floThink repository rather than a fresh current
+template, run `Skill - Upgrade Existing floThink Workspace` first. Do not replace
 or re-bootstrap it.
 
 ## Steps
@@ -40,4 +40,4 @@ source of truth and prints the appropriate install command for each gap.
 
 - [ ] `.maxos/local_setup_status.yaml` reports `ready: true`.
 - [ ] The intended skill's declared dependencies pass the dependency check.
-- [ ] The pre-commit hook runs the Max OS quality gate.
+- [ ] The pre-commit hook runs the floThink quality gate.

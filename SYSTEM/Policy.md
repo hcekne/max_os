@@ -7,7 +7,7 @@ status: active
 
 How information is handled in this workspace. This file changes rarely and
 deliberately. Where behavior is enforced by code — `knowledge_lint.py`
-validates the metadata vocabularies below; the MaxOS app implements the
+validates the metadata vocabularies below; the floThink app implements the
 Rubbish Bin behavior — this file matches the code, not the other way around.
 
 ## Document types
@@ -74,7 +74,7 @@ or propose `NEEDS_HUMAN_REVIEW` in `SYSTEM/Proposals/`.
   create distributed `Archive/` folders inside active project folders.
 - `SYSTEM/Cleaning/Rubbish Bin/` holds clearly stale, superseded, low-value
   material queued for deletion. Working standalone, mirror the source path
-  and set `superseded_by` / `delete_after` when useful. **The MaxOS app's
+  and set `superseded_by` / `delete_after` when useful. **The floThink app's
   Move-to-Rubbish-Bin places files flat at the bin root, its Empty action
   deletes bin contents immediately, and bin contents are excluded from the
   automatic git backup** — treat the bin as short-lived, never rely on a
@@ -92,7 +92,7 @@ Git history is the preservation layer; active folders stay clean.
   before large cleanups; prefer `git mv` so history stays legible.
 - Never rewrite Git history unless the owner explicitly requests it.
 - Push rules live in `AGENTS.md`: never push a remote named `upstream`;
-  outside the MaxOS harness any push requires owner approval.
+  outside the floThink harness any push requires owner approval.
 
 ## Generated output
 

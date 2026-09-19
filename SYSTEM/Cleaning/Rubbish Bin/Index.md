@@ -11,7 +11,7 @@ Quick scan of clearly stale material queued for deletion. Rules live in
 
 - Working standalone, mirror the original source path beneath
   `SYSTEM/Cleaning/Rubbish Bin/` and set `delete_after` when useful.
-- In the MaxOS app, binned files land flat at this root and the Empty action
+- In the floThink app, binned files land flat at this root and the Empty action
   deletes contents immediately — treat the bin as short-lived and never bin
   high-retention material.
 

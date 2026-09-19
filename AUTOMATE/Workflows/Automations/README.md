@@ -1,13 +1,13 @@
 # Automations (machine-readable workflows)
 
-Files in this folder are executable workflows created by the MaxOS Web Workflow
+Files in this folder are executable workflows created by the floThink Workflow
 Builder. Each carries a `type: maxos-workflow` frontmatter marker; the harness
 lists, schedules, and runs them by that marker — not by this folder.
 
 - Prefer editing workflows in the Workflow Builder. The frontmatter holds the
   recipe; the Markdown body is a human description and is safe to edit.
 - Authoring one by hand is supported: read `WORKFLOW-PRIMITIVES.md` in this
-  folder first. The harness regenerates that reference from the running MaxOS
+  folder first. The harness regenerates that reference from the running floThink
   version, so it is always the current list of node types, fields, and library
   categories.
 - Run artifacts are written to `AUTOMATE/Workflows/Automations/artifacts/`.

@@ -69,8 +69,8 @@ Dependency:
 
 Recommended isolated setup:
 ```bash
-python3 -m venv /tmp/maxos-docx-venv
-source /tmp/maxos-docx-venv/bin/activate
+python3 -m venv /tmp/flothink-docx-venv
+source /tmp/flothink-docx-venv/bin/activate
 pip install python-docx
 pip install reportlab
 ```

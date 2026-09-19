@@ -1,6 +1,6 @@
 # Agent Inbox
 
-Files and requests waiting for Max OS to process. **Upload to Max OS** places
+Files and requests waiting for floThink to process. **Upload to floThink** places
 ordinary workspace uploads here.
 
 ## Rules

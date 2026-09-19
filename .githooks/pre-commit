@@ -1,12 +1,12 @@
 #!/usr/bin/env sh
 set -eu
 
-if [ "${MAXOS_SKIP_QUALITY_GATE:-}" = "1" ]; then
-  echo "Max OS quality gate skipped because MAXOS_SKIP_QUALITY_GATE=1"
+if [ "${FLOTHINK_SKIP_QUALITY_GATE:-${MAXOS_SKIP_QUALITY_GATE:-}}" = "1" ]; then
+  echo "floThink quality gate skipped because FLOTHINK_SKIP_QUALITY_GATE=1"
   exit 0
 fi
 
 ROOT="$(git rev-parse --show-toplevel)"
 cd "$ROOT"
 
-python3 AUTOMATE/Skills/tools/maxos_quality_gate.py --root .
+python3 AUTOMATE/Skills/tools/flothink_quality_gate.py --root .

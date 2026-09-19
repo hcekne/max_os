@@ -86,4 +86,4 @@ Turn a raw website idea into a live domain quickly and repeatably, while capturi
 - Reusable improvements fed back into factory workflows.
 
 ## Related
-- [[Workflow - Launch Max OS Website in 90 Minutes]]
+- [[Workflow - Launch floThink Website in 90 Minutes]]

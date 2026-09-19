@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Run Max OS pre-commit knowledge-system quality gates."""
+"""Run floThink pre-commit knowledge-system quality gates."""
 
 from __future__ import annotations
 
@@ -16,6 +16,19 @@ SECRET_PATTERNS = [
     re.compile(r"\bsk-[A-Za-z0-9_-]{20,}\b"),
     re.compile(r"(?i)\b(api[_-]?key|secret|password|passwd|token)\b\s*[:=]\s*['\"]?[^'\"\s]{8,}"),
 ]
+
+# Public-template copy must use the current product name. Build the legacy
+# spellings from fragments so this guard does not match its own source code.
+LEGACY_BRAND_TERMS = (
+    "Max" + "OS",
+    "Max" + " OS",
+    "MAX" + "OS",
+    "MAX" + " OS",
+    "max" + "OS",
+)
+LEGACY_BRAND_PATTERN = re.compile(
+    rf"\b(?:{'|'.join(re.escape(term) for term in LEGACY_BRAND_TERMS)})\b"
+)
 
 TEXT_SUFFIXES = {
     ".md",
@@ -131,24 +144,29 @@ def scan_text_files(files: list[Path], root: Path, denylist: list[str]) -> list[
     findings: list[str] = []
     lower_denylist = [(term, term.lower()) for term in denylist]
     for path in files:
+        relative_path = path.relative_to(root)
+        if LEGACY_BRAND_PATTERN.search(relative_path.as_posix()):
+            findings.append(f"{relative_path}: legacy product name found in path")
         try:
             text = path.read_text(encoding="utf-8", errors="replace")
         except Exception as exc:
-            findings.append(f"{path.relative_to(root)}: could not read text: {exc}")
+            findings.append(f"{relative_path}: could not read text: {exc}")
             continue
 
         for index, line in enumerate(text.splitlines(), start=1):
+            if LEGACY_BRAND_PATTERN.search(line):
+                findings.append(f"{relative_path}:{index}: legacy product name found")
             for pattern in SECRET_PATTERNS:
                 if pattern.search(line):
                     findings.append(
-                        f"{path.relative_to(root)}:{index}: possible secret or credential pattern"
+                        f"{relative_path}:{index}: possible secret or credential pattern"
                     )
                     break
             lower_line = line.lower()
             for original, lowered in lower_denylist:
                 if lowered in lower_line:
                     findings.append(
-                        f"{path.relative_to(root)}:{index}: denylist term found: {original}"
+                        f"{relative_path}:{index}: denylist term found: {original}"
                     )
     return findings
 
@@ -240,7 +258,7 @@ def main() -> int:
         denylist = read_denylist(denylist_path)
         files = changed_or_all_files(root, args.full)
         findings = scan_text_files(files, root, denylist)
-        print_section("public-template privacy and secret scan", not findings, findings)
+        print_section("public-template brand, privacy and secret scan", not findings, findings)
         failures += int(bool(findings))
 
     return 1 if failures else 0

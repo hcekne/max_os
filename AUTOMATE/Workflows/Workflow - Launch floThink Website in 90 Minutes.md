@@ -2,18 +2,18 @@
 type: workflow
 status: active
 owner:
-trigger_phrase: launch max os website in 90 minutes
-tags: [workflow, max-os, website, launch, vite, cloudflare, godaddy, domain]
+trigger_phrase: launch flothink website in 90 minutes
+tags: [workflow, flothink, website, launch, vite, cloudflare, godaddy, domain]
 ---
 
-# Workflow - Launch Max OS Website in 90 Minutes
+# Workflow - Launch floThink Website in 90 Minutes
 
 ## Goal
-Publish a conversion-ready Max OS landing page in under 90 minutes with:
+Publish a conversion-ready floThink landing page in under 90 minutes with:
 - dual CTA (GitHub + waitlist),
 - custom domain,
 - TLS,
-- analytics events with `site_id=max-os`.
+- analytics events with `site_id=flothink`.
 
 ## Strategic defaults (already decided)
 - Frontend: Vite static build.
@@ -37,20 +37,20 @@ Publish a conversion-ready Max OS landing page in under 90 minutes with:
 - If project is inactive by then, disable auto-renew before billing cycle.
 
 ## Inputs
-- Max OS source positioning: `README.md`
+- floThink source positioning: `README.md`
 - Prompt inspiration: `KNOWLEDGE/Notes/Note - Prompt v03 - Pricing Precision Landing Page - Nordic Minimal Performance.md`
-- Waitlist implementation reference: `KNOWLEDGE/Notes/Note - Max OS Waitlist Schema and Frontend Submit Pattern (Vite) (2026-03-07).md`
+- Waitlist implementation reference: `KNOWLEDGE/Notes/Note - floThink Waitlist Schema and Frontend Submit Pattern (Vite) (2026-03-07).md`
 - Domain: `maxos.online` in GoDaddy
-- GitHub repo URL for Max OS
+- GitHub repo URL for floThink
 
 ## 90-minute execution plan
 
 ### Block 1 (0-20 min): Generate and local-check site
-1. Pick one launch prompt variant from `KNOWLEDGE/Notes/Note - Prompt Pack - Max OS Launch Site (Vite, 3 Styles) (2026-03-07).md`.
+1. Pick one launch prompt variant from `KNOWLEDGE/Notes/Note - Prompt Pack - floThink Launch Site (Vite, 3 Styles) (2026-03-07).md`.
 2. Generate Vite page with your one-shot workflow.
 3. Ensure required sections exist:
    - Hero + value promise,
-   - How Max OS works,
+   - How floThink works,
    - two CTA paths,
    - waitlist email capture,
    - trust/FAQ/footer.
@@ -63,14 +63,14 @@ Publish a conversion-ready Max OS landing page in under 90 minutes with:
 1. Implement waitlist capture quickly using one of these patterns:
    - Option A (fastest): Formspree/Tally/Typeform embed.
    - Option B: custom API endpoint if already available.
-   - Use the exact payload and submit handler from `KNOWLEDGE/Notes/Note - Max OS Waitlist Schema and Frontend Submit Pattern (Vite) (2026-03-07).md`.
+   - Use the exact payload and submit handler from `KNOWLEDGE/Notes/Note - floThink Waitlist Schema and Frontend Submit Pattern (Vite) (2026-03-07).md`.
 2. Minimum waitlist fields:
    - email,
    - optional “What would you want managed for you?”
-3. Add analytics events with `site_id=max-os`:
-   - `maxos_github_click`
-   - `maxos_waitlist_open`
-   - `maxos_waitlist_submit`
+3. Add analytics events with `site_id=flothink`:
+   - `flothink_github_click`
+   - `flothink_waitlist_open`
+   - `flothink_waitlist_submit`
 4. Include UTM capture for inbound traffic attribution.
 
 ### Block 3 (45-70 min): Deploy to Cloudflare Pages
@@ -122,7 +122,7 @@ Publish a conversion-ready Max OS landing page in under 90 minutes with:
 - [ ] Site live on custom domain with HTTPS
 - [ ] GitHub CTA working
 - [ ] Waitlist submit working
-- [ ] `site_id=max-os` analytics events firing
+- [ ] `site_id=flothink` analytics events firing
 - [ ] Mobile pass complete
 
 ## Latest run status (2026-03-08)
@@ -140,7 +140,7 @@ Publish a conversion-ready Max OS landing page in under 90 minutes with:
 - Action: review Cloudflare billing pages and set alerts/limits before traffic grows.
 
 ## Output
-- Live Max OS launch page with active dual CTA funnel.
+- Live floThink launch page with active dual CTA funnel.
 
 ## Follow-up (same day or next day)
 - Share launch page on LinkedIn.

@@ -5,8 +5,8 @@
 - Keep this as a discovery and governance layer, not autonomous orchestration.
 
 ## Why optional
-- Max OS core philosophy remains human + AI collaboration over canonical files.
-- This module helps with meta-tasks without turning Max OS into a heavy platform.
+- floThink core philosophy remains human + AI collaboration over canonical files.
+- This module helps with meta-tasks without turning floThink into a heavy platform.
 
 ## What to store here
 - One note per available agent with:

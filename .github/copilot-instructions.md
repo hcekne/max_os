@@ -1,6 +1,6 @@
-# Max OS — Copilot Instructions
+# floThink — Copilot Instructions
 
-This workspace is **Max OS**. The canonical agent entry point is
+This workspace is **floThink**. The canonical agent entry point is
 [`AGENTS.md`](../AGENTS.md) — read it first for the core rules, the routing
 table, and validation commands, then read `SYSTEM/Actor.md`. Per-folder rules
 live in each folder's `.instructions.md`.

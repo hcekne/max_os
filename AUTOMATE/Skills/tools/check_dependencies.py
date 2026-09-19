@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
-"""Report which Max OS system dependencies are installed and which are missing.
+"""Report which floThink system dependencies are installed and which are missing.
 
-Run on a fresh clone, or any time a Max OS tool stops working unexpectedly.
+Run on a fresh clone, or any time a floThink tool stops working unexpectedly.
 
 For each dependency the script prints:
   * an OK / MISSING marker
@@ -11,7 +11,7 @@ For each dependency the script prints:
 The script exits 0 even when items are missing, so it can be wired into a
 non-blocking setup check. Use the printed install commands to fill the gaps.
 
-See `Skill - Set Up Standalone MaxOS` for the standalone setup procedure.
+See `Skill - Set Up Standalone floThink` for the standalone setup procedure.
 """
 
 from __future__ import annotations
@@ -167,7 +167,7 @@ def print_table(results: list[Result]) -> None:
     if missing:
         print(f"\n{len(missing)} item(s) need attention. Run the printed fix commands.")
     else:
-        print("\nAll Max OS system dependencies are present.")
+        print("\nAll floThink system dependencies are present.")
 
 
 def main() -> None:

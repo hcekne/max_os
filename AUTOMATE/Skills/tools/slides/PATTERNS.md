@@ -1,6 +1,6 @@
 # Slide Deck Patterns
 
-Reusable layout patterns, the template catalog, and pandoc gotchas for the Max OS slide-deck skill.
+Reusable layout patterns, the template catalog, and pandoc gotchas for the floThink slide-deck skill.
 Pair this with [deck.css](deck.css) (CSS), [Skill - Slide Deck Generation.md](../../Skill%20-%20Slide%20Deck%20Generation.md) (workflow), and the live [template gallery](_gallery/) (one example slide per template, themeable).
 
 When you build a deck, **start from the templates and patterns here**. To preview a template under your brand palette before writing your slide, rebuild the gallery with the matching `theme-*.css`:

@@ -2,12 +2,12 @@
 
 Use this folder for repeatable step-by-step work processes.
 
-Max OS supports two workflow forms:
+floThink supports two workflow forms:
 
 - **Workflow notes** in this folder root: human-led processes with optional AI
   assistance.
 - **Executable automations** in `AUTOMATE/Workflows/Automations/`: machine-readable
-  recipes created by the MaxOS Workflow Builder.
+  recipes created by the floThink Workflow Builder.
 
 For reusable agent-executable capabilities that are not whole workflows, see
 `AUTOMATE/Skills/` and `SKILLS.md`.
@@ -37,7 +37,7 @@ For reusable agent-executable capabilities that are not whole workflows, see
   the inbox.
 - `AUTOMATE/Workflows/Automations/WORKFLOW-PRIMITIVES.md` is the single, always
   current description of the recipe format: every node type, its fields, and the
-  Workflow Library categories. MaxOS regenerates it, so do not copy it into
+  Workflow Library categories. floThink regenerates it, so do not copy it into
   another note and do not describe the schema anywhere else.
 - The Workflow Builder is the easiest way to author a recipe. Hand-authoring one
   from that reference is fully supported; the backend validates a recipe on save

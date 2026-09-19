@@ -52,7 +52,7 @@ Create one run-scoped temporary directory outside the workspace and guarantee
 cleanup when the run ends. For a shell-capable runner:
 
 ```bash
-scratch="$(mktemp -d "${TMPDIR:-/tmp}/maxos-profile-XXXXXX")"
+scratch="$(mktemp -d "${TMPDIR:-/tmp}/flothink-profile-XXXXXX")"
 trap 'rm -rf "$scratch"' EXIT
 ```
 

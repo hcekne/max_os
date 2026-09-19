@@ -3,13 +3,13 @@ type: note
 status: draft
 owner:
 created: 2026-03-03
-tags: [max-os, learnings, operations]
+tags: [flothink, learnings, operations]
 ---
 
 # Note - Patterns Learned from Real Usage
 
 ## Why this note exists
-- This captures practical patterns from day-to-day Max OS usage that are useful for other users.
+- This captures practical patterns from day-to-day floThink usage that are useful for other users.
 - Focus is on transferable operating patterns, not personal/private data.
 
 ## Pattern 1: People + interactions become a core operating surface
@@ -31,7 +31,7 @@ tags: [max-os, learnings, operations]
 - Practical implication: add small workflows/templates when repetition appears; avoid waiting for a perfect design.
 
 ## Pattern 5: Keep core simple, make advanced capabilities optional
-- Core Max OS works best as a human+AI operating system over files.
+- Core floThink works best as a human+AI operating system over files.
 - Advanced extensions should be optional modules to avoid overloading first-time users.
 
 ## Suggested next improvements for public users

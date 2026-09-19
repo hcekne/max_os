@@ -13,7 +13,7 @@ list the folders to see what exists; read a card before running it.
   frontmatter.
 - **Tools** (scripts the skills call): `AUTOMATE/Skills/tools/` — each has a
   usage header; `check_dependencies.py` reports what external software they
-  need (see `Skill - Set Up Standalone MaxOS`).
+  need (see `Skill - Set Up Standalone floThink`).
 - **Modules** (optional capability packs, disabled by default):
   `AUTOMATE/Modules/` — each has a `STATUS.md`.
 

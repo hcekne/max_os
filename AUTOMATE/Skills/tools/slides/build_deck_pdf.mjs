@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 /*
- * Build a PDF of a Max OS slide deck.
+ * Build a PDF of a floThink slide deck.
  *
  * Usage:
  *   node build_deck_pdf.mjs <deck.html> [<out.pdf>] [--raster | --truevector]

@@ -22,8 +22,8 @@ except ImportError as exc:
     print(
         "Missing dependency: python-docx.\n"
         "Create a virtualenv and install it with:\n"
-        "  python3 -m venv /tmp/maxos-docx-venv\n"
-        "  source /tmp/maxos-docx-venv/bin/activate\n"
+        "  python3 -m venv /tmp/flothink-docx-venv\n"
+        "  source /tmp/flothink-docx-venv/bin/activate\n"
         "  pip install python-docx\n",
         file=sys.stderr,
     )
@@ -450,7 +450,7 @@ def export_pdf(doc_title: str, cover_data: dict[str, str], elements: list[object
         print(
             "Missing dependency: reportlab.\n"
             "Install it in the export virtualenv with:\n"
-            "  source /tmp/maxos-docx-venv/bin/activate\n"
+            "  source /tmp/flothink-docx-venv/bin/activate\n"
             "  pip install reportlab\n",
             file=sys.stderr,
         )
